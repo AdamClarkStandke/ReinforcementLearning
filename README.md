@@ -1,3 +1,3 @@
 # ReinforcementLearning
 
-![Mario Game](https://youtu.be/r3Y_ryFYPNg)
+![Mario Game](https://www.youtube.com/watch?v=r3Y_ryFYPNg)
