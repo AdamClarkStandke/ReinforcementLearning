@@ -1,6 +1,6 @@
 # ReinforcementLearning
 
-## Training Mario after 20,000 episodes using a batch size of 64:
+## Training Mario after 20,000 episodes using a Batch Size of 64:
 [![Mario Game](https://github.com/aCStandke/ReinforcementLearning/blob/main/mario.png)](https://www.youtube.com/watch?v=r3Y_ryFYPNg)
 
 
@@ -8,7 +8,7 @@
 Quick implementation of Pytorch's TRAIN A MARIO-PLAYING RL AGENT as found at [Reinforcement](https://pytorch.org/tutorials/intermediate/mario_rl_tutorial.html)
 
 ## Code:
-Code can be found here (future comments will be added): [Train Mario](https://github.com/aCStandke/ReinforcementLearning/blob/main/ReinforementLearning.ipynb)
+Code can be found here (using Colab): [Train Mario](https://github.com/aCStandke/ReinforcementLearning/blob/main/ReinforementLearning.ipynb)
 
 
 ## Double DQN Learning Algorithm
