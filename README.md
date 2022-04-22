@@ -11,7 +11,7 @@ Quick implementation of Pytorch's TRAIN A MARIO-PLAYING RL AGENT as found at [Re
 Code can be found here (using Colab): [Train Mario](https://github.com/aCStandke/ReinforcementLearning/blob/main/ReinforementLearning.ipynb)
 
 
-## Double DQN Learning Algorithm
+## Double DQN Learning Algorithm:
 Mario's Action policy for solving sequential decision problems (ie., the machine brain, lol) is the DDQN algorithm as detailed in https://arxiv.org/pdf/1509.06461.pdf[1] The idea of Double Q-learning is to reduce overestimations by decomposing the max operation in the target into action selection and action evaluation[1]. The algorithm evaluates the greedy policy according to the online network and uses the target network to estimate its value[1].
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/download.png)
