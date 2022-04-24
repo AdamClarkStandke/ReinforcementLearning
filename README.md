@@ -5,7 +5,7 @@
 
 
 ## Reference:
-Quick implementation of Pytorch's TRAIN A MARIO-PLAYING RL AGENT as found at [Reinforcement](https://pytorch.org/tutorials/intermediate/mario_rl_tutorial.html).Was trained for 20,000 episodes using a Batch Size of 64.
+Quick implementation of Pytorch's TRAIN A MARIO-PLAYING RL AGENT as found at [Reinforcement](https://pytorch.org/tutorials/intermediate/mario_rl_tutorial.html).Was trained for 635 episodes using a Batch Size of 64.
 
 ## Code:
 Code can be found here (using Colab): [Train Mario](https://github.com/aCStandke/ReinforcementLearning/blob/main/ReinforementLearning.ipynb)
