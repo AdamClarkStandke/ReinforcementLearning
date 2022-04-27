@@ -8,7 +8,7 @@
 Quick implementation of Pytorch's 'Train a Mario-Playing Agent as found at [Reinforcement](https://pytorch.org/tutorials/intermediate/mario_rl_tutorial.html).
 
 ## Results of Training the Model for 10000 episodes:
-
+!!!!!Still To do!!!
 
 
 ## Code:
