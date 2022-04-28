@@ -9,7 +9,10 @@ Quick implementation of Pytorch's 'Train a Mario-Playing Agent as found at [Rein
 
 ## Results of Training the Model for 10000 episodes:
 The results of training the model for 10000 episodes can be found in the code section: [Train Mario 10000]()
+After 10000 episodes, an average score of 334.503 was achieved(which is well below the scores documented by others using simple movements for Mario)
 
+# Results of warm starting model for 1000 episodes:
+  
 
 ## Code:
 Code can be found here and expirmented with Colab by clicking the Colab button in the upper left corner of the notebook: [Train Mario](https://github.com/aCStandke/ReinforcementLearning/blob/main/DoubleDQN_Reinforement_Learning.ipynb)
