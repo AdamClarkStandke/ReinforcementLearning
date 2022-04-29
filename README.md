@@ -8,7 +8,7 @@ Quick implementation of Pytorch's 'Train a Mario-Playing Agent as found at [Rein
 ## Results of Training the Model for 10000 episodes:
 The results of training the model for 10000 episodes can be found in the code section of: [Train Mario 10000](https://github.com/aCStandke/ReinforcementLearning/blob/main/Training_Mario_10000Episodes.ipynb) 
 
-After 10000 episodes, an average score of 334.503 was achieved (which is well below the scores documented by others using simple movements for Mario). Investigation of the reason why, will be done in a future project!
+After 10000 episodes, an average score of 334.503 was achieved (which is well below the scores documented by others using right movements for Mario).
 
 ## Results of warm starting model for 100 episodes:
 After training for another 100 episodes (i.e. warm starting) using the same memory max length and batch size of 32, only parameters relating to: 1) the experiences added to the cache before training; 2) the number of experiences added to the cache before updating the weights of the online DQN network and 3)`the frequency of synchronizing the model weights of the target DQN network were changed. The values and code can be found at [Warm-Start 100](https://github.com/aCStandke/ReinforcementLearning/blob/main/Experimental_Notebook.ipynb) 
