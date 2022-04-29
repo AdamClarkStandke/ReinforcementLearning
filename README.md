@@ -1,5 +1,3 @@
-# Reinforcement Learning to play Mario
-
 # CLICK BELOW TO SEE the DOUBLE DQN ALORITHM PLAY MARIO and WIN:!!!! 
 [![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/mario.png)](https://youtu.be/iucn3RA2bWc)
 
