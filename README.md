@@ -57,7 +57,7 @@ Since the Actor-Critic methods rely on an Actor/Policy and a Critic/Value, you n
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/OnPolicyValueFunc.png)[^4]
 
 **Actor-Critic-Combination**
-By viewing the problem as a stochastic gradient problem on the Actor/Policy parameter space represented by line (4) in the above pseudocode,the job of the critic is to compute an approximation of the projection of the policy π onto the subspace Ψ paramerterized by θ [which leads to the two actor-critic algorithms described in the paper][^3].The actor uses this approximation to update its policy in an approximate gradient direction.[^3] This is done by using the critic as a state-dependent baseline. To do so, an advantage function is calulated by subtracting the expected return(i.e. G) by the estimated value(i.e.V) and the following gradient is computed: 
+> By viewing the problem as a stochastic gradient problem on the Actor/Policy parameter space represented by line (4) in the above pseudocode,the job of the critic is to compute an approximation of the projection of the policy π onto the subspace Ψ paramerterized by θ [which leads to the two actor-critic algorithms described in the paper][^3].The actor uses this approximation to update its policy in an approximate gradient direction.[^3] This is done by using the critic as a state-dependent baseline. To do so, an advantage function is calulated by subtracting the expected return(i.e. G) by the estimated value(i.e.V) and the following gradient is computed: 
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/gradientPwCasB.png)[^4]
 
