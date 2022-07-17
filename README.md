@@ -49,9 +49,11 @@ Since the Actor-Critic methods rely on an Actor/Policy and a Critic/Value, we ne
 **Actor/Policy**
 > The method REINFORCE is built upon trajectories instead of episodes because maximizing expected return over trajectories (instead of episodes) lets the method search for optimal policies for both episodic and continuing tasks.The method samples trajectories using the policy and then uses those trajectories only to estimate the gradient.[^5] The pseudocode for this method is the following:
  
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/lunar_landing_module.png)
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/REINFORCE.png)[^5]
 
 **Critic/Value**
+
+**Actor-Critic-Combination**
 
 ## Implementation:
 
