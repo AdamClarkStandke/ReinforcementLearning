@@ -47,7 +47,7 @@ The results of training the model for 10000 episodes can be found in the code se
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/lunar_landing_module.png)
 
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/lunar_landing_module.png)
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/landingMoon_no_wind.gif)
 
 ## Reference:
 [^1]: [Deep Reinforcement Learning with Double Q-learning](https://arxiv.org/pdf/1509.06461.pdf)
