@@ -36,17 +36,18 @@ Target weights do not get updated during backpropogation, instead rather weights
 ## Example 1: AI-powered Mario Agent using the Double Deep Q Network (DDQN) Algorithm 
 The results of training the model for 10000 episodes can be found in the code section of: [Train Mario 10000](https://github.com/aCStandke/ReinforcementLearning/blob/main/Training_Mario_10000Episodes.ipynb) After 10000 episodes, an average score of 334.503 was achieved (which is well below the scores documented by others using right movements for Mario). I decided to  warm start  the model for another 100 episodes using the same memory max length and batch size of 32. Only parameters relating to: 1) the experiences added to the cache before training; 2) the number of experiences added to the cache before updating the weights of the online network and 3)`the frequency of synchronizing the model weights of the target network were changed. The values and code can be found at [Warm-Start 100](https://github.com/aCStandke/ReinforcementLearning/blob/main/Experimental_Notebook.ipynb). Click the bottom image, if you dare, to see the DDQN in action in the Super Mario environment!!  
 
-[![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/mario.png)]()
+[![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/mario.png)](https://youtu.be/iucn3RA2bWc)
 
-------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
 # Theory of Actor-Critic (A2C) Algorithm:
 
 ## Implementation:
 
 ## Example 2: AI-powered Discrete Lunar Lander Agent using the Actor-Critic (A2C) Algorithm
 
-[![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/lunar_landing_module.png)](https://youtu.be/iucn3RA2bWc)
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/lunar_landing_module.png)
 
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/lunar_landing_module.png)
 
 ## Reference:
 [^1]: [Deep Reinforcement Learning with Double Q-learning](https://arxiv.org/pdf/1509.06461.pdf)
