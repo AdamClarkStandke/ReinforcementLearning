@@ -44,7 +44,7 @@ All Actor-Critic Algorithms consist of two methods: an Actor/Policy and a Critic
 
 > Actor-Critic methods aim at combining the strong points of Actor/Policy-only and Critic/Value-only methods. The Critic uses an approximation architecture and simulation to learn a Value function, which is then used to update the Actor's Policy parameters in a direction of performance improvement. Such methods, as long as they are gradient-based, may have desirable convergence properties, in contrast to Critic-only methods for which convergence is guaranteed in very limited settings. They hold the promise of delivering faster convergence (due to variance reduction), when compared to Actor-only methods.[^3]
 
-Since the Actor-Critic methods rely on an Actor/Policy and a Critic/Value, we need to select both an Actor/Policy and a Critic/Value method. The Actor/Policy method is a Policy-Gradient Method called the REINFORCE algorithm.
+Since the Actor-Critic methods rely on an Actor/Policy and a Critic/Value, you need to select both an Actor/Policy and a Critic/Value method. In this case,the Actor/Policy method used was a Policy-Gradient Method called the REINFORCE algorithm and the Critic/Value method used was based on On-Policy Value learning. Then both methods are combined to create the Actor-Critic Algorithm used in the Implementation portion.   
 
 **Actor/Policy**
 > The method REINFORCE is built upon trajectories instead of episodes because maximizing expected return over trajectories (instead of episodes) lets the method search for optimal policies for both episodic and continuing tasks.The method samples trajectories using the policy and then uses those trajectories only to estimate the gradient.[^5] The pseudocode for this method is the following:
@@ -52,12 +52,19 @@ Since the Actor-Critic methods rely on an Actor/Policy and a Critic/Value, we ne
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/REINFORCE.png)[^5]
 
 **Critic/Value**
+> An On-Policy Value Function gives the expected return if you start in a given state s<sub>t</sub> and always act according to the policy π and is represented by the following formula:  
+
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/OnPolicyValueFunc.png)[^4]
 
 **Actor-Critic-Combination**
+By viewing the problem as a stochastic gradient problem on the Actor/Policy parameter space represented by line (4) in the above pseudocode,the job of the critic is to compute an approximation of the projection of the policy π onto the subspace Ψ paramerterized by θ [which leads to the two actor-critic algorithms described in the paper][^3].The actor uses this approximation to update its policy in an approximate gradient direction.[^3] This is done by using the critic as a state-dependent baseline. To do so, an advantage function is calulated by subtracting the expected return(i.e. G) by the estimated value(i.e.V) and the following gradient is computed: 
+
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/gradientPwCasB.png)[^4]
 
 ## Implementation:
-
+[^6] sdfjsdfksdasflkjdfjlkkljkljakldjslkadslkjfa
 ## Example 2: AI-powered Discrete Lunar Lander Agent using the Actor-Critic (A2C) Algorithm
+asdjlkfkljaskldfajdflaskdfjlaskdjflaksdfjdfa
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/lunar_landing_module.png)
 
@@ -67,7 +74,7 @@ Since the Actor-Critic methods rely on an Actor/Policy and a Critic/Value, we ne
 [^1]: [Deep Reinforcement Learning with Double Q-learning](https://arxiv.org/pdf/1509.06461.pdf)
 [^2]: [Train a Mario-Playing Agent](https://pytorch.org/tutorials/intermediate/mario_rl_tutorial.html)
 [^3]: [Actor-Critic Algorithms](https://proceedings.neurips.cc/paper/1999/file/6449f44a102fde848669bdd9eb6b76fa-Paper.pdf)
-[^4]: [Actor-Critic Algorithms expanded](http://rail.eecs.berkeley.edu/deeprlcourse-fa17/f17docs/lecture_5_actor_critic_pdf)
+[^4]: [Actor-Critic Algorithms Slides](http://rail.eecs.berkeley.edu/deeprlcourse-fa17/f17docs/lecture_5_actor_critic_pdf)
 [^5]: [Policy-Gradient Methods: REINFORCE Algorithm](https://towardsdatascience.com/policy-gradient-methods-104c783251e0#:~:text=The%20method%20REINFORCE%20is%20built,both%20episodic%20and%20continuing%20tasks.)
 [^6]: [Playing CartPole with the Actor-Critic Method](https://www.tensorflow.org/tutorials/reinforcement_learning/actor_critic)
 
