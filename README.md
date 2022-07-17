@@ -39,7 +39,7 @@ The results of training the model for 10000 episodes can be found in the code se
 [![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/mario.png)](https://youtu.be/iucn3RA2bWc)
 
 ------------------------------------------------------------------------------------------------------------------------------
-# Theory of Actor-Critic (A2C) Algorithm:
+# (Basic 😄) Theory of Actor-Critic (A2C) Algorithm:
 All Actor-Critic Algorithms consist of two methods: an Actor/Policy and a Critic/Value. As detailed by [Actor-Critic Algorithms](https://proceedings.neurips.cc/paper/1999/file/6449f44a102fde848669bdd9eb6b76fa-Paper.pdf)
 
 > Actor-Critic methods aim at combining the strong points of Actor/Policy-only and Critic/Value-only methods. The Critic uses an approximation architecture and simulation to learn a Value function, which is then used to update the Actor's Policy parameters in a direction of performance improvement. Such methods, as long as they are gradient-based, may have desirable convergence properties, in contrast to Critic-only methods for which convergence is guaranteed in very limited settings. They hold the promise of delivering faster convergence (due to variance reduction), when compared to Actor-only methods.[^3]
