@@ -45,12 +45,12 @@ The results of training the model for 10000 episodes can be found in the code se
 
 ## Example 2: AI-powered Discrete Lunar Lander Agent using the Actor-Critic (A2C) Algorithm
 
-[![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/mario.png)](https://youtu.be/iucn3RA2bWc)
+[![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/lunar_landing_module.png)](https://youtu.be/iucn3RA2bWc)
 
 
 ## Reference:
 [^1]: [Deep Reinforcement Learning with Double Q-learning](https://arxiv.org/pdf/1509.06461.pdf)
-[^2]: [Train a Mario-Playing Agent] (https://pytorch.org/tutorials/intermediate/mario_rl_tutorial.html)
+[^2]: [Train a Mario-Playing Agent](https://pytorch.org/tutorials/intermediate/mario_rl_tutorial.html)
 [^3]: [Actor-Critic Algorithms](https://proceedings.neurips.cc/paper/1999/file/6449f44a102fde848669bdd9eb6b76fa-Paper.pdf)
 [^4]: [Actor-Critic Algorithms expanded](http://rail.eecs.berkeley.edu/deeprlcourse-fa17/f17docs/lecture_5_actor_critic_pdf)
 [^5]: [Playing CartPole with the Actor-Critic Method](https://www.tensorflow.org/tutorials/reinforcement_learning/actor_critic)
