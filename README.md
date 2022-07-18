@@ -62,9 +62,9 @@ Since the Actor-Critic methods rely on an Actor/Policy and a Critic/Value, you n
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/gradientPwCasB.png)[^4]
 
 ## Implementation:
-[^6] sdfjsdfksdasflkjdfjlkkljkljakldjslkadslkjfa
+[^6] 
 ## Example 2: AI-powered Discrete Lunar Lander Agent using the Actor-Critic (A2C) Algorithm
-asdjlkfkljaskldfajdflaskdfjlaskdjflaksdfjdfa
+I decided to test out the Implementaion of the A2C Algorithm on the Lunar Lander enviornment as found here [Lunar Lander](https://www.gymlibrary.ml/environments/box2d/lunar_lander/). This enviornment has two possible action spaces to choose from. One is continous and another one is discrete. I choose the discrete enironment this time, since it was very easy to set up.[^7]  
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/lunar_landing_module.png)
 
@@ -77,4 +77,4 @@ asdjlkfkljaskldfajdflaskdfjlaskdjflaksdfjdfa
 [^4]: [Actor-Critic Algorithms Slides](http://rail.eecs.berkeley.edu/deeprlcourse-fa17/f17docs/lecture_5_actor_critic_pdf)
 [^5]: [Policy-Gradient Methods: REINFORCE Algorithm](https://towardsdatascience.com/policy-gradient-methods-104c783251e0#:~:text=The%20method%20REINFORCE%20is%20built,both%20episodic%20and%20continuing%20tasks.)
 [^6]: [Playing CartPole with the Actor-Critic Method](https://www.tensorflow.org/tutorials/reinforcement_learning/actor_critic)
-
+[^7]: I tried at first the continous environment, but the interface between numpy and tensorflow's graph was giving me some trouble when using tensorflow's wrapper [tf.numpy_function](https://www.tensorflow.org/api_docs/python/tf/numpy_function)   
