@@ -62,13 +62,11 @@ Since the Actor-Critic methods rely on an Actor/Policy and a Critic/Value, you n
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/gradientPwCasB.png)[^4]
 
 ## Implementation:
-[^6] 
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/lunar_landing_module.png)[^6] 
 ## Example 2: AI-powered Discrete Lunar Lander Agent using the Actor-Critic (A2C) Algorithm
 I decided to test out the Implementaion of the A2C Algorithm on the Lunar Lander enviornment as found here [Lunar Lander](https://www.gymlibrary.ml/environments/box2d/lunar_lander/). This enviornment has two possible action spaces to choose from. One is continous and another one is discrete. I choose the discrete enironment this time, since it was very easy to set up.[^7] As detailed in the Lunar Lander documentation the action, state, reward space were the following:
 > There are four discrete actions available: do nothing, fire left orientation engine, fire main engine, fire right orientation engine. There are 8 states: the coordinates of the lander in x & y, its linear velocities in x & y, its angle, its angular velocity, and two booleans that represent whether each leg is in contact with the ground or not.The landing pad is always at coordinates (0,0). The coordinates are the first two numbers in the state vector.Rewards for moving from the top of the screen to the landing pad and zero speed are about 100 to 140 points.If the lander moves away from the landing pad it loses reward. The episode finishes if the lander crashes or comes to rest, receiving an additional -100 or +100 points. Each leg with ground contact is +10 points.Firing the main engine is -0.3 points each frame. Firing the side engine is -0.03 points each frame.Solved is 200 points.
-
-
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/lunar_landing_module.png)
+I used all the default settings for the environment.  
 
 [![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/landingMoon_no_wind.gif)](https://github.com/aCStandke/ReinforcementLearning/blob/main/ActorCriticAlgorithm.ipynb)
 
