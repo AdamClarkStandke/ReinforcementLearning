@@ -57,7 +57,7 @@ Since the Actor-Critic methods rely on an Actor/Policy and a Critic/Value, you n
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/OnPolicyValueFunc.png)[^4]
 
 **Actor-Critic-Combination**
-> By viewing the problem as a stochastic gradient problem on the Actor/Policy parameter space represented by line (4) in the above pseudocode,the job of the critic is to compute an approximation of the projection of the policy π onto the subspace Ψ paramerterized by θ [which leads to the two actor-critic algorithms described in the paper][^3].The actor uses this approximation to update its policy in an approximate gradient direction.[^3] This is done by using the critic as a state-dependent baseline. To do so, an advantage function is calulated by subtracting the expected return(i.e. G) by the estimated value(i.e.V) and the following gradient is computed: 
+> By viewing the problem as a stochastic gradient problem on the Actor/Policy parameter space represented by line (4) in the above pseudocode,the job of the critic is to compute an approximation of the projection of the policy π onto the subspace Ψ paramerterized by θ [which leads to the two actor-critic algorithms described in the paper][^3].The actor uses this approximation to update its policy in an approximate gradient direction.[^3] This is done by using the critic as a state-dependent baseline. To do so, an *Advantage Function* is calulated by subtracting the expected return(i.e. G) by the estimated value(i.e.V) and the following gradient is computed: 
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/gradientPwCasB.png)[^4]
 
@@ -75,11 +75,36 @@ class ActorCritic(tf.keras.Model):
     x = self.common(inputs)
     return self.actor(x), self.critic(x)
 ```
-As stated in [^6] there are four main steps in the training processes:
-> 1. Run the agent on the environment to collect training data per episode.
-> 2. Compute expected return at each time step.
-> 3. Compute the loss for the combined actor-critic model.
-> 4. Compute gradients and update network parameters.
+The to train this Actor-Critic Model the gradient of the loss function has to calculated and backpropogated to update the network's weights. Each loss is calculated independently for the Actor and Critic and then combined to get the total loss. 
+
+**Actor Loss**
+
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/actor_loss.png)[^6]
+
+where G-V is the [Advantage Function](https://spinningup.openai.com/en/latest/spinningup/rl_intro.html#advantage-functions). 
+
+**Critic Loss**
+
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/HuberLoss.png)[^6]
+
+where L<sub>delta</sub> is the [Huber Loss](https://en.wikipedia.org/wiki/Huber_loss). 
+
+Togehter these two losses are combined.The following code snippet details this combination:
+```
+huber_loss = tf.keras.losses.Huber(reduction=tf.keras.losses.Reduction.SUM)
+
+def compute_loss(action_probs: tf.Tensor, values: tf.Tensor,  returns: tf.Tensor):
+  """Computes the combined actor-critic loss."""
+
+  advantage = returns - values
+
+  action_log_probs = tf.math.log(action_probs)
+  actor_loss = -tf.math.reduce_sum(action_log_probs * advantage)
+
+  critic_loss = huber_loss(values, returns)
+
+  return actor_loss + critic_loss
+```
 
 ## Example 2: AI-powered Discrete Lunar Lander Agent using the Actor-Critic (A2C) Algorithm
 I decided to test out the Implementaion of the A2C Algorithm on the Lunar Lander enviornment as found here [Lunar Lander](https://www.gymlibrary.ml/environments/box2d/lunar_lander/). This enviornment has two possible action spaces to choose from. One is continous and another one is discrete. I choose the discrete enironment this time, since it was very easy to set up.[^7] As detailed in the Lunar Lander documentation the action, state, reward space were the following:
