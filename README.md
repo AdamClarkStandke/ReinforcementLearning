@@ -63,7 +63,18 @@ Since the Actor-Critic methods rely on an Actor/Policy and a Critic/Value, you n
 
 ## Implementation:
 The implementation of the above Actor-Critic Combination was taken directly from [^6]. To model functions π and V one shared neural network was used with one hidden layer of 128 units, detailed by the following code snippet: 
+```
+class ActorCritic(tf.keras.Model):
+  def __init__(self, num_actions: int, num_hidden_units: int):
+    super().__init__()
+    self.common = layers.Dense(num_hidden_units, activation="relu")
+    self.actor = layers.Dense(num_actions)
+    self.critic = layers.Dense(1)
 
+  def call(self, inputs: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
+    x = self.common(inputs)
+    return self.actor(x), self.critic(x)
+```
 As stated in [^6] there are four main steps in the training processes:
 > 1. Run the agent on the environment to collect training data per episode.
 > 2. Compute expected return at each time step.
