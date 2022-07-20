@@ -62,8 +62,13 @@ Since the Actor-Critic methods rely on an Actor/Policy and a Critic/Value, you n
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/gradientPwCasB.png)[^4]
 
 ## Implementation:
-The implementation of the above Actor-Critic Combination was taken directly from [^6]. As stated in [^6] there are four main steps in implementing the above Actor-Critic Combination:
->
+The implementation of the above Actor-Critic Combination was taken directly from [^6]. To model functions π and V one shared neural network was used with one hidden layer of 128 units, detailed by the following code snippet: 
+
+As stated in [^6] there are four main steps in the training processes:
+> 1. Run the agent on the environment to collect training data per episode.
+> 2. Compute expected return at each time step.
+> 3. Compute the loss for the combined actor-critic model.
+> 4. Compute gradients and update network parameters.
 
 ## Example 2: AI-powered Discrete Lunar Lander Agent using the Actor-Critic (A2C) Algorithm
 I decided to test out the Implementaion of the A2C Algorithm on the Lunar Lander enviornment as found here [Lunar Lander](https://www.gymlibrary.ml/environments/box2d/lunar_lander/). This enviornment has two possible action spaces to choose from. One is continous and another one is discrete. I choose the discrete enironment this time, since it was very easy to set up.[^7] As detailed in the Lunar Lander documentation the action, state, reward space were the following:
