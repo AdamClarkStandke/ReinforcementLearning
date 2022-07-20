@@ -75,7 +75,7 @@ class ActorCritic(tf.keras.Model):
     x = self.common(inputs)
     return self.actor(x), self.critic(x)
 ```
-The to train this Actor-Critic Model the gradient of the loss function has to calculated and backpropogated to update the network's weights. Each loss is calculated independently for the Actor and Critic and then combined to get the total loss. 
+The to train this Actor-Critic Model the gradient of the loss function has to be calculated and backpropogated. 
 
 **Actor Loss**
 
@@ -87,9 +87,10 @@ where G-V is the [Advantage Function](https://spinningup.openai.com/en/latest/sp
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/HuberLoss.png)[^6]
 
-where L<sub>delta</sub> is the [Huber Loss](https://en.wikipedia.org/wiki/Huber_loss). 
+where L<sub>𝛿</sub> is the [Huber Loss](https://en.wikipedia.org/wiki/Huber_loss). 
 
-Togehter these two losses are combined.The following code snippet details this combination:
+Each loss is calculated independently and then combined to get the total loss. The following code snippet details this combination:
+
 ```
 huber_loss = tf.keras.losses.Huber(reduction=tf.keras.losses.Reduction.SUM)
 
