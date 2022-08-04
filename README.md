@@ -139,11 +139,11 @@ layers, we instead use two sequences (or streams) of fully connected layers. The
 they have they have the capability of providing separate estimates of the value and advantage functions. Finally, the
 two streams are combined to produce a single output Q function. As in (Mnih et al., 2015), the output of the network is a set of Q values, one for each action.[^8].
 
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/HuberLoss.png)[^8].
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/duel_network.png.png)[^8].
 
 The forumula that combines these two streams to output Q-values is the following: 
 
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/HuberLoss.png)[^8].
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)[^8].
 
 where V represents the value function and A represents the advantages function for each action.
 
@@ -191,7 +191,6 @@ In [^9] the author uses stock data from the Russian stock market from the period
 
 
 
-Code can be found here: [SpyTradingAgent]()
 ------------------------------------------------------------------------------------------------------------------------------
 
 ## Reference:
