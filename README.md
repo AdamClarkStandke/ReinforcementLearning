@@ -186,9 +186,17 @@ In [^9] the author uses stock data from the Russian stock market from the period
 
 **Passive Investing Results**
 
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)
 
 **Active Investing Results**
 
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)
 
 
 ------------------------------------------------------------------------------------------------------------------------------
