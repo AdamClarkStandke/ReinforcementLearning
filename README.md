@@ -184,20 +184,35 @@ In chapter 8 of [^9], the author details a practical domain problem of reinforce
 
 In [^9] the author uses stock data from the Russian stock market from the period ranging from 2015-2016 for the technology company [Yandex](https://en.wikipedia.org/wiki/Yandex). While the dataset contained over 130,000  rows of data, in which every row represented a single minute of price data, I decided to take a more longer term approach and chose for the agent to trade using the [SPY ETF](https://www.etf.com/SPY#:~:text=SPY%20is%20the%20best%2Drecognized,US%20index%2C%20the%20S%26P%20500.). Each row in the dataset represented one trading day of the etf, and ranged from 2005 to 2022. The years 2005-2014 was used for training and the years 2015-2020 was used for validation.  
 
-**Passive Investing Results**
+### Passive Investing Results
+The Y-axis is given in percentages and the X-axis is given by the number of steps executed. 
 
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)
+**Mean Value Reward**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/values_mean_buy.png)
 
-**Active Investing Results**
+**Mean Value Reward per 100 Trading Windows**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/steps_per_100_tradingWindow_buy.png)
 
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/dueling_architecture_formula.png.png)
+**Validation: Mean Value Reward per Episode**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/episode_reward_val_buy.png)
 
+**Test: Mean Value Reward per Episode**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/episode_reward_test_buy.png)
+
+### Active Investing Results
+The Y-axis is given in percentages and the X-axis is given by the number of steps executed. 
+
+**Mean Value Reward**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/values_mean_sell.png)
+
+**Mean Value Reward per 100 Trading Windows**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/reward_per_tradingWindow_sell.png)
+
+**Validation: Mean Value Reward per Episode**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/episode_reward_val_sell.png)
+
+**Test: Mean Value Reward per Episode**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/sell_episode_reward_test.png)
 
 ------------------------------------------------------------------------------------------------------------------------------
 
