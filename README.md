@@ -5,7 +5,7 @@ As detailed by [Deep Reinforcement Learning with Double Q-learning](https://arxi
 > A deep Q network (DQN) is a multi-layered neural network that for a given state s outputs a vector of action values Q(s, · ; θ), where θ are the parameters of the network. For an n-dimensional state space and an action space containing m actions, the neural network is a function from R<sup>n</sup> to R<sup>m</sup>.[^1] In DQN there is an online and target network. The target network, has parameters θ<sup>−</sup>, and they are the same as the online network except that its parameters are copied every τ steps from the
 online network, and kept fixed on all other steps.[^1] The target value used by DQN is:
 
-![]()[^1]
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Screenshot%202022-08-04%2011.38.00%20AM.png)[^1]
 
 However, research scientist/professor/genius Hado van Hasselt found that the max operator in the above formula led to overestimation.  
 
@@ -182,9 +182,9 @@ def __init__(self, shape, actions_n):
 
 In chapter 8 of [^9], the author details a practical domain problem of reinforcement learning; namely stock trading! The first thing that had to be done was create the stock trading environment. The type of *actions* the agent could take in this environment were the following: 1) hold-off on trading;  2) buy the given stock; and 3) sell the given stock. When the agent bought or sold the given stock, it had to pay a commission of 0.1%. The agent's *state-space* consisted of the following items: 1) 5 past trading days of opening price data; 2) 5 past trading days of high, low, and closing prices in relation to the opening price; 3) volume for the current trading day; 4) whether the agent bought stock and 5) the relative close of the stock for the current trading day. The *reward* for the agent is a two reward scheme, as detailed in [^9]. Namely the reward is of "either/or form"; if the variable reward_on_close is True, the agent will receive a reward only on selling its stock position, else the agent will recive a reward only when buying and holding its stock position (i.e. not selling). The first form amounts to the trading strategy of [active investing](https://www.investopedia.com/terms/a/activeinvesting.asp#:~:text=Active%20investing%20refers%20to%20an,activity%20to%20exploit%20profitable%20conditions.), while the second form amounts to the trading strategy of [passive investing](https://www.investopedia.com/terms/p/passiveinvesting.asp#:~:text=Passive%20investing's%20goal%20is%20to,price%20fluctuations%20or%20market%20timing.). 
 
-In [^9] the author uses stock data from the Russian stock market from the period ranging from 2015-2016 for the technology company [Yandex](https://en.wikipedia.org/wiki/Yandex). While the dataset contained over 130,000  rows of data, in which every row represented a single minute of price data, I decided to take a more longer term approach and chose for the agent to trade using the [SPY ETF](https://www.etf.com/SPY#:~:text=SPY%20is%20the%20best%2Drecognized,US%20index%2C%20the%20S%26P%20500.). Each row in the dataset represented one trading day of the etf, and ranged from 2005 to 2022. The years 2005-2014 was used for training and the years 2015-2020 was used for validation.  
+In [^9] the author uses stock data from the Russian stock market from the period ranging from 2015-2016 for the technology company [Yandex](https://en.wikipedia.org/wiki/Yandex). While the dataset contained over 130,000  rows of data, in which every row represented a single minute of price data, I decided to take a more longer term approach and chose for the agent to trade using the [SPY ETF](https://www.etf.com/SPY#:~:text=SPY%20is%20the%20best%2Drecognized,US%20index%2C%20the%20S%26P%20500.). Each row in the dataset represented one trading day of the etf, and ranged from 2005 to 2022. The years 2005-2014 was used for training and the years 2015-2020 was used for validation.The Source Code for the SPY Trading agent can be found here: [SpyTradingAgent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SpyTradingAgent.ipynb) 
 
-### Passive Investing Results
+### Passive Investing Results:
 The Y-axis is given in percentages and the X-axis is given by the number of steps executed. 
 
 **Mean Value Reward**
@@ -199,7 +199,7 @@ The Y-axis is given in percentages and the X-axis is given by the number of step
 **Test: Mean Value Reward per Episode**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/episode_reward_test_buy.png)
 
-### Active Investing Results
+### Active Investing Results:
 The Y-axis is given in percentages and the X-axis is given by the number of steps executed. 
 
 **Mean Value Reward**
@@ -214,7 +214,6 @@ The Y-axis is given in percentages and the X-axis is given by the number of step
 **Test: Mean Value Reward per Episode**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/sell_episode_reward_test.png)
 
-The Source Code  for the SPY Trading agent can be found here: [SpyTradingAgent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SpyTradingAgent.ipynb)
 ------------------------------------------------------------------------------------------------------------------------------
 
 ## Reference:
