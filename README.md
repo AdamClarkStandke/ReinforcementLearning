@@ -216,6 +216,11 @@ The Y-axis is given in percentages and the X-axis is given by the number of step
 
 ------------------------------------------------------------------------------------------------------------------------------
 
+## Example 4: Second Stock Trading Agent
+
+[![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/mario.png)](https://youtu.be/64zH7SLWppM)
+
+
 ## Reference:
 [^1]: [Deep Reinforcement Learning with Double Q-learning](https://arxiv.org/pdf/1509.06461.pdf)
 [^2]: [Train a Mario-Playing Agent](https://pytorch.org/tutorials/intermediate/mario_rl_tutorial.html)
