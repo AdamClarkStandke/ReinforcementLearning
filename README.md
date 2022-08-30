@@ -218,7 +218,7 @@ The Y-axis is given in percentages and the X-axis is given by the number of step
 
 ## Example 4: Second Stock Trading Agent
 
-[![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/mario.png)](https://youtu.be/64zH7SLWppM)
+[![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/stock-market-trading-screens-5564191.jpg)](https://youtu.be/64zH7SLWppM)
 
 
 ## Reference:
