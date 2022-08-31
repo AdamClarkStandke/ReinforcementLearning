@@ -218,7 +218,7 @@ The Y-axis is given in percentages and the X-axis is given by the number of step
 
 ## Example 4: Second Stock Trading Agent(To be continued 😄) 
 
-[![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/agentTradingscreen.png)](https://youtu.be/64zH7SLWppM)
+[![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/agentTradingscreen.png)](https://youtu.be/jKH295P-r-8)
 
 The Source Code for the Second SPY Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb)
 
