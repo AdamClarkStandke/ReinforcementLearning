@@ -222,7 +222,7 @@ The Y-axis is given in percentages and the X-axis is given by the number of step
 
 The Source Code for the Second SPY Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb)
 
-The SPY data that the Second SPY Trading agent operated in can be found here: [SPY]() 
+The SPY data that the Second SPY Trading agent operated in can be found here: [SPY](https://github.com/aCStandke/ReinforcementLearning/blob/main/spy.us.txt) 
 
 
 ## Reference:
