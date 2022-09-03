@@ -52,7 +52,7 @@ Since the Actor-Critic methods rely on an Actor/Policy and a Critic/Value, you n
 
 **Actor/Policy**
 
-> The method REINFORCE is built upon trajectories instead of episodes because maximizing expected return over trajectories (instead of episodes) lets the method search for optimal policies for both episodic and continuing tasks.The method samples trajectories using the policy and then uses those trajectories only to estimate the gradient.[^5] The pseudocode for this method is the following:
+> The method REINFORCE is built upon trajectories instead of episodes because maximizing expected return over trajectories (instead of episodes) lets the method search for optimal policies for both episodic and continuing tasks.The method samples trajectories using the policy and then uses those trajectories only to estimate the gradient.[^5] The pseudocode for the REINFORCE algorithm is the following:
  
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/REINFORCE.png)[^5]
 
@@ -231,7 +231,11 @@ LEARNING](https://arxiv.org/pdf/1509.02971.pdf):
 4.   Batch normalization can be used 
 5.   An exploration policy is used by adding noise sampled from a noise process N to the actor policy  $µ_{\theta}(s_t)= µ(s_t |{\theta}, µ_t) + N$ 
 
-*N* can be chosen to suit the environment, I used Ornstein Uhlenbeck Noise as provided by Stable-Baselines. 
+*N* can be chosen to suit the environment, I used Ornstein Uhlenbeck Noise as provided by Stable-Baselines.The pseudocode for the DDPG algorithm is the following:
+
+![]()[^10]
+
+
 
 
 
@@ -239,13 +243,15 @@ LEARNING](https://arxiv.org/pdf/1509.02971.pdf):
 
 ## Implementation:
 
-## Example 4: Continuous Stock Trading Agent 
+## Example 4: Continuous Stock/ETF Trading Agent 
 
 [![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/agentTradingscreen.png)](https://youtu.be/jKH295P-r-8)
 
 The Source Code for the Second SPY Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb)
 
 The SPY data that the Second SPY Trading agent operated in can be found here: [SPY](https://github.com/aCStandke/ReinforcementLearning/blob/main/spy.us.txt) 
+
+------------------------------------------------------------------------------------------------------------------------------
 
 
 ## Reference:
