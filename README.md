@@ -182,7 +182,7 @@ def __init__(self, shape, actions_n):
 
 In chapter 8 of [^9], the author details a practical domain problem of reinforcement learning; namely stock trading! The first thing that had to be done was create the stock trading environment. The type of *actions* the agent could take in this environment were the following: 1) hold-off on trading;  2) buy the given stock; and 3) sell the given stock. When the agent bought or sold the given stock, it had to pay a commission of 0.1%. The agent's *state-space* consisted of the following items: 1) 5 past trading days of opening price data; 2) 5 past trading days of high, low, and closing prices in relation to the opening price; 3) volume for the current trading day; 4) whether the agent bought stock and 5) the relative close of the stock for the current trading day. The *reward* for the agent is a two reward scheme, as detailed in [^9]. Namely the reward is of "either/or form"; if the variable reward_on_close is True, the agent will receive a reward only on selling its stock position, else the agent will recive a reward only when buying and holding its stock position (i.e. not selling). The first form amounts to the trading strategy of [active investing](https://www.investopedia.com/terms/a/activeinvesting.asp#:~:text=Active%20investing%20refers%20to%20an,activity%20to%20exploit%20profitable%20conditions.), while the second form amounts to the trading strategy of [passive investing](https://www.investopedia.com/terms/p/passiveinvesting.asp#:~:text=Passive%20investing's%20goal%20is%20to,price%20fluctuations%20or%20market%20timing.). 
 
-In [^9] the author uses stock data from the Russian stock market from the period ranging from 2015-2016 for the technology company [Yandex](https://en.wikipedia.org/wiki/Yandex). While the dataset contained over 130,000  rows of data, in which every row represented a single minute of price data, I decided to take a more longer term approach and chose for the agent to trade using the [SPY ETF](https://www.etf.com/SPY#:~:text=SPY%20is%20the%20best%2Drecognized,US%20index%2C%20the%20S%26P%20500.). Each row in the dataset represented one trading day of the etf, and ranged from 2005 to 2022. The years 2005-2014 was used for training and the years 2015-2020 was used for validation.The Source Code for the SPY Trading agent can be found here: [SpyTradingAgent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SpyTradingAgent.ipynb) 
+In [^9] the author uses stock data from the Russian stock market from the period ranging from 2015-2016 for the technology company [Yandex](https://en.wikipedia.org/wiki/Yandex). While the dataset contained over 130,000  rows of data, in which every row represented a single minute of price data, I decided to take a more general approach and chose for the agent to trade using the [SPY ETF](https://www.etf.com/SPY#:~:text=SPY%20is%20the%20best%2Drecognized,US%20index%2C%20the%20S%26P%20500.). Each row in the dataset represented one trading day of the etf, and ranged from 2005 to 2022. The years 2005-2014 was used for training and the years 2015-2020 was used for validation.The Source Code for the SPY Trading agent can be found here: [SpyTradingAgent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SpyTradingAgent.ipynb) 
 
 ### Passive Investing Results:
 The Y-axis is given in percentages and the X-axis is given by the number of steps executed. 
@@ -236,11 +236,34 @@ The pseudocode for the SAC algorithm is the following:
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Soft-Actor-Critic.png)[^12]
 
 ## Implementation:
+To train the Trading Agent the package [Stable-Baselines3](https://stable-baselines3.readthedocs.io/en/master/index.html) was used. As stated in the docs: 
 
+> Stable Baselines3 (SB3) is a set of reliable implementations of reinforcement learning algorithms in PyTorch. It is the next major version of Stable Baselines. And steems from the paper [Stable-Baselines3: Reliable Reinforcement Learning Implementations](https://jmlr.org/papers/volume22/20-1364/20-1364.pdf)
+The algorithms in this package will make it easier for the research community and industry to replicate, refine, and identify new ideas, and will create good baselines to build projects on top of. We expect these tools will be used as a base around which new ideas can be added, and as a tool for comparing a new approach against existing ones. We also hope that the simplicity of these tools will allow beginners to experiment with a more advanced toolset, without being buried in implementation details.[^13]
+
+Because in this environment the Agent will be executing continous actions, two different RL algorithms were chosen. The first one was  Deep Deterministic Policy Gradient(DDPG) and the second one was Soft Actor Critic (SAC).
 
 ## Example 4: Continuous Stock/ETF Trading Agent 
+This second stock/etf environment is based on Adam King's article as found here:[Create custom gym environments from scratch — A stock market example](https://towardsdatascience.com/creating-a-custom-openai-gym-environment-for-stock-trading-be532be3910e). Similar to the first stock trading environment based on Maxim Lapan's implementation as found in chapter eight of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998) and as  implemented above in Example 3, the agent is trading in the environment of the [SPY ETF](https://www.etf.com/SPY?L=1) except in this trading environment the agent is taking continuous actions, rather than discrete actions and is tasked with managing a [trading account](https://www.investopedia.com/terms/t/tradingaccount.asp#:~:text=A%20trading%20account%20is%20an,margin%20requirements%20set%20by%20FINRA.).  
 
-[![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/agentTradingscreen.png)](https://youtu.be/jKH295P-r-8)
+In the first trading environment, the agent's reward was based on relative price movement, however in this trading environment the agent's reward is based on managing its trading account/balance. The agent can take two actions: 1) either buying or selling the SPY ETF[^14] and 2) what percentage of the SPY ETF to buy or sell, which ranges from [0,1] (i.e. 0% to 100%).The agent's *state-space* consisted of the following items: 1) 5 past trading days of high, low, and closing price data in relation to the opening price; 2) volume for the current trading day; 3) the Agent's trading account/balance; 4) the number of shares held; 5) the number of shares sold; and 6) the number of shares bought. The trading agent begins with 10,000 US dollars to trade with and can accumulate a max trading account/balence of 2,147,483,647 US dollars. For each trade the agent pays a 1 percent commision fee. 
+
+In [^15] the author uses stock data from a company called [Apple](https://en.wikipedia.org/wiki/Apple), so again, I decided to take a more general approach by having the agent trade on a weighted market basket as found in the [SPY ETF](https://www.etf.com/SPY#:~:text=SPY%20is%20the%20best%2Drecognized,US%20index%2C%20the%20S%26P%20500.). Each row in the dataset represented one trading day of the etf, and ranged from 2005 to 2022. The years 2005-2017 was used for training and the years 2018-2022 was used for testing. The Source Code for the Second SPY Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb)
+And the SPY data that the Second SPY Trading agent operated in can be found here: [SPY]() 
+
+Below is a visualization of the trading agent's state space when trading. The implementation of the visualization again comes from Adam King in his brilliant article found here [Rendering elegant stock trading agents using Matplotlib and Gym](https://towardsdatascience.com/visualizing-stock-trading-agents-using-matplotlib-and-gym-584c992bc6d4).
+
+[![Sample Visulization of Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/agentTradingscreen.png)](https://youtu.be/jKH295P-r-8)
+ 
+| Top Subplot Legend | |
+| ------------- | ------------- |
+| top subplot  | Content Cell  |
+
+| Bottom Subplot Legend  | |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
 
 ### DDPG Results:
 
@@ -268,7 +291,9 @@ The SPY data that the Second SPY Trading agent operated in can be found here: [S
 [^9]: [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998/ref=asc_df_1838826998/?tag=hyprod-20&linkCode=df0&hvadid=416741343328&hvpos=&hvnetw=g&hvrand=7234438034400691228&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008183&hvtargid=pla-871456510229&psc=1&tag=&ref=&adgrpid=93867144477&hvpone=&hvptwo=&hvadid=416741343328&hvpos=&hvnetw=g&hvrand=7234438034400691228&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008183&hvtargid=pla-871456510229) 
 [^10]: [CONTINUOUS CONTROL WITH DEEP REINFORCEMENT
 LEARNING](https://arxiv.org/pdf/1509.02971.pdf)
-[^11]:[Soft Actor-Critic:
-Off-Policy Maximum Entropy Deep Reinforcement
+[^11]:[Soft Actor-Critic-Off-Policy Maximum Entropy Deep Reinforcement
 Learning with a Stochastic Actor](https://arxiv.org/pdf/1801.01290.pdf)
-[^12]:[Soft Actor-Critic](https://spinningup.openai.com/en/latest/algorithms/sac.html)
+[^12]:[Soft-Actor-Critic](https://spinningup.openai.com/en/latest/algorithms/sac.html)
+[^13]:[Stable-Baselines3](https://stable-baselines3.readthedocs.io/en/master/index.html)
+[^14]: Note: eventhough this decision is discrete in nature, it is being modeled as a continous action by making values less than 1.0 as a buy action and values greater than 1.0 and less than 2.0 as a sell action
+[^15]: [Create custom gym environments from scratch — A stock market example](https://towardsdatascience.com/creating-a-custom-openai-gym-environment-for-stock-trading-be532be3910e)
