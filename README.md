@@ -227,8 +227,7 @@ Learning with a Stochastic Actor](https://arxiv.org/pdf/1801.01290.pdf):
 **The key take aways from the algorithm are the following:** 
 
 1.   Uses a maximum entropy objective rather than  the standard maximum
-expected reward objective $\alpha H\left(\pi(\cdot|s') = \alpha \log \pi(a'|s')$
-
+expected reward objective where entrophy H takes the following form: $\alpha H(\pi(\cdot|s') = \alpha \log \pi(a'|s')$
 2.   Uses a soft policy iteration, which is a general algorithm for learning optimal maximum entropy policies that alternate between policy evaluation and policy improvement 
 3.   SAC concurrently learns a policy  $\pi_{\theta}$ and two Q-functions  $Q_{\phi_1}$,  $Q_{\phi_2}$
 
@@ -272,4 +271,4 @@ LEARNING](https://arxiv.org/pdf/1509.02971.pdf)
 [^11]:[Soft Actor-Critic:
 Off-Policy Maximum Entropy Deep Reinforcement
 Learning with a Stochastic Actor](https://arxiv.org/pdf/1801.01290.pdf)
-[^12]:
+[^12]:[Soft Actor-Critic](https://spinningup.openai.com/en/latest/algorithms/sac.html)
