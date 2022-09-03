@@ -249,7 +249,7 @@ This second stock/etf environment is based on Adam King's article as found here:
 In the first trading environment, the agent's reward was based on relative price movement, however in this trading environment the agent's reward is based on managing its trading account/balance. The agent can take two actions: 1) either buying or selling the SPY ETF[^14] and 2) what percentage of the SPY ETF to buy or sell, which ranges from [0,1] (i.e. 0% to 100%).The agent's *state-space* consisted of the following items: 1) 5 past trading days of high, low, and closing price data in relation to the opening price; 2) volume for the current trading day; 3) the Agent's trading account/balance; 4) the number of shares held; 5) the number of shares sold; and 6) the number of shares bought. The trading agent begins with 10,000 US dollars to trade with and can accumulate a max trading account/balence of 2,147,483,647 US dollars. For each trade the agent pays a 1 percent commision fee. 
 
 In [^15] the author uses stock data from a company called [Apple](https://en.wikipedia.org/wiki/Apple), so again, I decided to take a more general approach by having the agent trade on a weighted market basket as found in the [SPY ETF](https://www.etf.com/SPY#:~:text=SPY%20is%20the%20best%2Drecognized,US%20index%2C%20the%20S%26P%20500.). Each row in the dataset represented one trading day of the etf, and ranged from 2005 to 2022. The years 2005-2017 was used for training and the years 2018-2022 was used for testing. The Source Code for the Second SPY Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb)
-And the SPY data that the Second SPY Trading agent operated in can be found here: [SPY]() 
+And the SPY data that the Second SPY Trading agent used for training data can be found here: [SPY](https://github.com/aCStandke/ReinforcementLearning/blob/main/spy.us.txt) 
 
 Below is a visualization of the trading agent's state space when trading. The implementation of the visualization again comes from Adam King in his brilliant article found here [Rendering elegant stock trading agents using Matplotlib and Gym](https://towardsdatascience.com/visualizing-stock-trading-agents-using-matplotlib-and-gym-584c992bc6d4).
 
@@ -257,13 +257,14 @@ Below is a visualization of the trading agent's state space when trading. The im
  
 | Top Subplot Legend | |
 | ------------- | ------------- |
-| top subplot  | Content Cell  |
+| ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/balance%20line%20plot.png) | Content Cell  |
 
 | Bottom Subplot Legend  | |
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-
+| ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Trade%20done%20by%20agent.png) | Content Cell |
+| ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/volume.png) | Content Cell  |
+| ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/candlestick%20.png) | Content Cell  |
+| ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/candlestick%20.png) | Content Cell  |
 
 ### DDPG Results:
 
@@ -271,10 +272,6 @@ Below is a visualization of the trading agent's state space when trading. The im
 
 
 
-
-The Source Code for the Second SPY Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb)
-
-The SPY data that the Second SPY Trading agent operated in can be found here: [SPY](https://github.com/aCStandke/ReinforcementLearning/blob/main/spy.us.txt) 
 
 ------------------------------------------------------------------------------------------------------------------------------
 
