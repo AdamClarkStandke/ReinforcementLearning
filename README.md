@@ -215,8 +215,31 @@ The Y-axis is given in percentages and the X-axis is given by the number of step
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/sell_episode_reward_test.png)
 
 ------------------------------------------------------------------------------------------------------------------------------
+# Basic Theory of Deep Deterministic Policy Gradient (DDPG) and Soft Actor Critic (SAC)
 
-## Example 4: Second Stock Trading Agent(To be continued 😄) 
+## Deep Deterministic Policy Gradient (DDPG)
+As stated by the authors of [CONTINUOUS CONTROL WITH DEEP REINFORCEMENT
+LEARNING](https://arxiv.org/pdf/1509.02971.pdf):
+
+> While DQN solves problems with high-dimensional observation spaces, it can only handle discrete and low-dimensional action spaces. Many tasks of interest, most notably physical control tasks, have continuous (real valued) and high dimensional action spaces. DQN cannot be straightforwardly applied to continuous domains since it relies on a finding the action that maximizes the action-value function, which in the continuous valued case requires an iterative optimization process at every step. In this work we present a model-free, off-policy actor-critic algorithm using deep function approximators that can learn policies in high-dimensional, continuous action spaces. Here we combine the actor-critic approach with insights from the recent success of Deep Q Network [DQN](https://arxiv.org/pdf/1312.5602.pdf)[^10]
+
+**The key take aways from the algorithm are the following:** 
+
+1.   It uses an actor-critic approach based on the [DPG algorithm](http://proceedings.mlr.press/v32/silver14.pdf) 
+2.   A replay buffer can be used to store transitions for sampling, since it is an off-policy algorithm
+3.   A copy of the actor and critic networks, $Q_{\phi}(s,a|{\phi})$ and $µ_{\theta}(s|θ)$ respectively, are used for calculating the target values. The weights of these target networks are then updated by having them slowly track the learned networks
+4.   Batch normalization can be used 
+5.   An exploration policy is used by adding noise sampled from a noise process N to the actor policy  $µ_{\theta}(s_t)= µ(s_t |{\theta}, µ_t) + N$ 
+
+*N* can be chosen to suit the environment, I used Ornstein Uhlenbeck Noise as provided by Stable-Baselines. 
+
+
+
+## Soft Actor Critic (SAC)
+
+## Implementation:
+
+## Example 4: Continuous Stock Trading Agent 
 
 [![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/agentTradingscreen.png)](https://youtu.be/jKH295P-r-8)
 
@@ -235,3 +258,6 @@ The SPY data that the Second SPY Trading agent operated in can be found here: [S
 [^7]: I tried at first the continous environment, but the interface between numpy and tensorflow's graph was giving me some trouble when using tensorflow's wrapper [tf.numpy_function](https://www.tensorflow.org/api_docs/python/tf/numpy_function)   
 [^8]: [Dueling Network Architectures for Deep Reinforcement Learning](https://arxiv.org/pdf/1511.06581.pdf)
 [^9]: [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998/ref=asc_df_1838826998/?tag=hyprod-20&linkCode=df0&hvadid=416741343328&hvpos=&hvnetw=g&hvrand=7234438034400691228&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008183&hvtargid=pla-871456510229&psc=1&tag=&ref=&adgrpid=93867144477&hvpone=&hvptwo=&hvadid=416741343328&hvpos=&hvnetw=g&hvrand=7234438034400691228&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008183&hvtargid=pla-871456510229) 
+[^10]: [CONTINUOUS CONTROL WITH DEEP REINFORCEMENT
+LEARNING](https://arxiv.org/pdf/1509.02971.pdf)
+[^11]:
