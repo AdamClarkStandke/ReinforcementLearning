@@ -270,6 +270,9 @@ Below is a visualization of the trading agent's state space when trading. The im
 
 ### SAC Results:
 
+[![SAC Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SAC_TradingAgent.png)](https://youtu.be/jKH295P-r-8)
+
+
 
 
 
