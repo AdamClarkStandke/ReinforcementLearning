@@ -227,7 +227,7 @@ LEARNING](https://arxiv.org/pdf/1509.02971.pdf):
 
 1.   It uses an actor-critic approach based on the [DPG algorithm](http://proceedings.mlr.press/v32/silver14.pdf) 
 2.   A replay buffer can be used to store transitions for sampling, since it is an off-policy algorithm
-3.   A copy of the actor and critic networks, $Q_{\phi}(s,a|{\phi})$ and $µ_{\theta}(s|θ)$ respectively, are used for calculating the target values. The weights of these target networks are then updated by having them slowly track the learned networks
+3.   A copy of the actor and critic networks, $µ_{\theta}(s|θ)$ and $Q_{\phi}(s,a|{\phi})$ respectively, are used for calculating the target values. The weights of these target networks are then updated by having them slowly track the learned networks
 4.   Batch normalization can be used 
 5.   An exploration policy is used by adding noise sampled from a noise process N to the actor policy  $µ_{\theta}(s_t)= µ(s_t |{\theta}, µ_t) + N$ 
 
