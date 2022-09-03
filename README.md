@@ -227,23 +227,25 @@ Learning with a Stochastic Actor](https://arxiv.org/pdf/1801.01290.pdf):
 **The key take aways from the algorithm are the following:** 
 
 1.   Uses a maximum entropy objective rather than  the standard maximum
-expected reward objective 
+expected reward objective $\alpha H\left(\pi(\cdot|s') = \alpha \log \pi(a'|s')$
+
 2.   Uses a soft policy iteration, which is a general algorithm for learning optimal maximum entropy policies that alternate between policy evaluation and policy improvement 
 3.   SAC concurrently learns a policy  $\pi_{\theta}$ and two Q-functions  $Q_{\phi_1}$,  $Q_{\phi_2}$
 
 The pseudocode for the SAC algorithm is the following:
 
-![]()[^12]
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Soft-Actor-Critic.png)[^12]
 
 ## Implementation:
+
 
 ## Example 4: Continuous Stock/ETF Trading Agent 
 
 [![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/agentTradingscreen.png)](https://youtu.be/jKH295P-r-8)
 
-### Deep Deterministic Policy Gradient (DDPG) Results:
+### DDPG Results:
 
-### Soft Actor Critic (SAC) Results:
+### SAC Results:
 
 
 
