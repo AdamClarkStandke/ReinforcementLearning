@@ -233,19 +233,34 @@ LEARNING](https://arxiv.org/pdf/1509.02971.pdf):
 
 *N* can be chosen to suit the environment, I used Ornstein Uhlenbeck Noise as provided by Stable-Baselines.The pseudocode for the DDPG algorithm is the following:
 
-![]()[^10]
-
-
-
-
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/DDPG%20algorithm.png)[^10]
 
 ## Soft Actor Critic (SAC)
+As stated by the authors of [Soft Actor-Critic:
+Off-Policy Maximum Entropy Deep Reinforcement
+Learning with a Stochastic Actor](https://arxiv.org/pdf/1801.01290.pdf):
+
+> In this framework, the actor aims to maximize expected reward while also maximizing entropy. That is, to succeed at the task while acting as randomly as possible.[^11]
+
+**The key take aways from the algorithm are the following:** 
+
+1.   Uses a maximum entropy objective rather than  the standard maximum
+expected reward objective 
+2.   Uses a soft policy iteration, which is a general algorithm for learning optimal maximum entropy policies that alternate between policy evaluation and policy improvement 
+3.   SAC concurrently learns a policy  $\pi_{\theta}$ and two Q-functions  $Q_{\phi_1}$,  $Q_{\phi_2}$
+
+The pseudocode for the SAC algorithm is the following:
+
+![]()[^12]
 
 ## Implementation:
 
 ## Example 4: Continuous Stock/ETF Trading Agent 
 
 [![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/agentTradingscreen.png)](https://youtu.be/jKH295P-r-8)
+
+
+
 
 The Source Code for the Second SPY Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb)
 
@@ -266,4 +281,7 @@ The SPY data that the Second SPY Trading agent operated in can be found here: [S
 [^9]: [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998/ref=asc_df_1838826998/?tag=hyprod-20&linkCode=df0&hvadid=416741343328&hvpos=&hvnetw=g&hvrand=7234438034400691228&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008183&hvtargid=pla-871456510229&psc=1&tag=&ref=&adgrpid=93867144477&hvpone=&hvptwo=&hvadid=416741343328&hvpos=&hvnetw=g&hvrand=7234438034400691228&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008183&hvtargid=pla-871456510229) 
 [^10]: [CONTINUOUS CONTROL WITH DEEP REINFORCEMENT
 LEARNING](https://arxiv.org/pdf/1509.02971.pdf)
-[^11]:
+[^11]:[Soft Actor-Critic:
+Off-Policy Maximum Entropy Deep Reinforcement
+Learning with a Stochastic Actor](https://arxiv.org/pdf/1801.01290.pdf)
+[^12]:
