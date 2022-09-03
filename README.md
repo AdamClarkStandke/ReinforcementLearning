@@ -178,7 +178,7 @@ def __init__(self, shape, actions_n):
         return val + adv - adv.mean(dim=1, keepdim=True)
 ```
 
-## Example 3: Stock Trading Agent using the Dueling Network Architecture 
+## Example 3: Discrete Stock Trading Agent using the Dueling Network Architecture 
 
 In chapter 8 of [^9], the author details a practical domain problem of reinforcement learning; namely stock trading! The first thing that had to be done was create the stock trading environment. The type of *actions* the agent could take in this environment were the following: 1) hold-off on trading;  2) buy the given stock; and 3) sell the given stock. When the agent bought or sold the given stock, it had to pay a commission of 0.1%. The agent's *state-space* consisted of the following items: 1) 5 past trading days of opening price data; 2) 5 past trading days of high, low, and closing prices in relation to the opening price; 3) volume for the current trading day; 4) whether the agent bought stock and 5) the relative close of the stock for the current trading day. The *reward* for the agent is a two reward scheme, as detailed in [^9]. Namely the reward is of "either/or form"; if the variable reward_on_close is True, the agent will receive a reward only on selling its stock position, else the agent will recive a reward only when buying and holding its stock position (i.e. not selling). The first form amounts to the trading strategy of [active investing](https://www.investopedia.com/terms/a/activeinvesting.asp#:~:text=Active%20investing%20refers%20to%20an,activity%20to%20exploit%20profitable%20conditions.), while the second form amounts to the trading strategy of [passive investing](https://www.investopedia.com/terms/p/passiveinvesting.asp#:~:text=Passive%20investing's%20goal%20is%20to,price%20fluctuations%20or%20market%20timing.). 
 
@@ -187,32 +187,14 @@ In [^9] the author uses stock data from the Russian stock market from the period
 ### Passive Investing Results:
 The Y-axis is given in percentages and the X-axis is given by the number of steps executed. 
 
-**Mean Value Reward**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/values_mean_buy.png)
-
 **Mean Value Reward per 100 Trading Windows**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/steps_per_100_tradingWindow_buy.png)
-
-**Validation: Mean Value Reward per Episode**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/episode_reward_val_buy.png)
-
-**Test: Mean Value Reward per Episode**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/episode_reward_test_buy.png)
 
 ### Active Investing Results:
 The Y-axis is given in percentages and the X-axis is given by the number of steps executed. 
 
-**Mean Value Reward**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/values_mean_sell.png)
-
 **Mean Value Reward per 100 Trading Windows**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/reward_per_tradingWindow_sell.png)
-
-**Validation: Mean Value Reward per Episode**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/episode_reward_val_sell.png)
-
-**Test: Mean Value Reward per Episode**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/sell_episode_reward_test.png)
 
 ------------------------------------------------------------------------------------------------------------------------------
 # Basic Theory of Deep Deterministic Policy Gradient (DDPG) and Soft Actor Critic (SAC)
@@ -258,6 +240,10 @@ The pseudocode for the SAC algorithm is the following:
 ## Example 4: Continuous Stock/ETF Trading Agent 
 
 [![CLICK HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/agentTradingscreen.png)](https://youtu.be/jKH295P-r-8)
+
+### Deep Deterministic Policy Gradient (DDPG) Results:
+
+### Soft Actor Critic (SAC) Results:
 
 
 
