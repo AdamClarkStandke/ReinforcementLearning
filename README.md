@@ -253,7 +253,7 @@ and the SPY data that the Second SPY Trading agent used for training data can be
 
 Below is a visualization of the trading agent's state space when trading. The implementation of the visualization again comes from Adam King in his brilliant article found here [Rendering elegant stock trading agents using Matplotlib and Gym](https://towardsdatascience.com/visualizing-stock-trading-agents-using-matplotlib-and-gym-584c992bc6d4).
 
-[![Sample Visulization of Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/agentTradingscreen.png)](https://youtu.be/jKH295P-r-8)
+[![SAC Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SAC_TradingAgent.png)](https://youtu.be/R7zkPJqVQRc)
  
 | Top Subplot Legend | |
 | ------------- | ------------- |
