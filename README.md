@@ -197,63 +197,36 @@ The Y-axis is given in percentages and the X-axis is given by the number of step
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/reward_per_tradingWindow_sell.png)
 
 ------------------------------------------------------------------------------------------------------------------------------
-# Basic Theory of Deep Deterministic Policy Gradient (DDPG) and Soft Actor Critic (SAC)
+# Basic Theory of Proximal Policy Optimization(PPO)
 
-## Deep Deterministic Policy Gradient (DDPG)
-As stated by the authors of [CONTINUOUS CONTROL WITH DEEP REINFORCEMENT
-LEARNING](https://arxiv.org/pdf/1509.02971.pdf):
+## Proximal Policy Optimization
+We propose a new family of policy gradient methods for reinforcement learning, which alternate between sampling data through interaction with the environment, and optimizing a
+“surrogate” objective function using stochastic gradient ascent. Whereas standard policy gradient methods perform one gradient update per data sample, we propose a novel objective
+function that enables multiple epochs of minibatch updates. The new methods, which we call
+proximal policy optimization (PPO), have some of the benefits of trust region policy optimization (TRPO), but they are much simpler to implement, more general, and have better sample
+complexity (empirically). Our experiments test PPO on a collection of benchmark tasks, including simulated robotic locomotion and Atari game playing, and we show that PPO outperforms
+other online policy gradient methods, and overall strikes a favorable balance between sample
+complexity, simplicity, and wall-time.[^10]
 
-> While DQN solves problems with high-dimensional observation spaces, it can only handle discrete and low-dimensional action spaces. Many tasks of interest, most notably physical control tasks, have continuous (real valued) and high dimensional action spaces. DQN cannot be straightforwardly applied to continuous domains since it relies on a finding the action that maximizes the action-value function, which in the continuous valued case requires an iterative optimization process at every step. In this work we present a model-free, off-policy actor-critic algorithm using deep function approximators that can learn policies in high-dimensional, continuous action spaces. Here we combine the actor-critic approach with insights from the recent success of Deep Q Network [DQN](https://arxiv.org/pdf/1312.5602.pdf)[^10]
-
-**The key take aways from the algorithm are the following:** 
-
-1.   It uses an actor-critic approach based on the [DPG algorithm](http://proceedings.mlr.press/v32/silver14.pdf) 
-2.   A replay buffer can be used to store transitions for sampling, since it is an off-policy algorithm
-3.   A copy of the actor and critic networks, $µ_{\theta}(s|θ)$ and $Q_{\phi}(s,a|{\phi})$ respectively, are used for calculating the target values. The weights of these target networks are then updated by having them slowly track the learned networks
-4.   Batch normalization can be used 
-5.   An exploration policy is used by adding noise sampled from a noise process N to the actor policy  $µ_{\theta}(s_t)= µ(s_t |{\theta}, µ_t) + N$ 
-
-*N* can be chosen to suit the environment, I used Ornstein Uhlenbeck Noise as provided by Stable-Baselines.The pseudocode for the DDPG algorithm is the following:
-
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/DDPG%20algorithm.png)[^10]
-
-## Soft Actor Critic (SAC)
-As stated by the authors of [Soft Actor-Critic:
-Off-Policy Maximum Entropy Deep Reinforcement
-Learning with a Stochastic Actor](https://arxiv.org/pdf/1801.01290.pdf):
-
-> In this framework, the actor aims to maximize expected reward while also maximizing entropy. That is, to succeed at the task while acting as randomly as possible.[^11]
-
-**The key take aways from the algorithm are the following:** 
-
-1.   Uses a maximum entropy objective rather than  the standard maximum
-expected reward objective where entrophy H takes the following form: $\alpha H(\pi(\cdot|s') = \alpha \log \pi(a'|s')$
-2.   Uses a soft policy iteration, which is a general algorithm for learning optimal maximum entropy policies that alternate between policy evaluation and policy improvement 
-3.   SAC concurrently learns a policy  $\pi_{\theta}$ and two Q-functions  $Q_{\phi_1}$,  $Q_{\phi_2}$
-
-The pseudocode for the SAC algorithm is the following:
-
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Soft-Actor-Critic.png)[^12]
 
 ## Implementation:
 To train the Trading Agent the package [Stable-Baselines3](https://stable-baselines3.readthedocs.io/en/master/index.html) was used. As stated in the docs: 
 
 > Stable Baselines3 (SB3) is a set of reliable implementations of reinforcement learning algorithms in PyTorch. It is the next major version of Stable Baselines. And steems from the paper [Stable-Baselines3: Reliable Reinforcement Learning Implementations](https://jmlr.org/papers/volume22/20-1364/20-1364.pdf)
-The algorithms in this package will make it easier for the research community and industry to replicate, refine, and identify new ideas, and will create good baselines to build projects on top of. We expect these tools will be used as a base around which new ideas can be added, and as a tool for comparing a new approach against existing ones. We also hope that the simplicity of these tools will allow beginners to experiment with a more advanced toolset, without being buried in implementation details.[^13]
+The algorithms in this package will make it easier for the research community and industry to replicate, refine, and identify new ideas, and will create good baselines to build projects on top of. We expect these tools will be used as a base around which new ideas can be added, and as a tool for comparing a new approach against existing ones. We also hope that the simplicity of these tools will allow beginners to experiment with a more advanced toolset, without being buried in implementation details.[^11]
 
-Because in this environment the Agent will be executing continous actions, two different RL algorithms were chosen. The first one was  Deep Deterministic Policy Gradient(DDPG) and the second one was Soft Actor Critic (SAC).
 
 ## Example 4: Continuous Stock/ETF Trading Agent 
 This second stock/etf environment is based on Adam King's article as found here:[Create custom gym environments from scratch — A stock market example](https://towardsdatascience.com/creating-a-custom-openai-gym-environment-for-stock-trading-be532be3910e). Similar to the first stock trading environment based on Maxim Lapan's implementation as found in chapter eight of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998) and as  implemented above in Example 3, the agent is trading in the environment of the [SPY ETF](https://www.etf.com/SPY?L=1) except in this trading environment the agent is taking continuous actions, rather than discrete actions and is tasked with managing a [trading account](https://www.investopedia.com/terms/t/tradingaccount.asp#:~:text=A%20trading%20account%20is%20an,margin%20requirements%20set%20by%20FINRA.).  
 
-In the first trading environment, the agent's reward was based on relative price movement, however in this trading environment the agent's reward is based on managing its trading account/balance. The agent can take two actions: 1) either buying or selling the SPY ETF[^14] and 2) what percentage of the SPY ETF to buy or sell, which ranges from [0,1] (i.e. 0% to 100%).The agent's *state-space* consisted of the following items: 1) 5 past trading days of high, low, and closing price data in relation to the opening price; 2) volume for the current trading day; 3) the Agent's trading account/balance; 4) the number of shares held; 5) the number of shares sold; and 6) the number of shares bought. The trading agent begins with 10,000 US dollars to trade with and can accumulate a max trading account/balence of 2,147,483,647 US dollars. For each trade the agent pays a 1 percent commision fee. 
+In the first trading environment, the agent's reward was based on relative price movement, however in this trading environment the agent's reward is based on managing its trading account/balance. The agent can take two actions: 1) either buying or selling the SPY ETF[^12] and 2) what percentage of the SPY ETF to buy or sell, which ranges from [0,1] (i.e. 0% to 100%).The agent's *state-space* consisted of the following items: 1) 5 past trading days of high, low, and closing price data in relation to the opening price; 2) volume for the current trading day; 3) the Agent's trading account/balance; 4) the number of shares held; 5) the number of shares sold; and 6) the number of shares bought. The trading agent begins with 10,000 US dollars to trade with and can accumulate a max trading account/balence of 2,147,483,647 US dollars. For each trade the agent pays a 1 percent commision fee. 
 
-In [^15] the author uses stock data from a company called [Apple](https://en.wikipedia.org/wiki/Apple), so again, I decided to take a more general approach by having the agent trade on a weighted market basket as found in the [SPY ETF](https://www.etf.com/SPY#:~:text=SPY%20is%20the%20best%2Drecognized,US%20index%2C%20the%20S%26P%20500.). Each row in the dataset represented one trading day of the etf, and ranged from 2005 to 2022. The years 2005-2017 was used for training and the years 2018-2022 was used for testing. The Source Code for the Second SPY Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb)
+In [^13] the author uses stock data from a company, so again, I decided to take a more general approach by having the agent trade on a weighted market basket as found in the [SPY ETF](https://www.etf.com/SPY#:~:text=SPY%20is%20the%20best%2Drecognized,US%20index%2C%20the%20S%26P%20500.). Each row in the dataset represented one trading day of the etf, and ranged from 2005 to 2022. The years 2005-2017 was used for training and the years 2018-2022 was used for testing. The Source Code for the Second SPY Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb)
 and the SPY data that the Second SPY Trading agent used for training data can be found here: [SPY](https://github.com/aCStandke/ReinforcementLearning/blob/main/spy.us.txt) 
 
 Below is a visualization of the trading agent's state space when trading. The implementation of the visualization again comes from Adam King in his brilliant article found here [Rendering elegant stock trading agents using Matplotlib and Gym](https://towardsdatascience.com/visualizing-stock-trading-agents-using-matplotlib-and-gym-584c992bc6d4).
 
-[![SAC Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SAC_TradingAgent.png)](https://youtu.be/R7zkPJqVQRc)
+[![SAC Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SAC_TradingAgent.png)]()
  
 | Top Subplot Legend | |
 | ------------- | ------------- |
@@ -266,11 +239,9 @@ Below is a visualization of the trading agent's state space when trading. The im
 | ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/candlestick%20.png) | OHCL data in candlestick form colored either red or green, depending on whether the stock/etf closed lower or higher than its open |
 
 
-### DDPG Results:
+### PPO Results:
 
-### SAC Results:
 
-[![SAC Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SAC_TradingAgent.png)](https://youtu.be/jKH295P-r-8)
 
 
 
@@ -289,11 +260,7 @@ Below is a visualization of the trading agent's state space when trading. The im
 [^7]: I tried at first the continous environment, but the interface between numpy and tensorflow's graph was giving me some trouble when using tensorflow's wrapper [tf.numpy_function](https://www.tensorflow.org/api_docs/python/tf/numpy_function)   
 [^8]: [Dueling Network Architectures for Deep Reinforcement Learning](https://arxiv.org/pdf/1511.06581.pdf)
 [^9]: [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998/ref=asc_df_1838826998/?tag=hyprod-20&linkCode=df0&hvadid=416741343328&hvpos=&hvnetw=g&hvrand=7234438034400691228&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008183&hvtargid=pla-871456510229&psc=1&tag=&ref=&adgrpid=93867144477&hvpone=&hvptwo=&hvadid=416741343328&hvpos=&hvnetw=g&hvrand=7234438034400691228&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008183&hvtargid=pla-871456510229) 
-[^10]: [CONTINUOUS CONTROL WITH DEEP REINFORCEMENT
-LEARNING](https://arxiv.org/pdf/1509.02971.pdf)
-[^11]:[Soft Actor-Critic-Off-Policy Maximum Entropy Deep Reinforcement
-Learning with a Stochastic Actor](https://arxiv.org/pdf/1801.01290.pdf)
-[^12]:[Soft-Actor-Critic](https://spinningup.openai.com/en/latest/algorithms/sac.html)
-[^13]:[Stable-Baselines3](https://stable-baselines3.readthedocs.io/en/master/index.html)
-[^14]: Note: eventhough this decision is discrete in nature, it is being modeled as a continous action by making values less than 1.0 as a buy action and values greater than 1.0 and less than 2.0 as a sell action
-[^15]: [Create custom gym environments from scratch — A stock market example](https://towardsdatascience.com/creating-a-custom-openai-gym-environment-for-stock-trading-be532be3910e)
+[^10]:[PPO](https://arxiv.org/pdf/1707.06347.pdf)
+[^11]:[Stable-Baselines3](https://stable-baselines3.readthedocs.io/en/master/index.html)
+[^12]: Note: eventhough this decision is discrete in nature, it is being modeled as a continous action by making values less than 0 as a buy action and values greater than or equal to 0 as a sell action
+[^13]: [Create custom gym environments from scratch — A stock market example](https://towardsdatascience.com/creating-a-custom-openai-gym-environment-for-stock-trading-be532be3910e)
