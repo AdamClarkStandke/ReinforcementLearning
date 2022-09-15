@@ -209,17 +209,17 @@ complexity (empirically). Our experiments test PPO on a collection of benchmark 
 other online policy gradient methods, and overall strikes a favorable balance between sample
 complexity, simplicity, and wall-time.[^10]
 
-**1**
+**CPI Loss**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Screenshot%202022-09-14%2011.56.30%20PM.png)
+
+**CLIP Loss**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Screenshot%202022-09-14%2011.59.27%20PM.png)
+
+**TOTAL Loss**
 ![]()
 
-**2**
-![]()
-
-**3**
-![]()
-
-**4**
-![]()
+**Algorithm**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Screenshot%202022-09-14%2011.54.10%20PM.png)
 
 ## Implementation:
 
@@ -253,7 +253,7 @@ The PPO Agent was trained for 50 thousand steps of SPY data ranging from 2005 to
 | ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/volume.png) | Volume for the trading day colored either green or red, depending on whether the price moved up or down  |
 | ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/candlestick%20.png) | OHCL data in candlestick form colored either red or green, depending on whether the stock/etf closed lower or higher than its open |
 
-The Source Code for the Second Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb). The SPY data that the Trading agent used for training data can be found here: [SPY_train](https://github.com/aCStandke/ReinforcementLearning/blob/main/spy.us.txt).And the SPY data that the  Trading agent used for testing data can be found here: [SPY_test]()
+The Source Code for the Second Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb). The SPY data that the Trading agent used for training data can be found here: [SPY_train](https://github.com/aCStandke/ReinforcementLearning/blob/main/spy.us.txt).And the SPY data that the  Trading agent used for testing data can be found here: [SPY_test](https://github.com/aCStandke/ReinforcementLearning/blob/main/test.csv)
 
 
 
