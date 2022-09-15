@@ -200,6 +200,7 @@ The Y-axis is given in percentages and the X-axis is given by the number of step
 # Basic Theory of Proximal Policy Optimization(PPO)
 
 ## Proximal Policy Optimization
+
 We propose a new family of policy gradient methods for reinforcement learning, which alternate between sampling data through interaction with the environment, and optimizing a
 “surrogate” objective function using stochastic gradient ascent. Whereas standard policy gradient methods perform one gradient update per data sample, we propose a novel objective
 function that enables multiple epochs of minibatch updates. The new methods, which we call
@@ -208,23 +209,37 @@ complexity (empirically). Our experiments test PPO on a collection of benchmark 
 other online policy gradient methods, and overall strikes a favorable balance between sample
 complexity, simplicity, and wall-time.[^10]
 
+**1**
+![]()
+
+**2**
+![]()
+
+**3**
+![]()
+
+**4**
+![]()
 
 ## Implementation:
+
 To train the Trading Agent the package [Stable-Baselines3](https://stable-baselines3.readthedocs.io/en/master/index.html) was used. As stated in the docs: 
 
 > Stable Baselines3 (SB3) is a set of reliable implementations of reinforcement learning algorithms in PyTorch. It is the next major version of Stable Baselines. And steems from the paper [Stable-Baselines3: Reliable Reinforcement Learning Implementations](https://jmlr.org/papers/volume22/20-1364/20-1364.pdf)
 The algorithms in this package will make it easier for the research community and industry to replicate, refine, and identify new ideas, and will create good baselines to build projects on top of. We expect these tools will be used as a base around which new ideas can be added, and as a tool for comparing a new approach against existing ones. We also hope that the simplicity of these tools will allow beginners to experiment with a more advanced toolset, without being buried in implementation details.[^11]
 
+Furthermore to visualize the trading agent's observation space when trading, I used Adam King's brilliant implementation of a stock trading environment as found detailed here [Rendering elegant stock trading agents using Matplotlib and Gym](https://towardsdatascience.com/visualizing-stock-trading-agents-using-matplotlib-and-gym-584c992bc6d4).
 
 ## Example 4: Continuous Stock/ETF Trading Agent 
-This second stock/etf environment is based on Adam King's article as found here:[Create custom gym environments from scratch — A stock market example](https://towardsdatascience.com/creating-a-custom-openai-gym-environment-for-stock-trading-be532be3910e). Similar to the first stock trading environment based on Maxim Lapan's implementation as found in chapter eight of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998) and as  implemented above in Example 3, the agent is trading in the environment of the [SPY ETF](https://www.etf.com/SPY?L=1) except in this trading environment the agent is taking continuous actions, rather than discrete actions and is tasked with managing a [trading account](https://www.investopedia.com/terms/t/tradingaccount.asp#:~:text=A%20trading%20account%20is%20an,margin%20requirements%20set%20by%20FINRA.).  
 
-In the first trading environment, the agent's reward was based on relative price movement, however in this trading environment the agent's reward is based on managing its trading account/balance. The agent can take two actions: 1) either buying or selling the SPY ETF[^12] and 2) what percentage of the SPY ETF to buy or sell, which ranges from [0,1] (i.e. 0% to 100%).The agent's *state-space* consisted of the following items: 1) 5 past trading days of high, low, and closing price data in relation to the opening price; 2) volume for the current trading day; 3) the Agent's trading account/balance; 4) the number of shares held; 5) the number of shares sold; and 6) the number of shares bought (some other things too!!! ADDSDFSDF). The trading agent begins with 10,000 US dollars to trade with and can accumulate a max trading account/balence of 2,147,483,647 US dollars.
+This second stock/etf environment is based on Adam King's article as found here:[Create custom gym environments from scratch — A stock market example](https://towardsdatascience.com/creating-a-custom-openai-gym-environment-for-stock-trading-be532be3910e). Similar to the first stock trading environment based on Maxim Lapan's implementation as found in chapter eight of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998) and as  implemented above in Example 3, the agent is trading in the environment of the [SPY ETF](https://www.etf.com/SPY?L=1) except in this trading environment the agent is taking continuous actions, rather than discrete actions and is tasked with managing a [trading account](https://www.investopedia.com/terms/t/tradingaccount.asp#:~:text=A%20trading%20account%20is%20an,margin%20requirements%20set%20by%20FINRA.).
 
-In [^13] the author uses stock data from a company, so again, I decided to take a more general approach by having the agent trade on a weighted market basket as found in the [SPY ETF](https://www.etf.com/SPY#:~:text=SPY%20is%20the%20best%2Drecognized,US%20index%2C%20the%20S%26P%20500.). Each row in the dataset represented one trading day of the etf, and ranged from 2005 to 2022. The years 2005-2017 was used for training and the years end-of-2017-2022 was used for testing. The Source Code for the Second SPY Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb)
-and the SPY data that the Second SPY Trading agent used for training data can be found here: [SPY](https://github.com/aCStandke/ReinforcementLearning/blob/main/spy.us.txt)
+In this trading environment, the agent's reward is based on managing its trading account/balance. The agent can take two actions: 1) either buying or selling the SPY ETF[^12] and 2) what percentage of the SPY ETF to buy or sell, which ranges from [0,1] (i.e. 0% to 100%).The agent's *state/observation-space* consists of the following items: 1) 5 past trading days of high, low, and closing price data in relation to the opening price; 2) volume for the current trading day; 3) the Agent's trading account/balance; 4) the number of shares held; 5) the number of shares sold; 6) the Agent's net worth which consists of the agent's account balance and the shares current price value; 7) the value of the shares sold; and 8) the cost basis of buying new shares as compared to buying shares in the previous period. All of these items were normalized to be in the interval of [-1,1]. The trading agent begins with 10,000 US dollars to trade with and can accumulate a max trading account/balence of 2,147,483,647 US dollars.
 
-Below is a visualization of the trading agent's state space when trading. The implementation of the visualization again comes from Adam King in his brilliant article found here [Rendering elegant stock trading agents using Matplotlib and Gym](https://towardsdatascience.com/visualizing-stock-trading-agents-using-matplotlib-and-gym-584c992bc6d4).
+
+### Trading Results
+
+The PPO Agent was trained for 50 thousand steps of SPY data ranging from 2005 to mid-2017 and was tested on SPY data ranging from the end-of-2017 to 2022. Furthermore, 4 parallel environments were used for the agent to gather samples/experience to train on. All of the default hyper-parameters from stable-Baselines3 were used except for the number of epochs when optimizing the surrogate loss which I set to 20. I also set the entropy coefficient to 0.01 and used stable-Baselines3's limit implementation regarding the KL divergence between updates and set it to 0.2. At the end of the testing period, the Agent finished with 16,000 dollars in its account as can be seen in the video down below :point_down:
 
 [![PPO Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/16ktradingsceme.png)](https://youtu.be/QBWMEu9GrHE)
  
@@ -238,8 +253,7 @@ Below is a visualization of the trading agent's state space when trading. The im
 | ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/volume.png) | Volume for the trading day colored either green or red, depending on whether the price moved up or down  |
 | ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/candlestick%20.png) | OHCL data in candlestick form colored either red or green, depending on whether the stock/etf closed lower or higher than its open |
 
-
-### PPO Results:
+The Source Code for the Second Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb). The SPY data that the Trading agent used for training data can be found here: [SPY_train](https://github.com/aCStandke/ReinforcementLearning/blob/main/spy.us.txt).And the SPY data that the  Trading agent used for testing data can be found here: [SPY_test]()
 
 
 
