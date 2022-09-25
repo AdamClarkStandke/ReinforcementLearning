@@ -257,7 +257,8 @@ The Source Code for the Second Trading agent can be found here: [Second Spy Trad
 
 ### Trading Results: Continous environment using a CNN network
 
-The Source Code for the Thrid Trading agent can be found here: [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb), in the process of modifying and updating the  implementation after reading the excellent, amazing article on PPO by the authors    found here []()[^14] 
+The Source Code for the Thrid Trading agent can be found here: [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb), in the process of modifying and updating the  implementation after reading the excellent, amazing article on PPO by the authors    found here [The 37 Implementation Details of Proximal Policy Optimization
+](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/)[^14] 
 
 
 
@@ -282,4 +283,4 @@ The Source Code for the Thrid Trading agent can be found here: [Third Spy Tradin
 [^11]:[Stable-Baselines3](https://stable-baselines3.readthedocs.io/en/master/index.html)
 [^12]: Note: eventhough this decision is discrete in nature, it is being modeled as a continous action by making values less than 0 as a buy action and values greater than or equal to 0 as a sell action
 [^13]: [Create custom gym environments from scratch — A stock market example](https://towardsdatascience.com/creating-a-custom-openai-gym-environment-for-stock-trading-be532be3910e)
-[^14]: []() 
+[^14]: [The 37 Implementation Details of Proximal Policy Optimization](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/) 
