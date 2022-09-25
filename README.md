@@ -255,7 +255,9 @@ The PPO Agent was trained for 50 thousand steps of SPY data ranging from 2005 to
 
 The Source Code for the Second Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb). The SPY data that the Trading agent used for training data can be found here: [SPY_train](https://github.com/aCStandke/ReinforcementLearning/blob/main/spy.us.txt).And the SPY data that the  Trading agent used for testing data can be found here: [SPY_test](https://github.com/aCStandke/ReinforcementLearning/blob/main/test.csv)
 
-### Trading Results: Multi-discrete environment using Stable-BaseLine3 CNNPolicy
+### Trading Results: Continous environment using a CNN Policy network
+
+The Source Code for the Thrid Trading agent can be found here: [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb), in the process of modifying due to unforseen error in implementation 
 
 
 
