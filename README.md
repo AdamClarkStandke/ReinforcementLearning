@@ -257,7 +257,7 @@ The Source Code for the Second Trading agent can be found here: [Second Spy Trad
 
 ### Trading Results: Continous environment using a CNN network
 
-The Source Code for the Thrid Trading agent can be found here: [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb), in the process of modifying and updating the  implementation after reading the excellent, amazing article on PPO by the authors    found here [The 37 Implementation Details of Proximal Policy Optimization
+The Source Code for the Thrid Trading agent can be found here: [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb), in the process of modifying and updating the  implementation after reading the excellent, amazing article on PPO by the authors Huang, Shengyi; Dossa, Rousslan Fernand Julien; Raffin, Antonin; Kanervisto, Anssi; Wang, Weixun as found here [The 37 Implementation Details of Proximal Policy Optimization
 ](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/)[^14] 
 
 
