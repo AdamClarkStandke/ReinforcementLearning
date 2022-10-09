@@ -257,11 +257,21 @@ The Source Code for the Second Trading agent can be found here: [Second Spy Trad
 
 ### Trading Results: Continous environment using a CNN network
 
-The Source Code for the Thrid Trading agent can be found here: [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb), in the process of modifying and updating the  implementation after reading the excellent, amazing article on PPO by the authors Huang, Shengyi; Dossa, Rousslan Fernand Julien; Raffin, Antonin; Kanervisto, Anssi; Wang, Weixun as found here [The 37 Implementation Details of Proximal Policy Optimization
-](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/)[^14] 
+The Source Code for the Thrid Trading agent can be found here: [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb).
 
+#### TensorBoard Graph for Balance Reward 1 million steps (No early stopping, just me interrupting :yawning_face: lol)
 
-[]()
+**NetWorth on Validation Set**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Validation%20Mean%20Net%20Worth_BalenceRewardDefault.svg)
+
+**Rewards on Validation Set**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/eval_mean_reward_BalenceReward_Default.svg)
+
+**Training Loss**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_loss_BalenceReward_Default.svg)
+
+**Value Loss**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_value_loss_BalenceReward_Default.svg)
 
 
 
