@@ -267,13 +267,25 @@ The Source Code for the Thrid Trading agent can be found here: [Third Spy Tradin
 **Rewards on Validation Set**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/eval_mean_reward_BalenceReward_Default.svg)
 
-**Training Loss**
+**Total Loss**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_loss_BalenceReward_Default.svg)
 
 **Value Loss**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_value_loss_BalenceReward_Default.svg)
 
+#### TensorBoard Graph for Sortino Reward Ratio 1 million steps (No early stopping, just me interrupting :yawning_face: lol)
 
+**NetWorth on Validation Set**
+![]()
+
+**Rewards on Validation Set**
+![]()
+
+**Total Loss**
+![]()
+
+**Value Loss**
+![]()
 
 
 
