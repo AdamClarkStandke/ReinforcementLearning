@@ -257,29 +257,31 @@ The Source Code for the Second Trading agent can be found here: [Second Spy Trad
 
 ### Trading Results: Continous environment using a CNN network
 
+Place Write up here
+
 The Source Code for the Thrid Trading agent can be found here: [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb).
 
-#### TensorBoard Graph for Balance Reward 1 million steps with default hyperparameters (early stopping of me just interrupting :yawning_face: lol)
+#### TensorBoard Graph for Balance Reward 1 million steps with default hyperparameters (early stopping)
 
 **NetWorth on Validation Set**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Validation%20Mean%20Net%20Worth_BalenceRewardDefault.svg)
-**Rewards on Validation Set**
+**Mean Rewards on Validation Set**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/eval_mean_reward_BalenceReward_Default.svg)
 **Total Loss**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_loss_BalenceReward_Default.svg)
 **Value Loss**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_value_loss_BalenceReward_Default.svg)
 
-#### TensorBoard Graph for Balance Reward 1 million steps with optimized hyperparamters (after 1000 trials) (early stopping of me just interrupting :yawning_face: lol)
+#### TensorBoard Graph for Balance Reward 1 million steps with optimized hyperparamters (after 1000 trials) (early stopping)
 
 **NetWorth on Validation Set**
-![]()
-**Rewards on Validation Set**
-![]()
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Validation%20Mean%20Net%20Worth_tuned.svg)
+**Mean Rewards on Validation Set**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/eval_mean_reward_tuned.svg)
 **Total Loss**
-![]()
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_loss_tuned.svg)
 **Value Loss**
-![]()
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_value_loss_tuned.svg)
 
 #### TensorBoard Graph for Balance Reward 1 million steps using a different dataset
 
