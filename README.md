@@ -318,7 +318,8 @@ self.value_net = nn.Sequential(
            )
 ```
 
-Similar to what Adam King used for optimization in his article [optimizing deep learning trading bots using state-of-the-art techniques](https://towardsdatascience.com/using-reinforcement-learning-to-trade-bitcoin-for-massive-profit-b69d0e8f583b), I used  [Optuna](https://optuna.readthedocs.io/en/stable/) to do hyperparmeter optimization. I used the TPE (i.e. Tree-structured Parzen Estimator) algorithm for finding near-optimal parameter values. As detailed in [Algorithms for Hyper-Parameter Optimization] (https://proceedings.neurips.cc/paper/2011/file/86e8f7ab32cfd12577bc2619bc635690-Paper.pdf) 
+Similar to what Adam King used for optimization in his article [optimizing deep learning trading bots using state-of-the-art techniques](https://towardsdatascience.com/using-reinforcement-learning-to-trade-bitcoin-for-massive-profit-b69d0e8f583b), I used  [Optuna](https://optuna.readthedocs.io/en/stable/) to do hyperparmeter optimization. I used the TPE (i.e. Tree-structured Parzen Estimator) algorithm for finding near-optimal parameter values. As detailed in 
+[Algorithms for Hyper-Parameter Optimization](https://proceedings.neurips.cc/paper/2011/file/86e8f7ab32cfd12577bc2619bc635690-Paper.pdf) 
 
 > 
 
