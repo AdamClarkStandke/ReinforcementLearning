@@ -261,6 +261,7 @@ This third stock trading environment is based on Adam King's articles as detaile
 Also, the random offset in the reset method is based on Maxim Lapan's implementation as found in chapter eight of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998).
 
 Similar to the second stock trading environment as detailed in Part I above, the agent is trading in the [SPY ETF](https://www.etf.com/SPY?L=1) environment and is trading in a continous action space(i.e.[0-3] for buying, selling, or holding and [0-1] for % sold/bought where 1 is equivalent to 100%)  and  a continous observation space(i.e. [0-1]).Unlike the second stock trading environment, an additional observation was added to the agent's observations space of an account history/ledger of the agent's past networth from trading in the SPY ETF environment with the given trading window (of 10 days). Also  a commision parameter used in the cost and sales calculation of 0.1%. Additionally, different ways of calculating the agent's reward were added, namely: 
+
 * BalenceReward: a simple reward scheme that Adam King created that multiplies the agent's balance by a delay modifier that is based on the current offset (i.e.step) of the agent in the environment see [Creating Bitcoin trading bots don’t lose money](https://medium.com/towards-data-science/creating-bitcoin-trading-bots-that-dont-lose-money-2e7165fb0b29) for more details
 * [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp) $\frac{R_p-r_f}{\sigma_d}$ where $R_p$ is actual or expected portfolio return, $r_f$ is the risk free rate (i.e. 2 year gov bond) and ${sigma_d}$ is the std of the downside
 * [calmarRewardRatio](https://www.investopedia.com/terms/c/calmarratio.asp)$\frac{R_P-R_B}{\mu_D}$ where $R_P$ is actual or expected portfolio returns, $R_B$ is the risk free rate (i.e. 2 year gov bond) and ${\mu_D}$ is the maximum drawdown of the portfolio (i.e. the max loss in value of the portfolio from its peak to its trough over a given time window)
@@ -270,7 +271,7 @@ Similar to the second stock trading environment as detailed in Part I above, the
 * StandkeSumofDifferenceReward: a simple reward scheme that I created that takes the difference of the past trading windwo and sums the values before multiplying it by the agent's balance
 
 Stable-baselines3's lists the following blog post on PPO [37 implementation details of PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/) which breaks down different architectures for the PPO agent. One of which is a CNN architecture and this was used for the trading agent's feature extractor portion. For the MLP portion, most of the recommendations from the article [WHAT MATTERS FOR ON-POLICY DEEP ACTOR CRITIC METHODS? A LARGE-SCALE STUDY](https://openreview.net/pdf?id=nIAxjsniDzg) were followed except for using the softplus function to
-transform the network output into an action standard deviation and adding  a (negative) offset to its input to. 
+transform the network output into an action standard deviation and adding  a (negative) offset to its input. 
  
 This is the architecture used for the Policy's feature extractor: 
 ```
@@ -317,7 +318,6 @@ self.value_net = nn.Sequential(
            )
 ```
 
-
 ### Trading Results
 
 **NetWorth on Validation Set**
@@ -330,7 +330,9 @@ self.value_net = nn.Sequential(
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_value_loss_tuned.svg)
 
 
-To compare (and see) if the previous  trading in the SPY ETF environment could be transfered using minute by minute stock data, I used the data that Maxim Lapan used in his stock environement of chapter 8 of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998). Namely, stock data is from the Russian stock market from the period ranging from 2015-2016 for the technology company [Yandex](https://en.wikipedia.org/wiki/Yandex). The dataset contained over 130,000  rows of data, in which every row represented a single minute of price data. 
+To compare (and see) if the previous  trading in the SPY ETF environment could be transfered over using minute by minute data, I used the data that Maxim Lapan used in his stock environement of chapter 8 of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998). Namely, the stock data is from the Russian stock market from the period ranging from 2015-2016 for the technology company [Yandex](https://en.wikipedia.org/wiki/Yandex). The dataset contained over 130,000  rows of data, in which every row represented a single minute of price data.
+
+
 
 
 The Source Code for the Thrid Trading agent can be found here: [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb).
