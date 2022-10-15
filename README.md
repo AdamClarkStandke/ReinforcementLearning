@@ -269,12 +269,11 @@ Similar to the second stock trading environment as detailed in Part I above, the
 * StandkeSmallDrawDownReward: a simple reward scheme that I created that takes the maximum and minimum networth of the past trading window divided by the maximum value of the trading window (and can be multiplied by the agent's balance if need be) 
 * StandkeSumofDifferenceReward: a simple reward scheme that I created that takes the difference of the past trading windwo and sums the values before multiplying it by the agent's balance
 
-### Trading Results: Continous environment using a CNN network
-
 
 
 The Source Code for the Thrid Trading agent can be found here: [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb).
 
+### Trading Results
 ##### TensorBoard Graph for Balance Reward 1 million steps with default hyperparameters (early stopping)
 
 **NetWorth on Validation Set**
@@ -297,7 +296,9 @@ The Source Code for the Thrid Trading agent can be found here: [Third Spy Tradin
 **Value Loss**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_value_loss_tuned.svg)
 
-##### TensorBoard Graph for Balance Reward 1 million steps using a different dataset
+##### TensorBoard Graph for Balance Reward 1 million steps trading in the Yandex environment
+
+To compare (and see) if the previous  trading in the SPY ETF environment could be transfered using minute by minute stock data, I used the data that Maxim Lapan used in his stock environement of chapter 8 of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998). Namely, stock data is from the Russian stock market from the period ranging from 2015-2016 for the technology company [Yandex](https://en.wikipedia.org/wiki/Yandex). The dataset contained over 130,000  rows of data, in which every row represented a single minute of price data. 
 
 
 
