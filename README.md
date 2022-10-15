@@ -239,7 +239,7 @@ In this trading environment, the agent's reward is based on managing its trading
 
 ### Trading Results
 
-The PPO Agent was trained for 50 thousand steps of SPY data ranging from 2005 to mid-2017 and was tested on SPY data ranging from the end-of-2017 to 2022. Furthermore, 4 parallel environments were used for the agent to gather samples/experience to train on. All of the default hyper-parameters from stable-Baselines3 were used except for the number of epochs when optimizing the surrogate loss which I set to 20. I also set the entropy coefficient to 0.01 and used stable-Baselines3's limit implementation regarding the KL divergence between updates and set it to 0.2. With that being said, the Agent finished with 16,000 dollars in its account as can be seen in the video down below :point_down: 
+The PPO Agent was trained for 50 thousand steps of SPY data ranging from 2005 to mid-2017 and was tested on SPY data ranging from the end-of-2017 to 2022. Furthermore, 4 parallel environments were used for the agent to gather samples/experience to train on. All of the default hyper-parameters from stable-Baselines3 were used except for the number of epochs when optimizing the surrogate loss which I set to 20. I also set the entropy coefficient to 0.01 and used stable-Baselines3's limit implementation regarding the KL divergence between updates and set it to 0.2. Unfotunely, I did not keep track of the learning cures and/or other important metrics(i.e. total loss, value loss etc) that should be tracked during training. The video down below shows this under-trained trading agent in action :point_down:
 
 [![PPO Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/16ktradingsceme.png)](https://youtu.be/QBWMEu9GrHE)
  
@@ -318,7 +318,8 @@ self.value_net = nn.Sequential(
            )
 ```
 
-Similar to what Adam King used for optimization in his article [optimizing deep learning trading bots using state-of-the-art techniques](https://towardsdatascience.com/using-reinforcement-learning-to-trade-bitcoin-for-massive-profit-b69d0e8f583b), I used  [Optuna](https://optuna.readthedocs.io/en/stable/) to do hyperparmeter optimization. I used the TPE (i.e. Tree-structured Parzen Estimator) algorithm for finding near-optimal parameter values. As detailed in [Algorithms for Hyper-Parameter Optimization (https://proceedings.neurips.cc/paper/2011/file/86e8f7ab32cfd12577bc2619bc635690-Paper.pdf)
+Similar to what Adam King used for optimization in his article [optimizing deep learning trading bots using state-of-the-art techniques](https://towardsdatascience.com/using-reinforcement-learning-to-trade-bitcoin-for-massive-profit-b69d0e8f583b), I used  [Optuna](https://optuna.readthedocs.io/en/stable/) to do hyperparmeter optimization. I used the TPE (i.e. Tree-structured Parzen Estimator) algorithm for finding near-optimal parameter values. As detailed in [Algorithms for Hyper-Parameter Optimization] (https://proceedings.neurips.cc/paper/2011/file/86e8f7ab32cfd12577bc2619bc635690-Paper.pdf) 
+
 > 
 
 ### Trading Results
