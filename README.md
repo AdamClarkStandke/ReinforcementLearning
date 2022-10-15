@@ -230,7 +230,7 @@ The algorithms in this package will make it easier for the research community an
 
 Furthermore to visualize the trading agent's observation space when trading, I used Adam King's brilliant implementation of a stock trading environment as found detailed here [Rendering elegant stock trading agents using Matplotlib and Gym](https://towardsdatascience.com/visualizing-stock-trading-agents-using-matplotlib-and-gym-584c992bc6d4).
 
-## Example 4: Continuous Stock/ETF Trading Agent 
+## Example 4: Continuous Stock/ETF Trading Agent: Part I 
 
 This second stock/etf environment is based on Adam King's article as found here:[Create custom gym environments from scratch — A stock market example](https://towardsdatascience.com/creating-a-custom-openai-gym-environment-for-stock-trading-be532be3910e). Similar to the first stock trading environment based on Maxim Lapan's implementation as found in chapter eight of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998) and as  implemented above in Example 3, the agent is trading in the environment of the [SPY ETF](https://www.etf.com/SPY?L=1) except in this trading environment the agent is taking continuous actions, rather than discrete actions and is tasked with managing a [trading account](https://www.investopedia.com/terms/t/tradingaccount.asp#:~:text=A%20trading%20account%20is%20an,margin%20requirements%20set%20by%20FINRA.).
 
@@ -255,6 +255,19 @@ The PPO Agent was trained for 50 thousand steps of SPY data ranging from 2005 to
 
 The Source Code for the Second Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb). The SPY data that the Trading agent used for training data can be found here: [SPY_train](https://github.com/aCStandke/ReinforcementLearning/blob/main/spy.us.txt).And the SPY data that the  Trading agent used for testing data can be found here: [SPY_test](https://github.com/aCStandke/ReinforcementLearning/blob/main/test.csv)
 
+## Example 5: Continuous Stock/ETF Trading Agent: Part II 
+
+This third stock trading environment is based on Adam King's articles as detailed here [Creating Bitcoin trading bots don’t lose money](https://medium.com/towards-data-science/creating-bitcoin-trading-bots-that-dont-lose-money-2e7165fb0b29) and here [Optimizing deep learning trading bots using state-of-the-art techniques](https://towardsdatascience.com/using-reinforcement-learning-to-trade-bitcoin-for-massive-profit-b69d0e8f583b)
+Also, the random offset in the reset method is based on Maxim Lapan's implementation as found in chapter eight of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998).
+
+Similar to the second stock trading environment as detailed in Part I above, the agent is trading in the [SPY ETF](https://www.etf.com/SPY?L=1) environment and is trading in a continous action space(i.e.[0-3] for buying, selling, or holding and [0-1] for % sold/bought where 1 is equivalent to 100%)  and  a continous observation space(i.e. [0-1]).Unlike the second stock trading environment, an additional observation was added to the agent's observations space of an account history/ledger of the agent's past networth from trading in the SPY ETF environment with the given trading window (of 10 days). Also  a commision parameter used in the cost and sales calculation of 0.1%. Additionally, different ways of calculating the agent's reward were added, namely: 
+* BalenceReward: a simple reward scheme that Adam King created that multiplies the agent's balance by a delay modifier that is based on the current offset (i.e.step) of the agent in the environment see [Creating Bitcoin trading bots don’t lose money](https://medium.com/towards-data-science/creating-bitcoin-trading-bots-that-dont-lose-money-2e7165fb0b29) for more details
+* [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp) $\frac{R_p-r_f}{\sigma_d}$ where $R_p$ is actual or expected portfolio return, $r_f$ is the risk free rate (i.e. 2 year gov bond) and $sigma_d$ is the std of the downside
+* [calmarRewardRatio](https://www.investopedia.com/terms/c/calmarratio.asp)
+* [omegaRewardRatio](https://www.wallstreetmojo.com/omega-ratio/) 
+* StandkeCurrentValueReward: simple reward scheme that I created that is the difference of the previous trading day's networth and the current trading day's networth (and can be multiplied by the agent's balance)
+* StandkeSmallDrawDownReward: simple reward scheme that I created that takes the maximum and minimum networth of the past 10 trading days divided by the maximum value of the past 10 trading days (and can be multiplied by the agent's balance) 
+* StandkeSumofDifferenceReward: simple reward scheme that I created that takes the difference of the past 10 trading days and sums the values before multiplying it by the agent's balance
 ### Trading Results: Continous environment using a CNN network
 
 Place Write up here
