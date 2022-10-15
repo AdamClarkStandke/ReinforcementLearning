@@ -237,7 +237,7 @@ This second stock/etf environment is based on Adam King's article as found here:
 In this trading environment, the agent's reward is based on managing its trading account/balance. The agent can take two actions: 1) either buying or selling the SPY ETF[^12] and 2) what percentage of the SPY ETF to buy or sell, which ranges from [0,1] (i.e. 0% to 100%).The agent's *state/observation-space* consists of the following items: 1) 5 past trading days of high, low, and closing price data in relation to the opening price; 2) volume for the current trading day; 3) the Agent's trading account/balance; 4) the number of shares held; 5) the number of shares sold; 6) the Agent's net worth which consists of the agent's account balance and the shares current price value; 7) the value of the shares sold; and 8) the cost basis of buying new shares as compared to buying shares in the previous period. All of these items were normalized to be in the interval of [-1,1]. The trading agent begins with 10,000 US dollars to trade with and can accumulate a max trading account/balence of 2,147,483,647 US dollars.
 
 
-### Trading Results: Continous environment using a MLP network
+### Trading Results
 
 The PPO Agent was trained for 50 thousand steps of SPY data ranging from 2005 to mid-2017 and was tested on SPY data ranging from the end-of-2017 to 2022. Furthermore, 4 parallel environments were used for the agent to gather samples/experience to train on. All of the default hyper-parameters from stable-Baselines3 were used except for the number of epochs when optimizing the surrogate loss which I set to 20. I also set the entropy coefficient to 0.01 and used stable-Baselines3's limit implementation regarding the KL divergence between updates and set it to 0.2. With that being said, the Agent finished with 16,000 dollars in its account as can be seen in the video down below :point_down: 
 
@@ -269,23 +269,56 @@ Similar to the second stock trading environment as detailed in Part I above, the
 * StandkeSmallDrawDownReward: a simple reward scheme that I created that takes the maximum and minimum networth of the past trading window divided by the maximum value of the trading window (and can be multiplied by the agent's balance if need be) 
 * StandkeSumofDifferenceReward: a simple reward scheme that I created that takes the difference of the past trading windwo and sums the values before multiplying it by the agent's balance
 
+Stable-baselines3's lists the following blog post on PPO [37 implementation details of PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/) which breaks down different architectures for the PPO agent. One of which is a CNN architecture and this was used for the trading agent's feature extractor portion. For the MLP portion, most of the recommendations from the article [WHAT MATTERS FOR ON-POLICY DEEP ACTOR CRITIC METHODS? A LARGE-SCALE STUDY](https://openreview.net/pdf?id=nIAxjsniDzg) were followed except for using the softplus function to
+transform the network output into an action standard deviation and adding  a (negative) offset to its input to. 
+ 
+This is the architecture used for the Policy's feature extractor: 
+```
+self.cnn = nn.Sequential(
+            nn.Conv1d(input, 32, kernel_size=2),
+            nn.ReLU(),
+            nn.Conv1d(32, 64, kernel_size=4),
+            nn.ReLU(),
+            nn.MaxPool1d(kernel_size=4),
+            nn.Flatten(),
+```
+This is the architecture used for the Value's feature extractor: 
+```
+self.cnn = nn.Sequential(
+            nn.Conv1d(input,128,kernel_size=2),
+            nn.ReLU(),
+            nn.Conv1d(128, 256, kernel_size=4),
+            nn.ReLU(),
+            nn.MaxPool1d(kernel_size=4),
+            nn.Flatten(),
+        )
 
+```
+This is the architecture used for the Policy Network: 
+```
+  self.policy_net = nn.Sequential(
+            layer_init(nn.Linear(32, 32)),
+            nn.Tanh(),
+            layer_init(nn.Linear(32, last_layer_dim_pi), std=0.01),
+            nn.Tanh(),  
+        )
+```
+This is the architecture used for the Value Network:
+```
+self.value_net = nn.Sequential(
+           layer_init(nn.Linear(256, 256)),
+           nn.Tanh(),
+           layer_init(nn.Linear(256, 128)),
+           nn.Tanh(),
+           layer_init(nn.Linear(128,32)),
+           nn.Tanh(),
+           layer_init(nn.Linear(32,last_layer_dim_vf)),
+           nn.Tanh(),
+           )
+```
 
-The Source Code for the Thrid Trading agent can be found here: [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb).
 
 ### Trading Results
-##### TensorBoard Graph for Balance Reward 1 million steps with default hyperparameters (early stopping)
-
-**NetWorth on Validation Set**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Validation%20Mean%20Net%20Worth_BalenceRewardDefault.svg)
-**Mean Rewards on Validation Set**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/eval_mean_reward_BalenceReward_Default.svg)
-**Total Loss**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_loss_BalenceReward_Default.svg)
-**Value Loss**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_value_loss_BalenceReward_Default.svg)
-
-##### TensorBoard Graph for Balance Reward 1 million steps with optimized hyperparamters (after 1000 trials) (early stopping)
 
 **NetWorth on Validation Set**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Validation%20Mean%20Net%20Worth_tuned.svg)
@@ -296,12 +329,11 @@ The Source Code for the Thrid Trading agent can be found here: [Third Spy Tradin
 **Value Loss**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_value_loss_tuned.svg)
 
-##### TensorBoard Graph for Balance Reward 1 million steps trading in the Yandex environment
 
 To compare (and see) if the previous  trading in the SPY ETF environment could be transfered using minute by minute stock data, I used the data that Maxim Lapan used in his stock environement of chapter 8 of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998). Namely, stock data is from the Russian stock market from the period ranging from 2015-2016 for the technology company [Yandex](https://en.wikipedia.org/wiki/Yandex). The dataset contained over 130,000  rows of data, in which every row represented a single minute of price data. 
 
 
-
+The Source Code for the Thrid Trading agent can be found here: [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb).
 
 
 ------------------------------------------------------------------------------------------------------------------------------
