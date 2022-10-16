@@ -318,10 +318,21 @@ self.value_net = nn.Sequential(
            )
 ```
 
-Similar to what Adam King used for optimization in his article [optimizing deep learning trading bots using state-of-the-art techniques](https://towardsdatascience.com/using-reinforcement-learning-to-trade-bitcoin-for-massive-profit-b69d0e8f583b), I used  [Optuna](https://optuna.readthedocs.io/en/stable/) to do hyperparmeter optimization. I used the TPE (i.e. Tree-structured Parzen Estimator) algorithm for finding near-optimal parameter values. As detailed in 
-[Algorithms for Hyper-Parameter Optimization](https://proceedings.neurips.cc/paper/2011/file/86e8f7ab32cfd12577bc2619bc635690-Paper.pdf) 
+Similar to what Adam King used for optimization in his article [optimizing deep learning trading bots using state-of-the-art techniques](https://towardsdatascience.com/using-reinforcement-learning-to-trade-bitcoin-for-massive-profit-b69d0e8f583b), I used  [Optuna](https://optuna.readthedocs.io/en/stable/) to do hyperparmeter optimization. I used the TPE (i.e. Tree-structured Parzen Estimator) algorithm for finding near-optimal parameter values. This algorithm as detailed in 
+[Algorithms for Hyper-Parameter Optimization](https://proceedings.neurips.cc/paper/2011/file/86e8f7ab32cfd12577bc2619bc635690-Paper.pdf) is a Sequential Model-Based Global Optimization (SMBO) algorithm that optimizes an approximate loss function $f$ under a tree-structured configuration space.
 
-> 
+> Hyper-parameter optimization is the problem of optimizing a loss function over a graph-structured
+configuration space. In this work we restrict ourselves to tree-structured configuration spaces. Configuration spaces are tree-structured in the sense that some leaf variables (e.g. the number of hidden units in the 2nd layer of a DBN) are only well-defined when node variables (e.g. a discrete choice of
+how many layers to use) take particular values. [^15]
+
+> The tree-structured Parzen estimator (TPE) models p(x|y) by transforming the graph/tree-structured generative process (e.g. first choose a number of DBN layers, then choose the parameters for each), by replacing the distributions of the configuration prior with non-parametric densities.[^15] The TPE defines p(x|y) using two such densities: $p(x|y)=\left\{\begin{matrix}
+l(x) & if \ y<y^{*}  \\
+g(x) & if \ y\geq y^{*}  \\
+\end{matrix}\right.$
+
+The algorithm works by optimizing the criterion Expected Improvement(EI), which is defined as the expectation under some model M with the surrogate function $f$ defined as mapping values from the configuration space (i.e. ${\chi}$) to the real numbers of dimension-n (i.e. $\mathbb{R}^{N}$) such that y will negatively exceed some threshold $y^{*}$.[^15]
+
+
 
 ### Trading Results
 **NetWorth on Validation Set**
@@ -360,3 +371,4 @@ The Source Code for the Thrid Trading agent can be found here: [Third Spy Tradin
 [^12]: Note: eventhough this decision is discrete in nature, it is being modeled as a continous action by making values less than 0 as a buy action and values greater than or equal to 0 as a sell action
 [^13]: [Create custom gym environments from scratch — A stock market example](https://towardsdatascience.com/creating-a-custom-openai-gym-environment-for-stock-trading-be532be3910e)
 [^14]: [The 37 Implementation Details of Proximal Policy Optimization](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/) 
+[^15]: [Algorithms for Hyper-Parameter Optimization](https://proceedings.neurips.cc/paper/2011/file/86e8f7ab32cfd12577bc2619bc635690-Paper.pdf)
