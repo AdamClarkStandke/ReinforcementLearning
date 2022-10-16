@@ -325,26 +325,28 @@ Similar to what Adam King used for optimization in his article [optimizing deep 
 configuration space. In this work we restrict ourselves to tree-structured configuration spaces. Configuration spaces are tree-structured in the sense that some leaf variables (e.g. the number of hidden units in the 2nd layer of a DBN) are only well-defined when node variables (e.g. a discrete choice of
 how many layers to use) take particular values. [^15]
 
-> The tree-structured Parzen estimator (TPE) models p(x|y) by transforming the graph/tree-structured generative process (e.g. first choose a number of DBN layers, then choose the parameters for each), by replacing the distributions of the configuration prior with non-parametric densities.[^15] The TPE defines p(x|y) using two such densities: 
+The algorithm works by optimizing the criterion Expected Improvement(EI), which is defined as the expectation under some model M with the surrogate function $f$ defined as mapping values from the configuration space (i.e. ${\chi}$) to the real numbers of dimension-n (i.e. $\mathbb{R}^{N}$) such that y will negatively exceed some threshold $y^{*}$.[^15]. Rather than modeling p(y|x) as the gaussian process does, the tree-structured Parzen estimator (TPE) models only p(x|y) (p(y) is not modeled). p(x|y) is modeled using two density models, namely l(x) and g(x) which are determined by the following piecewise function:
 
-$p(x|y)=\left\{\begin{matrix}
-l(x) & if y<y^{*}  \\
-g(x) & if y\geq y^{*}  \\
-\end{matrix}\right$
+![]()
 
-The algorithm works by optimizing the criterion Expected Improvement(EI), which is defined as the expectation under some model M with the surrogate function $f$ defined as mapping values from the configuration space (i.e. ${\chi}$) to the real numbers of dimension-n (i.e. $\mathbb{R}^{N}$) such that y will negatively exceed some threshold $y^{*}$.[^15]
+and the Expected Improvement(EI) is maxamized by the following derivation: 
+
+![]()
+
+
+
 
 
 
 ### Trading Results
 **NetWorth on Validation Set**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Validation%20Mean%20Net%20Worth_tuned.svg)
+![]()
 **Mean Rewards on Validation Set**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/eval_mean_reward_tuned.svg)
+![]()
 **Total Loss**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_loss_tuned.svg)
+![]()
 **Value Loss**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_value_loss_tuned.svg)
+![]()
 
 
 To compare (and see) if the previous  trading in the SPY ETF environment could be transfered over using minute by minute data, I used the data that Maxim Lapan used in his stock environement of chapter 8 of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998). Namely, the stock data is from the Russian stock market from the period ranging from 2015-2016 for the technology company [Yandex](https://en.wikipedia.org/wiki/Yandex). The dataset contained over 130,000  rows of data, in which every row represented a single minute of price data.
