@@ -330,7 +330,7 @@ how many layers to use) take particular values. [^15]
 $p(x|y)=\left\{\begin{matrix}
 l(x) & if y<y^{*}  \\
 g(x) & if y\geq y^{*}  \\
-\end{matrix}\right.$
+\end{matrix}\right$
 
 The algorithm works by optimizing the criterion Expected Improvement(EI), which is defined as the expectation under some model M with the surrogate function $f$ defined as mapping values from the configuration space (i.e. ${\chi}$) to the real numbers of dimension-n (i.e. $\mathbb{R}^{N}$) such that y will negatively exceed some threshold $y^{*}$.[^15]
 
