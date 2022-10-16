@@ -328,8 +328,8 @@ how many layers to use) take particular values. [^15]
 > The tree-structured Parzen estimator (TPE) models p(x|y) by transforming the graph/tree-structured generative process (e.g. first choose a number of DBN layers, then choose the parameters for each), by replacing the distributions of the configuration prior with non-parametric densities.[^15] The TPE defines p(x|y) using two such densities: 
 
 $p(x|y)=\left\{\begin{matrix}
-l(x) & if \ y<y^{*}  \\
-g(x) & if \ y\geq y^{*}  \\
+l(x) & if y<y^{*}  \\
+g(x) & if y\geq y^{*}  \\
 \end{matrix}\right.$
 
 The algorithm works by optimizing the criterion Expected Improvement(EI), which is defined as the expectation under some model M with the surrogate function $f$ defined as mapping values from the configuration space (i.e. ${\chi}$) to the real numbers of dimension-n (i.e. $\mathbb{R}^{N}$) such that y will negatively exceed some threshold $y^{*}$.[^15]
