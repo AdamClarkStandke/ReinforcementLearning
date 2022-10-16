@@ -325,7 +325,9 @@ Similar to what Adam King used for optimization in his article [optimizing deep 
 configuration space. In this work we restrict ourselves to tree-structured configuration spaces. Configuration spaces are tree-structured in the sense that some leaf variables (e.g. the number of hidden units in the 2nd layer of a DBN) are only well-defined when node variables (e.g. a discrete choice of
 how many layers to use) take particular values. [^15]
 
-> The tree-structured Parzen estimator (TPE) models p(x|y) by transforming the graph/tree-structured generative process (e.g. first choose a number of DBN layers, then choose the parameters for each), by replacing the distributions of the configuration prior with non-parametric densities.[^15] The TPE defines p(x|y) using two such densities: $p(x|y)=\left\{\begin{matrix}
+> The tree-structured Parzen estimator (TPE) models p(x|y) by transforming the graph/tree-structured generative process (e.g. first choose a number of DBN layers, then choose the parameters for each), by replacing the distributions of the configuration prior with non-parametric densities.[^15] The TPE defines p(x|y) using two such densities: 
+
+$p(x|y)=\left\{\begin{matrix}
 l(x) & if \ y<y^{*}  \\
 g(x) & if \ y\geq y^{*}  \\
 \end{matrix}\right.$
