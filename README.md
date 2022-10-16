@@ -327,16 +327,11 @@ how many layers to use) take particular values. [^15]
 
 The algorithm works by optimizing the criterion Expected Improvement(EI), which is defined as the expectation under some model M with the surrogate function $f$ defined as mapping values from the configuration space (i.e. ${\chi}$) to the real numbers of dimension-n (i.e. $\mathbb{R}^{N}$) such that y will negatively exceed some threshold $y^{*}$.[^15]. Rather than modeling p(y|x) as the gaussian process does, the tree-structured Parzen estimator (TPE) models only p(x|y) (p(y) is not modeled). p(x|y) is modeled using two density models, namely l(x) and g(x) which are determined by the following piecewise function:
 
-![]()
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/p().png)
 
 and the Expected Improvement(EI) is maxamized by the following derivation: 
 
-![]()
-
-
-
-
-
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/EI.png)
 
 ### Trading Results
 **NetWorth on Validation Set**
