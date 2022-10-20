@@ -333,7 +333,7 @@ and the Expected Improvement(EI) is maxamized by the following derivation:
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/EI.png)
 
-### Trading Results
+### Daily Trading Results on SPY ETF using Balance Reward Ratio 
 **NetWorth on Validation Set**
 ![]()
 **Mean Rewards on Validation Set**
@@ -343,11 +343,23 @@ and the Expected Improvement(EI) is maxamized by the following derivation:
 **Value Loss**
 ![]()
 
+### Analysis
 
-To compare (and see) if the previous  trading in the SPY ETF environment could be transfered over using minute by minute data, I used the data that Maxim Lapan used in his stock environement of chapter 8 of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998). Namely, the stock data is from the Russian stock market from the period ranging from 2015-2016 for the technology company [Yandex](https://en.wikipedia.org/wiki/Yandex). The dataset contained over 130,000  rows of data, in which every row represented a single minute of price data.
+To compare (and see) if the previous  trading in the SPY ETF environment could be transfered over [high frequency trading](https://en.wikipedia.org/wiki/High-frequency_trading), I used the data that Maxim Lapan used in his stock environement of chapter 8 of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998). Namely, the stock data is from the Russian stock market from the period ranging from 2015-2016 for the technology company [Yandex](https://en.wikipedia.org/wiki/Yandex). The dataset contained over 130,000  rows of data, in which every row represents a single minute of price data. This concept is illustrated by Maxim Lapan's candlestick graph in which six time windows are shown each of 100 steps and within those 100 steps the agent is buying, selling and holding Yandex stock each second/millisecond:
 
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/B14854_10_01%20(1).png)
 
+### High Frequency Trading Results on Yandex Data using BalenceRewardRatio
+**NetWorth on Validation Set**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Validation%20Mean%20Net%20Worth_Yandex.svg)
+**Mean Rewards on Validation Set**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/eval_mean_reward_Yandex.svg)
+**Total Loss**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_loss_YANDEX.svg)
+**Value Loss**
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_value_loss_Yandex.svg)
 
+### Anaylsis
 
 The Source Code for the Thrid Trading agent can be found here: [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb).
 
