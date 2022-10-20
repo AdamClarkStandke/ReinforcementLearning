@@ -352,10 +352,13 @@ To compare (and see) if the previous  trading in the SPY ETF environment could b
 ### High Frequency Trading Results on Yandex Data using BalenceRewardRatio
 **NetWorth on Validation Set**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Validation%20Mean%20Net%20Worth_Yandex.svg)
+
 **Mean Rewards on Validation Set**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/eval_mean_reward_Yandex.svg)
+
 **Total Loss**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_loss_YANDEX.svg)
+
 **Value Loss**
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_value_loss_Yandex.svg)
 
