@@ -266,6 +266,20 @@ Additionally, three different ways of calculating the agent's reward were added,
 * BalenceReward: a simple reward scheme that Adam King created that multiplies the agent's balance by a delay modifier that is based on the current offset (i.e.step) of the agent in the environment see [Creating Bitcoin trading bots don’t lose money](https://medium.com/towards-data-science/creating-bitcoin-trading-bots-that-dont-lose-money-2e7165fb0b29) for more details
 * StandkeCurrentValueReward: a simple reward scheme that I created that is the difference of the previous trading day's networth and the current trading day's networth multiplied by the agent's balance and Adam King's delay modifier that is based on the current step in the environment 
 * StandkeCurrentBasketReward (aka None): a simple reward scheme based off Maxim Lapan's reward scheme that multiplies the current price value of the asset by the quantity held
+
+Stable-baselines3's lists the following blog on PPO [37 implementation details of PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/) which breaks down the different implementations of PPO. Furthermore, as the authors of [WHAT MATTERS FOR ON-POLICY DEEP ACTOR CRITIC METHODS? A LARGE-SCALE STUDY](https://openreview.net/pdf?id=nIAxjsniDzg) detail: 
+
+> Separate value and policy networks (C47) appear to lead to better performance on our out of five environments (Fig. 15). To avoid analyzing the other choices based on bad models, we thus focus for the rest of this experiment only on agents with separate value and policy networks. Regarding network sizes, the optimal width of the policy MLP depends on the complexity of the environment (Fig. 18) and too low or too high values can cause significant drop in performance while for the value function there seems to be no downside in using wider networks (Fig. 21). Moreover, on some environments it is beneficial to make the value network wider than the policy one, e.g. on HalfCheetah the best results are achieved with 16 − 32 units per layer in the policy network and 256
+in the value network. Two hidden layers appear to work well for policy (Fig. 22) and value networks (Fig. 20) in all tested environments. As for activation functions, we observe that tanh activations perform best and relu worst
+
+> Interestingly, the initial policy appears to have a surprisingly high impact on the training performance.The key recipe is to initialize the policy at the beginning of training so that the action distribution is centered around 0<sup>10</sup> regardless of the observation and has a rather small standard deviation. This can be achieved by initializing the policy MLP with smaller weights in the last layer (C57, Fig. 24, this alone boosts the performance on Humanoid by 66%) so that the initial action distribution is almost
+independent of the observation...Other choices appear to be less important: The scale of the last layer initialization matters much less for the value MLP (C58) than for the policy MLP (Fig. 19). Apart from the last layer scaling, the
+network initialization scheme (C56) does not matter too much (Fig. 27)
+
+> Recommendation. Initialize the last policy layer with 100× smaller weights. Use softplus to transform network output into action standard deviation and add a (negative) offset to its input to decrease the initial standard deviation of actions. Tune this offset if possible. Use tanh both as the activation function (if the networks are not too deep) and to transform the samples from the normal
+distribution to the bounded action space. Use a wide value MLP (no layers shared with the policy) but tune the policy width (it might need to be narrower than the value MLP)
+
+With these statements in mind, I decided to implement a seperate-network architecture for PPO for both the policy and value network as detailed below.
  
 This is the architecture used for the Policy's feature extractor: 
 ```
