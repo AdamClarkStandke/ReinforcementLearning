@@ -257,21 +257,15 @@ The Source Code for the Second Trading agent can be found here: [Second Spy Trad
 
 ## Example 5: Continuous Stock/ETF Trading Agent: Part II 
 
-This third stock trading environment is based on Adam King's articles as detailed here [Creating Bitcoin trading bots don’t lose money](https://medium.com/towards-data-science/creating-bitcoin-trading-bots-that-dont-lose-money-2e7165fb0b29) and here [Optimizing deep learning trading bots using state-of-the-art techniques](https://towardsdatascience.com/using-reinforcement-learning-to-trade-bitcoin-for-massive-profit-b69d0e8f583b)
-Also, the random offset in the reset method is based on Maxim Lapan's implementation as found in chapter eight of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998).
+This third stock trading environment is based on Adam King's articles as found here:[Creating Bitcoin trading bots don’t lose money](https://medium.com/towards-data-science/creating-bitcoin-trading-bots-that-dont-lose-money-2e7165fb0b29) and here:[Optimizing deep learning trading bots using state-of-the-art techniques](https://towardsdatascience.com/using-reinforcement-learning-to-trade-bitcoin-for-massive-profit-b69d0e8f583b)
+Furthermore, the random offset in the reset method and the if/and control flow is based on Maxim Lapan's implementation as found in chapter eight of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998).
 
-Similar to the second stock trading environment as detailed in Part I above, the agent is trading in the [SPY ETF](https://www.etf.com/SPY?L=1) environment and is trading in a continous action space(i.e.[0-3] for buying, selling, or holding and [0-1] for % sold/bought where 1 is equivalent to 100%)  and  a continous observation space(i.e. [0-1]).Unlike the second stock trading environment, an additional observation was added to the agent's observations space of an account history/ledger of the agent's past networth from trading in the SPY ETF environment with the given trading window (of 10 days). Also  a commision parameter used in the cost and sales calculation of 0.1%. Additionally, different ways of calculating the agent's reward were added, namely: 
+Similar to the first and second stock trading environment, the agent is trading in the [SPY ETF](https://www.etf.com/SPY?L=1) environment and the [Yandax](https://en.wikipedia.org/wiki/Yandex) environment; and is trading in a continous action space(i.e.[0-2] for buying, selling, or holding and [0-1] for % sold/bought where 1 is equivalent to 100%)  and  the observation space is from [-inf,inf])(*note: however, in the second stock trading environment this space ranged from [-1,1]*).Also unlike the second stock trading environment, an additional observation was added to the agent's observations space of an account history/ledger of the agent's past networth from trading (*note: this window is set by the variable LOOKBACK_WINDOW_SIZE and its default is 10 days*)and a commision parameter used in the cost and sales calculation (*note: default is 0.1%*). 
 
+Additionally, three different ways of calculating the agent's reward were added, namely: 
 * BalenceReward: a simple reward scheme that Adam King created that multiplies the agent's balance by a delay modifier that is based on the current offset (i.e.step) of the agent in the environment see [Creating Bitcoin trading bots don’t lose money](https://medium.com/towards-data-science/creating-bitcoin-trading-bots-that-dont-lose-money-2e7165fb0b29) for more details
-* [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp) $\frac{R_p-r_f}{\sigma_d}$ where $R_p$ is actual or expected portfolio return, $r_f$ is the risk free rate (i.e. 2 year gov bond) and ${sigma_d}$ is the std of the downside
-* [calmarRewardRatio](https://www.investopedia.com/terms/c/calmarratio.asp)$\frac{R_P-R_B}{\mu_D}$ where $R_P$ is actual or expected portfolio returns, $R_B$ is the risk free rate (i.e. 2 year gov bond) and ${\mu_D}$ is the maximum drawdown of the portfolio (i.e. the max loss in value of the portfolio from its peak to its trough over a given time window)
-* [omegaRewardRatio](https://www.wallstreetmojo.com/omega-ratio/) $\frac{\int_{\theta}^{inf}1-F(R_p)dx}{\int_{-inf}^{\theta}F(R_p)dx}$ where $F$ is the cumulative probability distribution of returns, and ${\theta}$ is the target return threshold defining what is considered a gain versus a loss
-* StandkeCurrentValueReward: a simple reward scheme that I created that is the difference of the previous trading day's networth and the current trading day's networth (and can be multiplied by the agent's balance if need be)
-* StandkeSmallDrawDownReward: a simple reward scheme that I created that takes the maximum and minimum networth of the past trading window divided by the maximum value of the trading window (and can be multiplied by the agent's balance if need be) 
-* StandkeSumofDifferenceReward: a simple reward scheme that I created that takes the difference of the past trading windwo and sums the values before multiplying it by the agent's balance
-
-Stable-baselines3's lists the following blog post on PPO [37 implementation details of PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/) which breaks down different architectures for the PPO agent. One of which is a CNN architecture and this was used for the trading agent's feature extractor portion. For the MLP portion, most of the recommendations from the article [WHAT MATTERS FOR ON-POLICY DEEP ACTOR CRITIC METHODS? A LARGE-SCALE STUDY](https://openreview.net/pdf?id=nIAxjsniDzg) were followed except for using the softplus function to
-transform the network output into an action standard deviation and adding  a (negative) offset to its input. 
+* StandkeCurrentValueReward: a simple reward scheme that I created that is the difference of the previous trading day's networth and the current trading day's networth multiplied by the agent's balance and Adam King's delay modifier that is based on the current step in the environment 
+* StandkeCurrentBasketReward (aka None): a simple reward scheme based off Maxim Lapan's reward scheme that multiplies the current price value of the asset by the quantity held
  
 This is the architecture used for the Policy's feature extractor: 
 ```
@@ -333,36 +327,49 @@ and the Expected Improvement(EI) is maxamized by the following derivation:
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/EI.png)
 
-### Daily Trading Results on SPY ETF using Balance Reward Ratio 
-**NetWorth on Validation Set**
-![]()
-**Mean Rewards on Validation Set**
-![]()
-**Total Loss**
-![]()
-**Value Loss**
-![]()
 
-### Analysis
+### Comparison Analysis and Trading Results
 
-To compare (and see) if the previous  trading in the SPY ETF environment could be transfered over [high frequency trading](https://en.wikipedia.org/wiki/High-frequency_trading), I used the data that Maxim Lapan used in his stock environement of chapter 8 of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998). Namely, the stock data is from the Russian stock market from the period ranging from 2015-2016 for the technology company [Yandex](https://en.wikipedia.org/wiki/Yandex). The dataset contained over 130,000  rows of data, in which every row represents a single minute of price data. This concept is illustrated by Maxim Lapan's candlestick graph in which six time windows are shown each of 100 steps and within those 100 steps the agent is buying, selling and holding Yandex stock each second/millisecond:
+To compare (and see) if the previous  trading in the SPY ETF environment could be transfered over to [high frequency trading](https://en.wikipedia.org/wiki/High-frequency_trading), I used the data that Maxim Lapan used in his stock environement of chapter 8 of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998). Namely, the stock data is from [Yandex](https://en.wikipedia.org/wiki/Yandex) and ranges from 2015-2016. The dataset containes over 130,000  rows of data, in which every row represents a single minute of price data. This concept is illustrated by Maxim Lapan's candlestick graph in which six time windows are shown each of 100 steps and within those 100 steps the agent is buying, selling and holding stock (i.e. within seconds, etc):
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/B14854_10_01%20(1).png)
 
-### High Frequency Trading Results on Yandex Data using BalenceRewardRatio
+#### Model Statistics-SpyData-StandkeCurrentValueReward
 **NetWorth on Validation Set**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Validation%20Mean%20Net%20Worth_Yandex.svg)
-
+![]()
 **Mean Rewards on Validation Set**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/eval_mean_reward_Yandex.svg)
-
+![]()
 **Total Loss**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_loss_YANDEX.svg)
-
+![]()
 **Value Loss**
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/train_value_loss_Yandex.svg)
-
-### Anaylsis
+![]()
+#### Model Statistics-YandexData-StandkeCurrentValueReward
+**NetWorth on Validation Set**
+![]()
+**Mean Rewards on Validation Set**
+![]()
+**Total Loss**
+![]()
+**Value Loss**
+![]()
+#### Model Statistics-SpyData-BalenceReward
+**NetWorth on Validation Set**
+![]()
+**Mean Rewards on Validation Set**
+![]()
+**Total Loss**
+![]()
+**Value Loss**
+![]()
+#### Model Statistics-YandexData-BalenceReward
+**NetWorth on Validation Set**
+![]()
+**Mean Rewards on Validation Set**
+![]()
+**Total Loss**
+![]()
+**Value Loss**
+![]()
 
 The Source Code for the Thrid Trading agent can be found here: [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb).
 
