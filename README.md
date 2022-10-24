@@ -367,10 +367,7 @@ To compare (and see) if the previous  trading in the SPY ETF environment could b
 **Value Loss**
 ![]()
 #### Model Statistics-SpyData-BalenceReward
-**NetWorth on Validation Set**
-![]()
-**Mean Rewards on Validation Set**
-![]()
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/09afd3dc-6220-4777-829b-7557ae6213a7.png)
 **Total Loss**
 ![]()
 **Value Loss**
