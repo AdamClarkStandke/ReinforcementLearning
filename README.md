@@ -263,9 +263,9 @@ Furthermore, the random offset in the reset method and the if/and control flow i
 Similar to the first and second stock trading environment, the agent is trading in the [SPY ETF](https://www.etf.com/SPY?L=1) environment and the [Yandax](https://en.wikipedia.org/wiki/Yandex) environment; and is trading in a continous action space(i.e.[0-2] for buying, selling, or holding and [0-1] for % sold/bought where 1 is equivalent to 100%)  and  the observation space is from [-inf,inf])(*note: however, in the second stock trading environment this space ranged from [-1,1]*).Also unlike the second stock trading environment, an additional observation was added to the agent's observations space of an account history/ledger of the agent's past networth from trading (*note: this window is set by the variable LOOKBACK_WINDOW_SIZE and its default is 10 days*)and a commision parameter used in the cost and sales calculation (*note: default is 0.1%*). 
 
 Additionally, three different ways of calculating the agent's reward were added, namely: 
-* BalenceReward: a simple reward scheme that Adam King created that multiplies the agent's balance by a delay modifier that is based on the current offset (i.e.step) of the agent in the environment see [Creating Bitcoin trading bots don’t lose money](https://medium.com/towards-data-science/creating-bitcoin-trading-bots-that-dont-lose-money-2e7165fb0b29) for more details
-* StandkeCurrentValueReward: a simple reward scheme that I created that is the difference of the previous trading day's networth and the current trading day's networth multiplied by the agent's balance and Adam King's delay modifier that is based on the current step in the environment 
-* StandkeCurrentBasketReward (aka None): a simple reward scheme based off Maxim Lapan's reward scheme that multiplies the current price value of the asset by the quantity held
+* [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp) $\frac{R_p-r_f}{\sigma_d}$ where $R_p$ is actual or expected portfolio return, $r_f$ is the risk free rate (i.e. 2 year gov bond) and ${sigma_d}$ is the std of the downside
+* [calmarRewardRatio](https://www.investopedia.com/terms/c/calmarratio.asp)$\frac{R_P-R_B}{\mu_D}$ where $R_P$ is actual or expected portfolio returns, $R_B$ is the risk free rate (i.e. 2 year gov bond) and ${\mu_D}$ is the maximum drawdown of the portfolio (i.e. the max loss in value of the portfolio from its peak to its trough over a given time window)
+* [omegaRewardRatio](https://www.wallstreetmojo.com/omega-ratio/) $\frac{\int_{\theta}^{inf}1-F(R_p)dx}{\int_{-inf}^{\theta}F(R_p)dx}$ where $F$ is the cumulative probability distribution of returns, and ${\theta}$ is the target return threshold defining what is considered a gain versus a loss
 
 Stable-baselines3's lists the following blog on PPO [37 implementation details of PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/) which breaks down the different implementations of PPO. Furthermore, as the authors of [WHAT MATTERS FOR ON-POLICY DEEP ACTOR CRITIC METHODS? A LARGE-SCALE STUDY](https://openreview.net/pdf?id=nIAxjsniDzg) detail: 
 
@@ -348,7 +348,7 @@ To compare (and see) if the previous  trading in the SPY ETF environment could b
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/B14854_10_01%20(1).png)
 
-#### Model Statistics-SpyData-StandkeCurrentValueReward
+#### Model Statistics-SpyData
 **NetWorth on Validation Set**
 ![]()
 **Mean Rewards on Validation Set**
@@ -357,7 +357,7 @@ To compare (and see) if the previous  trading in the SPY ETF environment could b
 ![]()
 **Value Loss**
 ![]()
-#### Model Statistics-YandexData-StandkeCurrentValueReward
+#### Model Statistics-YandexData
 **NetWorth on Validation Set**
 ![]()
 **Mean Rewards on Validation Set**
@@ -366,13 +366,13 @@ To compare (and see) if the previous  trading in the SPY ETF environment could b
 ![]()
 **Value Loss**
 ![]()
-#### Model Statistics-SpyData-BalenceReward
+#### Model Statistics-SpyData
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/09afd3dc-6220-4777-829b-7557ae6213a7.png)
 **Total Loss**
 ![]()
 **Value Loss**
 ![]()
-#### Model Statistics-YandexData-BalenceReward
+#### Model Statistics-YandexData
 **NetWorth on Validation Set**
 ![]()
 **Mean Rewards on Validation Set**
