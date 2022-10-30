@@ -178,7 +178,7 @@ def __init__(self, shape, actions_n):
         return val + adv - adv.mean(dim=1, keepdim=True)
 ```
 
-## Example 3: Discrete Stock Trading Agent using the Dueling Network Architecture 
+## Example 3: Discrete Action Space for Stock/ETF Trading Agent: Part I  
 
 In chapter 8 of [^9], the author details a practical domain problem of reinforcement learning; namely stock trading! The first thing that had to be done was create the stock trading environment. The type of *actions* the agent could take in this environment were the following: 1) hold-off on trading;  2) buy the given stock; and 3) sell the given stock. When the agent bought or sold the given stock, it had to pay a commission of 0.1%. The agent's *state-space* consisted of the following items: 1) 5 past trading days of opening price data; 2) 5 past trading days of high, low, and closing prices in relation to the opening price; 3) volume for the current trading day; 4) whether the agent bought stock and 5) the relative close of the stock for the current trading day. The *reward* for the agent is a two reward scheme, as detailed in [^9]. Namely the reward is of "either/or form"; if the variable reward_on_close is True, the agent will receive a reward only on selling its stock position, else the agent will recive a reward only when buying and holding its stock position (i.e. not selling). The first form amounts to the trading strategy of [active investing](https://www.investopedia.com/terms/a/activeinvesting.asp#:~:text=Active%20investing%20refers%20to%20an,activity%20to%20exploit%20profitable%20conditions.), while the second form amounts to the trading strategy of [passive investing](https://www.investopedia.com/terms/p/passiveinvesting.asp#:~:text=Passive%20investing's%20goal%20is%20to,price%20fluctuations%20or%20market%20timing.). 
 
@@ -230,7 +230,7 @@ The algorithms in this package will make it easier for the research community an
 
 Furthermore to visualize the trading agent's observation space when trading, I used Adam King's brilliant implementation of a stock trading environment as found detailed here [Rendering elegant stock trading agents using Matplotlib and Gym](https://towardsdatascience.com/visualizing-stock-trading-agents-using-matplotlib-and-gym-584c992bc6d4).
 
-## Example 4: Continuous Stock/ETF Trading Agent: Part I 
+## Example 4: Continuous Action Space for Stock/ETF Trading Agent: Part II (WARNING!!!!!! If anybody is reading this, except for me, realize this environment is not realistic!!ie., there are lots of BUGS!!! WARNING!!! WATRNING!!!, Again WARNING!!!, OKAY: ) 
 
 This second stock/etf environment is based on Adam King's article as found here:[Create custom gym environments from scratch — A stock market example](https://towardsdatascience.com/creating-a-custom-openai-gym-environment-for-stock-trading-be532be3910e). Similar to the first stock trading environment based on Maxim Lapan's implementation as found in chapter eight of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998) and as  implemented above in Example 3, the agent is trading in the environment of the [SPY ETF](https://www.etf.com/SPY?L=1) except in this trading environment the agent is taking continuous actions, rather than discrete actions and is tasked with managing a [trading account](https://www.investopedia.com/terms/t/tradingaccount.asp#:~:text=A%20trading%20account%20is%20an,margin%20requirements%20set%20by%20FINRA.).
 
@@ -255,7 +255,7 @@ The PPO Agent was trained for 50 thousand steps of SPY data ranging from 2005 to
 
 The Source Code for the Second Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb). The SPY data that the Trading agent used for training data can be found here: [SPY_train](https://github.com/aCStandke/ReinforcementLearning/blob/main/spy.us.txt).And the SPY data that the  Trading agent used for testing data can be found here: [SPY_test](https://github.com/aCStandke/ReinforcementLearning/blob/main/test.csv)
 
-## Example 5: Multi-Discrete Action Space for Stock/ETF Trading Agent: Part II 
+## Example 5: Multi-Discrete Action Space for Stock/ETF Trading Agent: Part III
 
 This third stock trading environment is based on Adam King's articles as found here:[Creating Bitcoin trading bots don’t lose money](https://medium.com/towards-data-science/creating-bitcoin-trading-bots-that-dont-lose-money-2e7165fb0b29) and here:[Optimizing deep learning trading bots using state-of-the-art techniques](https://towardsdatascience.com/using-reinforcement-learning-to-trade-bitcoin-for-massive-profit-b69d0e8f583b)
 Furthermore, the random offset in the reset method and the if/and control flow is based on Maxim Lapan's implementation as found in chapter eight of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998).
