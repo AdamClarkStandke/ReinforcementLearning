@@ -262,7 +262,14 @@ The PPO Agent was trained for 50 thousand steps of SPY data ranging from 2005 to
 
 The Source Code for the Second Trading agent can be found here: [Second Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/SecondStockEnivornment.ipynb). The SPY data that the Trading agent used for training data can be found here: [SPY_train](https://github.com/aCStandke/ReinforcementLearning/blob/main/spy.us.txt).And the SPY data that the  Trading agent used for testing data can be found here: [SPY_test](https://github.com/aCStandke/ReinforcementLearning/blob/main/test.csv)
 
-## Example 5: Multi-Discrete Action Space for Stock/ETF Trading Agent: Part III
+## Example 5: Multi-Discrete Action Space for Stock/ETF Trading Agent: Part III (:warning::warning::warning: :warning: WARNING!!!!!! Realize this environment is not realistic!!!! WARNING!!! WARNING!!!, Again WARNING!!!, OKAY, Time for the MIT software disclaimer, READ IT: :point_down:
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
 
 This third stock trading environment is based on Adam King's articles as found here:[Creating Bitcoin trading bots don’t lose money](https://medium.com/towards-data-science/creating-bitcoin-trading-bots-that-dont-lose-money-2e7165fb0b29) and here:[Optimizing deep learning trading bots using state-of-the-art techniques](https://towardsdatascience.com/using-reinforcement-learning-to-trade-bitcoin-for-massive-profit-b69d0e8f583b)
 Furthermore, the random offset in the reset method and the if/and control flow is based on Maxim Lapan's implementation as found in chapter eight of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998).
