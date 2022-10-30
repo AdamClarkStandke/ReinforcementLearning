@@ -219,6 +219,7 @@ complexity, simplicity, and wall-time.[^10]
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Screenshot%202022-09-14%2011.54.58%20PM.png)
 
 **Algorithm**
+
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Screenshot%202022-09-14%2011.54.10%20PM.png)
 
 ## Implementation:
