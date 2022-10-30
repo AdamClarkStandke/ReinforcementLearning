@@ -230,14 +230,14 @@ The algorithms in this package will make it easier for the research community an
 
 Furthermore to visualize the trading agent's observation space when trading, I used Adam King's brilliant implementation of a stock trading environment as found detailed here [Rendering elegant stock trading agents using Matplotlib and Gym](https://towardsdatascience.com/visualizing-stock-trading-agents-using-matplotlib-and-gym-584c992bc6d4).
 
-## Example 4: Continuous Action Space for Stock/ETF Trading Agent: Part II (WARNING!!!!!! If anybody is reading this, except for me, realize this environment is not realistic!!ie., there are lots of BUGS!!! WARNING!!! WATRNING!!!, Again WARNING!!!, OKAY, Time for MIT software discalimer: 
+## Example 4: Continuous Action Space for Stock/ETF Trading Agent: Part II (:warning::warning::warning: :warning: WARNING!!!!!! Realize this environment is not realistic!!!! WARNING!!! WARNING!!!, Again WARNING!!!, OKAY, Time for the MIT software disclaimer, READ IT: :point_down:
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE. ) 
+SOFTWARE. 
 
 This second stock/etf environment is based on Adam King's article as found here:[Create custom gym environments from scratch — A stock market example](https://towardsdatascience.com/creating-a-custom-openai-gym-environment-for-stock-trading-be532be3910e). Similar to the first stock trading environment based on Maxim Lapan's implementation as found in chapter eight of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998) and as  implemented above in Example 3, the agent is trading in the environment of the [SPY ETF](https://www.etf.com/SPY?L=1) except in this trading environment the agent is taking continuous actions, rather than discrete actions and is tasked with managing a [trading account](https://www.investopedia.com/terms/t/tradingaccount.asp#:~:text=A%20trading%20account%20is%20an,margin%20requirements%20set%20by%20FINRA.).
 
