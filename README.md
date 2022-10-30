@@ -363,7 +363,7 @@ and the Expected Improvement(EI) is maxamized by the following derivation:
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/EI.png)
 
-The objective function is a weighted mixture of mean reward, mean balance, mean networth and mean length that is maxamized. I weighted 33% for each except for mean length and used the SPY data to train the model and run each trial for two episodes. After running 1000 trials, these were the most optimal parameters for the SPY environment and agent: 
+The objective function is a weighted mixture of mean reward, mean balance, mean networth and mean length that is maxamized. I weighted 33% for each except for mean length and used the SPY data to train the model and ran each trial for two episodes. After running 1000 trials, these were the most optimal parameters for the SPY environment and agent: 
 ```
 {'clip_range': 0.3038109478737602,
  'ent_coef': 0.5093279747282745,
