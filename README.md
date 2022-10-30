@@ -349,7 +349,15 @@ and the Expected Improvement(EI) is maxamized by the following derivation:
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/EI.png)
 
-The objective function is a weighted mixture of mean reward, mean balance, mean networth and mean length that is maxamized. 
+The objective function is a weighted mixture of mean reward, mean balance, mean networth and mean length that is maxamized. I weighted 33% for each except for mean length and used the SPY data to train the model and run each trial for two episodes. After running 1000 trials, these were the most optimal parameters for the SPY environment and agent: 
+```
+{'clip_range': 0.3038109478737602,
+ 'ent_coef': 0.5093279747282745,
+ 'gamma': 0.33144394653654113,
+ 'learning_rate': 5.996969469327487e-08,
+ 'reward_func': 'sortinoRewardRatio',
+ 'vf_coef': 0.17289645913479046}
+```
 
 
 ### Comparison Analysis and Trading Results
@@ -358,40 +366,21 @@ To compare (and see) if the previous  trading in the SPY ETF environment could b
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/B14854_10_01%20(1).png)
 
-#### Model Statistics-SpyData
-**NetWorth on Validation Set**
-![]()
-**Mean Rewards on Validation Set**
-![]()
-**Total Loss**
-![]()
-**Value Loss**
-![]()
-#### Model Statistics-YandexData
-**NetWorth on Validation Set**
-![]()
-**Mean Rewards on Validation Set**
-![]()
-**Total Loss**
-![]()
-**Value Loss**
-![]()
-#### Model Statistics-SpyData
-**Total Loss**
-![]()
-**Value Loss**
-![]()
-#### Model Statistics-YandexData
-**NetWorth on Validation Set**
-![]()
-**Mean Rewards on Validation Set**
-![]()
-**Total Loss**
-![]()
-**Value Loss**
-![]()
+After running 1000 trials on the Yandex data, as I did for the SPY data, these were the most optimal paramters for the Yandax environment and agent:
+```
 
-The Source Code for the Thrid Trading agent can be found here: [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb).
+```
+
+#### Model Statistics-SpyData
+
+#### Model Statistics-YandexData
+
+
+
+The Source Code for the Thrid Trading agent and SPY/Yandax trials can be found here: 
+* [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb)
+* [SPY Trials]()
+* [Yandax Trials]().
 
 
 ------------------------------------------------------------------------------------------------------------------------------
