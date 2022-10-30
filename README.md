@@ -260,11 +260,10 @@ The Source Code for the Second Trading agent can be found here: [Second Spy Trad
 This third stock trading environment is based on Adam King's articles as found here:[Creating Bitcoin trading bots don’t lose money](https://medium.com/towards-data-science/creating-bitcoin-trading-bots-that-dont-lose-money-2e7165fb0b29) and here:[Optimizing deep learning trading bots using state-of-the-art techniques](https://towardsdatascience.com/using-reinforcement-learning-to-trade-bitcoin-for-massive-profit-b69d0e8f583b)
 Furthermore, the random offset in the reset method and the if/and control flow is based on Maxim Lapan's implementation as found in chapter eight of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998).
 
-Similar to the first and second stock trading environment, the agent is trading in the [SPY ETF](https://www.etf.com/SPY?L=1) environment and the [Yandax](https://en.wikipedia.org/wiki/Yandex) environment; trading is in a Multi-Discrete action space of [3, 10] where 0==buy, 1==sell, and 2==hold and the values [0, .1, .2, .3, .4, .5, .6,.7,.8,.9,] represent the number of shares held/sold by the agent; and the observation space is from [-inf,inf])(*note: however, in the second stock trading environment this space ranged from [-1,1]*).Also unlike the second stock trading environment, an additional observation was added to the agent's observations space of an account history/ledger of the agent's past networth from trading (*note: this window is set by the variable LOOKBACK_WINDOW_SIZE and its default is 10 days*)and a commision parameter used in the cost and sales calculation (*note: default is 0.1%*). 
+Similar to the first and second stock trading environment, the agent is trading in the [SPY ETF](https://www.etf.com/SPY?L=1) environment and the [Yandax](https://en.wikipedia.org/wiki/Yandex) environment; trading is in a Multi-Discrete action space of [3, 10] where 0==buy, 1==sell, and 2==hold and the values [0, .1, .2, .3, .4, .5, .6,.7,.8,.9,] represent the number of shares held/sold by the agent; and the observation space is from [-inf,inf])(*note: however, in the second stock trading environment this space ranged from [-1,1]*).Also unlike the second stock trading environment, an additional observation was added to the agent's observations space of an account history/ledger of the agent's past networth, balance, and shares from trading (*note: this window is set by the variable LOOKBACK_WINDOW_SIZE and its default is 10 days*). And  to make it semi-realistic, a commision parameter is used in the cost and sales calculation (*note: default is 0.1%*). 
 
-Additionally, three different ways of calculating the agent's reward were added, namely: 
+Additionally, two different ways of calculating the agent's reward were added, namely: 
 * [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp) $\frac{R_p-r_f}{\sigma_d}$ where $R_p$ is actual or expected portfolio return, $r_f$ is the risk free rate  and ${sigma_d}$ is the std of the downside
-* [calmarRewardRatio](https://www.investopedia.com/terms/c/calmarratio.asp)$\frac{R_P-R_B}{\mu_D}$ where $R_P$ is actual or expected portfolio returns, $R_B$ is the risk free rate  and ${\mu_D}$ is the maximum drawdown of the portfolio (i.e. the max loss in value of the portfolio from its peak to its trough over a given time window)
 * [omegaRewardRatio](https://www.wallstreetmojo.com/omega-ratio/) $\frac{\int_{\theta}^{inf}1-F(R_p)dx}{\int_{-inf}^{\theta}F(R_p)dx}$ where $F$ is the cumulative probability distribution of returns, and ${\theta}$ is the target return threshold defining what is considered a gain versus a loss
 
 Stable-baselines3's lists the following blog on PPO [37 implementation details of PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/) which breaks down the different implementations of PPO. Furthermore, as the authors of [WHAT MATTERS FOR ON-POLICY DEEP ACTOR CRITIC METHODS? A LARGE-SCALE STUDY](https://openreview.net/pdf?id=nIAxjsniDzg) detail: 
@@ -279,50 +278,59 @@ network initialization scheme (C56) does not matter too much (Fig. 27)
 > Recommendation. Initialize the last policy layer with 100× smaller weights. Use softplus to transform network output into action standard deviation and add a (negative) offset to its input to decrease the initial standard deviation of actions. Tune this offset if possible. Use tanh both as the activation function (if the networks are not too deep) and to transform the samples from the normal
 distribution to the bounded action space. Use a wide value MLP (no layers shared with the policy) but tune the policy width (it might need to be narrower than the value MLP)
 
-With these statements in mind, I decided to implement a seperate-network architecture for PPO for both the policy and value network as detailed below.
- 
-This is the architecture used for the Policy's feature extractor: 
+With these statements in mind, I decided to implement a seperate-network architecture for PPO for both the policy and value network with [ortho initialization](https://pytorch.org/docs/stable/_modules/torch/nn/init.html#orthogonal_) for all layers (with the last policy layer's weights std set to 0.01 and the last value layer's weights std set to 1) as detailed below.
+
+Layer initialization funcntion:
 ```
-self.cnn = nn.Sequential(
-            nn.Conv1d(input, 32, kernel_size=2),
-            nn.ReLU(),
-            nn.Conv1d(32, 64, kernel_size=4),
-            nn.ReLU(),
-            nn.MaxPool1d(kernel_size=4),
-            nn.Flatten(),
+def layer_init(layer, std=np.sqrt(2), bias_const=0.0):
+    th.nn.init.orthogonal_(layer.weight, std)
+    th.nn.init.constant_(layer.bias, bias_const)
+    return layer
+
 ```
-This is the architecture used for the Value's feature extractor: 
+Policy's feature extractor: 
 ```
-self.cnn = nn.Sequential(
-            nn.Conv1d(input,128,kernel_size=2),
+ self.cnn = nn.Sequential(
+            layer_init(nn.Conv1d(input,16,kernel_size=2)),
             nn.ReLU(),
-            nn.Conv1d(128, 256, kernel_size=4),
+            layer_init(nn.Conv1d(16, 32, kernel_size=4)),
             nn.ReLU(),
             nn.MaxPool1d(kernel_size=4),
             nn.Flatten(),
         )
 
 ```
-This is the architecture used for the Policy Network: 
+Value's feature extractor: 
 ```
-  self.policy_net = nn.Sequential(
-            layer_init(nn.Linear(32, 32)),
-            nn.Tanh(),
-            layer_init(nn.Linear(32, last_layer_dim_pi), std=0.01),
-            nn.Tanh(),  
+   self.cnn = nn.Sequential(
+            layer_init(nn.Conv1d(input,128,kernel_size=2)),
+            nn.ReLU(),
+            layer_init(nn.Conv1d(128, 256, kernel_size=4)),
+            nn.ReLU(),
+            nn.MaxPool1d(kernel_size=4),
+            nn.Flatten(),
         )
+
 ```
-This is the architecture used for the Value Network:
+Policy Network: 
 ```
-self.value_net = nn.Sequential(
+     self.policy_net = nn.Sequential(
+            layer_init(nn.Linear(feature_dim, 32)),
+            nn.Tanh(),
+            layer_init(nn.Linear(32, self.latent_dim_pi), std=0.01), 
+        )
+
+```
+Value Network:
+```
+  self.value_net = nn.Sequential(
            layer_init(nn.Linear(256, 256)),
            nn.Tanh(),
            layer_init(nn.Linear(256, 128)),
            nn.Tanh(),
            layer_init(nn.Linear(128,32)),
            nn.Tanh(),
-           layer_init(nn.Linear(32,last_layer_dim_vf)),
-           nn.Tanh(),
+           layer_init(nn.Linear(32,last_layer_dim_vf), std=1),
            )
 ```
 
@@ -340,6 +348,8 @@ The algorithm works by optimizing the criterion Expected Improvement(EI), which 
 and the Expected Improvement(EI) is maxamized by the following derivation: 
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/EI.png)
+
+The objective function is a weighted mixture of mean reward, mean balance, mean networth and mean length that is maxamized. 
 
 
 ### Comparison Analysis and Trading Results
