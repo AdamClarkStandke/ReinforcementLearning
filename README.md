@@ -374,28 +374,29 @@ The objective function is a weighted mixture of mean reward, mean balance, mean 
  'vf_coef': 0.17289645913479046}
 ```
 
-
 ### Comparison Analysis and Trading Results
 
 To compare (and see) if the previous  trading in the SPY ETF environment could be transfered over to [high frequency trading](https://en.wikipedia.org/wiki/High-frequency_trading), I used the data that Maxim Lapan used in his stock environement of chapter 8 of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998). Namely, the stock data is from [Yandex](https://en.wikipedia.org/wiki/Yandex) and ranges from 2015-2016. The dataset containes over 130,000  rows of data, in which every row represents a single minute of price data. This concept is illustrated by Maxim Lapan's candlestick graph in which six time windows are shown each of 100 steps and within those 100 steps the agent is buying, selling and holding stock (i.e. within seconds, etc):
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/B14854_10_01%20(1).png)
 
-After running 1000 trials on the Yandex data, as I did for the SPY data, these were the most optimal paramters for the Yandax environment and agent:
-```
+Because the Yandex data is over 1MB and the time it would have taken to effectively tune the hyperparameters would have been too long, I did not run any hyperparameter optimizations (as I did with the SPY data) and just used the defualt hyperparameters with the sortinoRewardRatio for the reward.
 
-```
+### Environment and Agent Setup
+* I did not to use volume data in the observation space for both environments.
+* The random offset was set in both training environement, but not the validation environments
+* The tuned parameters were used for the SPY agent while the default parameters were used for Yandex agent
+* One validation episode was done every 10,000 steps on the test data, which for the Yandax environement was 5% of the test data
 
-#### Model Statistics-SpyData
+#### SpyData Results
 
-#### Model Statistics-YandexData
+#### YandexData Results 
 
 
 
 The Source Code for the Thrid Trading agent and SPY/Yandax trials can be found here: 
 * [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb)
 * [SPY Trials](https://github.com/aCStandke/ReinforcementLearning/blob/main/PPOhyper.db)
-* [Yandax Trials]().
 
 
 ------------------------------------------------------------------------------------------------------------------------------
