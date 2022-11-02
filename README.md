@@ -349,27 +349,26 @@ Value Network:
            )
 ```
 
-To compare (and see) if the previous  trading in the SPY ETF environment could be transfered over to [high frequency trading](https://en.wikipedia.org/wiki/High-frequency_trading), I used the data that Maxim Lapan used in his stock environement of chapter 8 of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998). Namely, the stock data is from [Yandex](https://en.wikipedia.org/wiki/Yandex) and ranges from 2015-2016. The dataset containes over 130,000  rows of data, in which every row represents a single minute of price data. This concept is illustrated by Maxim Lapan's candlestick graph in which six time windows are shown each of 100 steps and within those 100 steps the agent is buying, selling and holding stock (i.e. within seconds, etc):
+To compare (and see) if the previous  trading in the SPY ETF environment could be transfered over to [high frequency trading](https://en.wikipedia.org/wiki/High-frequency_trading), I used the data that Maxim Lapan used in his stock environement of chapter 8 of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998). Namely, the stock data is from [Yandex](https://en.wikipedia.org/wiki/Yandex) and ranges from 2015-2016. The dataset containes over 130,000  rows of data, in which every row represents a single minute of price data. This concept is illustrated by Maxim Lapan's candlestick graph in which six time windows are shown each of 100 steps and within those 100 steps the agent is buying, selling and holding stock (i.e. within seconds, etc)
+
 
 ### Comparison Analysis of Custom Policy (i.e. StandkePolicy), StableBaseline3's Policy of MlpPolicy and StableBeline3' Poilcy of CnnPolicy 
 
-### Spy Data
-**StandkePolicy**
+In all cases the the agent starts out with 10,000 dollars, has a trading observation window of 30 days/frames, its reward is determined by the [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp), for SPY data it is trained for 200,000 iterations, while for Yandax data it is trained for 1M interations and in both training cases the random offset is set to true and volume is excluded. 
 
-**MlpPolicy** 
+**StandkePolicy-SPY**
+
+**MlpPolicy-SPY** 
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/SPY%20(1).png)
 
-**CnnPolicy**
+**CnnPolicy-SPY**
 
+**StandkePolicy-Yandax**
 
-### Yandex Data
+**MlpPolicy-Yandax** 
 
-**StandkePolicy**
-
-**MlpPolicy** 
-
-**CnnPolicy**
+**CnnPolicy-Yandax**
 
 The Source Code for the Thrid Trading agent and trained models can be found here: 
 * [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb)
