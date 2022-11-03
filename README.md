@@ -356,23 +356,21 @@ To compare (and see) if the previous  trading in the SPY ETF environment could b
 
 In all cases the the agent starts out with 10,000 dollars, has a trading observation window of 30 days/frames, its reward is determined by the [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp), for SPY data it is trained for 200,000 iterations, while for Yandax data it is trained for 1M interations and in both training cases the random offset is set to true and volume is excluded. 
 
-**StandkePolicy-SPY**
+**StandkeCnnPolicy-SPY**
 
 **MlpPolicy-SPY** 
 
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/SPY%20(1).png)
+![]()
 
-**CnnPolicy-SPY**
-
-**StandkePolicy-Yandax**
+**StandkeCnnPolicy-Yandax**
 
 **MlpPolicy-Yandax** 
 
-**CnnPolicy-Yandax**
+
 
 The Source Code for the Thrid Trading agent and trained models can be found here: 
 * [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb)
-* [MlpPolicyModel-30dayWindow-SPYetf](https://github.com/aCStandke/ReinforcementLearning/blob/main/best_model.zip)
+* [MlpPolicyModel-30dayWindow-SPYetf]()
 
 
 ------------------------------------------------------------------------------------------------------------------------------
