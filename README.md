@@ -293,66 +293,12 @@ network initialization scheme (C56) does not matter too much (Fig. 27)
 > Recommendation. Initialize the last policy layer with 100× smaller weights. Use softplus to transform network output into action standard deviation and add a (negative) offset to its input to decrease the initial standard deviation of actions. Tune this offset if possible. Use tanh both as the activation function (if the networks are not too deep) and to transform the samples from the normal
 distribution to the bounded action space. Use a wide value MLP (no layers shared with the policy) but tune the policy width (it might need to be narrower than the value MLP)
 
-With these statements in mind, I decided to implement a seperate-network architecture for PPO for both the policy and value network with [ortho initialization](https://pytorch.org/docs/stable/_modules/torch/nn/init.html#orthogonal_) for the last policy layer's weights with a standard deviation set to 0.01 and the last value layer's weights standard deviation set to 1 as detailed below.
-
-Layer initialization funcntion:
-```
-def layer_init(layer, std=np.sqrt(2), bias_const=0.0):
-    th.nn.init.orthogonal_(layer.weight, std)
-    th.nn.init.constant_(layer.bias, bias_const)
-    return layer
-
-```
-Policy's feature extractor: 
-```
- self.cnn = nn.Sequential(
-            nn.Conv1d(input,16,kernel_size=2),
-            nn.ReLU(),
-            nn.Conv1d(16, 32, kernel_size=4),
-            nn.ReLU(),
-            nn.MaxPool1d(kernel_size=4),
-            nn.Flatten(),
-        )
-
-```
-Value's feature extractor: 
-```
-   self.cnn = nn.Sequential(
-            nn.Conv1d(input,128,kernel_size=2),
-            nn.ReLU(),
-            nn.Conv1d(128, 256, kernel_size=4),
-            nn.ReLU(),
-            nn.MaxPool1d(kernel_size=4),
-            nn.Flatten(),
-        )
-
-```
-Policy Network: 
-```
-     self.policy_net = nn.Sequential(
-            nn.Linear(LAYER_ONE, 32),
-            nn.Tanh(),
-            layer_init(nn.Linear(32, self.latent_dim_pi), std=0.01), 
-        )
-
-```
-Value Network:
-```
-  self.value_net = nn.Sequential(
-           nn.Linear(LAYER_TWO, 256),
-           nn.Tanh(),
-           nn.Linear(256, 128),
-           nn.Tanh(),
-           nn.Linear(128,32),
-           nn.Tanh(),
-           layer_init(nn.Linear(32,last_layer_dim_vf), std=1),
-           )
-```
+With these statements in mind, I decided to implement a seperate and shared Cnn network architecture for PPO for both the policy and value network.
 
 To compare (and see) if the previous  trading in the SPY ETF environment could be transfered over to [high frequency trading](https://en.wikipedia.org/wiki/High-frequency_trading), I used the data that Maxim Lapan used in his stock environement of chapter 8 of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998). Namely, the stock data is from [Yandex](https://en.wikipedia.org/wiki/Yandex) and ranges from 2015-2016. The dataset containes over 130,000  rows of data, in which every row represents a single minute of price data. This concept is illustrated by Maxim Lapan's candlestick graph in which six time windows are shown each of 100 steps and within those 100 steps the agent is buying, selling and holding stock (i.e. within seconds, etc)
 
 
-### Comparison Analysis of Custom Policy (i.e. StandkePolicy), StableBaseline3's Policy of MlpPolicy and StableBeline3' Poilcy of CnnPolicy 
+### Comparison Analysis of Custom Cnn Policy (i.e. StandkePolicy) and StableBaseline3's Policy of MlpPolicy 
 
 In all cases the the agent starts out with 10,000 dollars, has a trading observation window of 30 days/frames, its reward is determined by the [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp), for SPY data it is trained for 200,000 iterations, while for Yandax data it is trained for 1M interations and in both training cases the random offset is set to true and volume is excluded. 
 
@@ -360,7 +306,7 @@ In all cases the the agent starts out with 10,000 dollars, has a trading observa
 
 **MlpPolicy-SPY** 
 
-![]()
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/SPY_MLP.png)
 
 **StandkeCnnPolicy-Yandax**
 
@@ -370,7 +316,7 @@ In all cases the the agent starts out with 10,000 dollars, has a trading observa
 
 The Source Code for the Thrid Trading agent and trained models can be found here: 
 * [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb)
-* [MlpPolicyModel-30dayWindow-SPYetf]()
+* [MlpPolicyModel-30dayWindow-SPYetf](https://github.com/aCStandke/ReinforcementLearning/blob/main/MLP_SPY.zip)
 
 
 ------------------------------------------------------------------------------------------------------------------------------
