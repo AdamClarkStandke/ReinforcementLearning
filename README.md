@@ -275,28 +275,21 @@ SOFTWARE.
 This third stock trading environment is based on Adam King's articles as found here:[Creating Bitcoin trading bots don’t lose money](https://medium.com/towards-data-science/creating-bitcoin-trading-bots-that-dont-lose-money-2e7165fb0b29) and here:[Optimizing deep learning trading bots using state-of-the-art techniques](https://towardsdatascience.com/using-reinforcement-learning-to-trade-bitcoin-for-massive-profit-b69d0e8f583b)
 Furthermore, the random offset in the reset method and the if/and control flow is based on Maxim Lapan's implementation as found in chapter eight of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998).
 
-Similar to the first and second stock trading environment, the agent is trading in the [SPY ETF](https://www.etf.com/SPY?L=1) environment and the [Yandax](https://en.wikipedia.org/wiki/Yandex) environment; trading is in a Multi-Discrete action space of [3, 10] where 0==buy, 1==sell, and 2==hold and the values [0, .1, .2, .3, .4, .5, .6,.7,.8,.9,] represent the number of shares held/sold by the agent ie. 10%, 20%, etc.; and the observation space is a continious observation space from [-inf,inf])(*note: however, in the second stock trading environment this space ranged from [-1,1]*).Also unlike the second stock trading environment, an additional observation was added to the agent's observations space of an account history/ledger of the agent's past networth, balance, and shares from trading (*note: this window is set by the variable LOOKBACK_WINDOW_SIZE and its default is 10 days*). And  to make it semi-realistic, a commision parameter is used in the cost and sales calculation (*note: default is 0.1%*). 
+Similar to the first and second stock trading environment, the agent is trading in the [SPY ETF](https://www.etf.com/SPY?L=1) environment; trading is in a Multi-Discrete action space of [3, 10] where 0==buy, 1==sell, and 2==hold and the values [0, .1, .2, .3, .4, .5, .6,.7,.8,.9,] represent the number of shares held/sold by the agent ie. 10%, 20%, etc.; and the observation space is a continious observation space from [-inf,inf])(*note: however, in the second stock trading environment this space ranged from [-1,1]*).Also unlike the second stock trading environment, an additional observation was added to the agent's observations space of an account history/ledger of the agent's past networth, balance, and shares from trading (*note: this window is set by the variable LOOKBACK_WINDOW_SIZE and its default is 30 days*). And  to make it semi-realistic, a commision parameter is used in the cost and sales calculation (*note: default is 0.1%*). 
 
 Additionally, two different ways of calculating the agent's reward were added, namely: 
 * [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp) $\frac{R_p-r_f}{\sigma_d}$ where $R_p$ is actual or expected portfolio return, $r_f$ is the risk free rate  and ${sigma_d}$ is the std of the downside
 * [omegaRewardRatio](https://www.wallstreetmojo.com/omega-ratio/) $\frac{\int_{\theta}^{inf}1-F(R_p)dx}{\int_{-inf}^{\theta}F(R_p)dx}$ where $F$ is the cumulative probability distribution of returns, and ${\theta}$ is the target return threshold defining what is considered a gain versus a loss
 
-Stable-baselines3's lists the following blog on PPO [37 implementation details of PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/) which breaks down the different implementations of PPO. With these details in mind, I decided to implement a shared Cnn network architecture for PPO for both the policy and value network.
+### Trading using StableBaseline3's MlpPolicy 
 
-
-### Comparison Analysis of Custom Cnn Policy (i.e. StandkePolicy) and StableBaseline3's Policy of MlpPolicy 
-
-In all cases the the agent starts out with 10,000 dollars, has a trading observation window of 30 days/frames, its reward is determined by the [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp), for SPY data it is trained for 200,000 iterations.
-
-**StandkeCnnPolicy-SPY**
-
-Don't use lol 
+The agent starts out with 10,000 dollars, has a trading observation window of 30 days/frames, its reward is determined by the [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp), for the SPY data it was trained for 200,000 iterations with the random offset. The following line plots were generated with the orginial test data as found in [SPY_test](https://github.com/aCStandke/ReinforcementLearning/blob/main/test.csv) and for fun one year's worth of SPY data gatherd from yahoo finance.  
 
 **MlpPolicy-SPY** 
 
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/SPY_MLP.png)
+![]()
 
-The Source Code for the Thrid Trading agent and trained model on SPY can be found here: 
+The Source Code and trained model can be found here: 
 * [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb)
 * [MlpPolicyModel-30dayWindow-SPYetf](https://github.com/aCStandke/ReinforcementLearning/blob/main/MLP_SPY.zip)
 
