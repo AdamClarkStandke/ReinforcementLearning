@@ -281,40 +281,22 @@ Additionally, two different ways of calculating the agent's reward were added, n
 * [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp) $\frac{R_p-r_f}{\sigma_d}$ where $R_p$ is actual or expected portfolio return, $r_f$ is the risk free rate  and ${sigma_d}$ is the std of the downside
 * [omegaRewardRatio](https://www.wallstreetmojo.com/omega-ratio/) $\frac{\int_{\theta}^{inf}1-F(R_p)dx}{\int_{-inf}^{\theta}F(R_p)dx}$ where $F$ is the cumulative probability distribution of returns, and ${\theta}$ is the target return threshold defining what is considered a gain versus a loss
 
-Stable-baselines3's lists the following blog on PPO [37 implementation details of PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/) which breaks down the different implementations of PPO. Furthermore, as the authors of [WHAT MATTERS FOR ON-POLICY DEEP ACTOR CRITIC METHODS? A LARGE-SCALE STUDY](https://openreview.net/pdf?id=nIAxjsniDzg) detail: 
-
-> Separate value and policy networks (C47) appear to lead to better performance on our out of five environments (Fig. 15). To avoid analyzing the other choices based on bad models, we thus focus for the rest of this experiment only on agents with separate value and policy networks. Regarding network sizes, the optimal width of the policy MLP depends on the complexity of the environment (Fig. 18) and too low or too high values can cause significant drop in performance while for the value function there seems to be no downside in using wider networks (Fig. 21). Moreover, on some environments it is beneficial to make the value network wider than the policy one, e.g. on HalfCheetah the best results are achieved with 16 − 32 units per layer in the policy network and 256
-in the value network. Two hidden layers appear to work well for policy (Fig. 22) and value networks (Fig. 20) in all tested environments. As for activation functions, we observe that tanh activations perform best and relu worst
-
-> Interestingly, the initial policy appears to have a surprisingly high impact on the training performance.The key recipe is to initialize the policy at the beginning of training so that the action distribution is centered around 0<sup>10</sup> regardless of the observation and has a rather small standard deviation. This can be achieved by initializing the policy MLP with smaller weights in the last layer (C57, Fig. 24, this alone boosts the performance on Humanoid by 66%) so that the initial action distribution is almost
-independent of the observation...Other choices appear to be less important: The scale of the last layer initialization matters much less for the value MLP (C58) than for the policy MLP (Fig. 19). Apart from the last layer scaling, the
-network initialization scheme (C56) does not matter too much (Fig. 27)
-
-> Recommendation. Initialize the last policy layer with 100× smaller weights. Use softplus to transform network output into action standard deviation and add a (negative) offset to its input to decrease the initial standard deviation of actions. Tune this offset if possible. Use tanh both as the activation function (if the networks are not too deep) and to transform the samples from the normal
-distribution to the bounded action space. Use a wide value MLP (no layers shared with the policy) but tune the policy width (it might need to be narrower than the value MLP)
-
-With these statements in mind, I decided to implement a seperate and shared Cnn network architecture for PPO for both the policy and value network.
-
-To compare (and see) if the previous  trading in the SPY ETF environment could be transfered over to [high frequency trading](https://en.wikipedia.org/wiki/High-frequency_trading), I used the data that Maxim Lapan used in his stock environement of chapter 8 of his book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998). Namely, the stock data is from [Yandex](https://en.wikipedia.org/wiki/Yandex) and ranges from 2015-2016. The dataset containes over 130,000  rows of data, in which every row represents a single minute of price data. This concept is illustrated by Maxim Lapan's candlestick graph in which six time windows are shown each of 100 steps and within those 100 steps the agent is buying, selling and holding stock (i.e. within seconds, etc)
+Stable-baselines3's lists the following blog on PPO [37 implementation details of PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/) which breaks down the different implementations of PPO. With these details in mind, I decided to implement a shared Cnn network architecture for PPO for both the policy and value network.
 
 
 ### Comparison Analysis of Custom Cnn Policy (i.e. StandkePolicy) and StableBaseline3's Policy of MlpPolicy 
 
-In all cases the the agent starts out with 10,000 dollars, has a trading observation window of 30 days/frames, its reward is determined by the [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp), for SPY data it is trained for 200,000 iterations, while for Yandax data it is trained for 1M interations and in both training cases the random offset is set to true and volume is excluded. 
+In all cases the the agent starts out with 10,000 dollars, has a trading observation window of 30 days/frames, its reward is determined by the [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp), for SPY data it is trained for 200,000 iterations.
 
 **StandkeCnnPolicy-SPY**
+
+Don't use lol 
 
 **MlpPolicy-SPY** 
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/SPY_MLP.png)
 
-**StandkeCnnPolicy-Yandax**
-
-**MlpPolicy-Yandax** 
-
-
-
-The Source Code for the Thrid Trading agent and trained models can be found here: 
+The Source Code for the Thrid Trading agent and trained model on SPY can be found here: 
 * [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb)
 * [MlpPolicyModel-30dayWindow-SPYetf](https://github.com/aCStandke/ReinforcementLearning/blob/main/MLP_SPY.zip)
 
