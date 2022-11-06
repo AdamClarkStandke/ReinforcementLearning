@@ -285,7 +285,7 @@ Additionally, two different ways of calculating the agent's reward were added, n
 
 The agent starts out with 10,000 dollars, has a trading observation window of 30 days/frames, its reward is determined by the [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp), for the SPY data it was trained for 200,000 iterations with the random offset. The following line plots were generated with the orginial test data as found in [SPY_test](https://github.com/aCStandke/ReinforcementLearning/blob/main/test.csv) and for fun one year's worth of SPY data gatherd from yahoo finance.  
 
-![]()
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/stuff.png)
 
 The Source Code and trained model can be found here: 
 * [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/ThirdStockEnivornment.ipynb)
