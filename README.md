@@ -282,11 +282,9 @@ Additionally, two different ways of calculating the agent's reward were added, n
 * [omegaRewardRatio](https://www.wallstreetmojo.com/omega-ratio/) $\frac{\int_{\theta}^{inf}1-F(R_p)dx}{\int_{-inf}^{\theta}F(R_p)dx}$ where $F$ is the cumulative probability distribution of returns, and ${\theta}$ is the target return threshold defining what is considered a gain versus a loss
 
 ### Trading using StableBaseline3's MlpPolicy 
-
-The agent starts out with 10,000 dollars, has a trading observation window of 30 days/frames, its reward is determined by the [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp), for the SPY data it was trained for 200,000 iterations with the random offset to generate the model and the source code can be found here: 
  
 * [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/modelTesting.ipynb)
-* [MlpPolicyModel-30dayWindow-SPYetf](https://github.com/aCStandke/ReinforcementLearning/blob/main/MLP_SPY.zip)
+
 
 
 ------------------------------------------------------------------------------------------------------------------------------
