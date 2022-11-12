@@ -277,13 +277,18 @@ Furthermore, the random offset in the reset method and the if/and control flow i
 
 Similar to the first and second stock trading environment, the agent is trading in the [SPY ETF](https://www.etf.com/SPY?L=1) environment; trading is in a Multi-Discrete action space of [3, 10] where 0==buy, 1==sell, and 2==hold and the values [0, .1, .2, .3, .4, .5, .6,.7,.8,.9,] represent the number of shares held/sold by the agent ie. 10%, 20%, etc.; and the observation space is a continious observation space from [-inf,inf])(*note: however, in the second stock trading environment this space ranged from [-1,1]*).Also unlike the second stock trading environment, an additional observation was added to the agent's observations space of an account history/ledger of the agent's past networth, balance, and shares from trading (*note: this window is set by the variable LOOKBACK_WINDOW_SIZE and its default is 30 days*). And  to make it semi-realistic, a commision parameter is used in the cost and sales calculation (*note: default is 0.1%*). 
 
-Additionally, two different ways of calculating the agent's reward were added, namely: 
+Additionally, three different ways of calculating the agent's reward were added, namely: 
 * [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp) $\frac{R_p-r_f}{\sigma_d}$ where $R_p$ is actual or expected portfolio return, $r_f$ is the risk free rate  and ${sigma_d}$ is the std of the downside
 * [omegaRewardRatio](https://www.wallstreetmojo.com/omega-ratio/) $\frac{\int_{\theta}^{inf}1-F(R_p)dx}{\int_{-inf}^{\theta}F(R_p)dx}$ where $F$ is the cumulative probability distribution of returns, and ${\theta}$ is the target return threshold defining what is considered a gain versus a loss
+* ROI
+* AAV
+* 
 
 ### Trading using StableBaseline3's MlpPolicy 
+
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/Mlprf.png)
  
-* [Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/modelTesting.ipynb)
+The Source Code for the Third Trading agent can be found here:[Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/modelTesting.ipynb)
 
 
 
@@ -304,4 +309,3 @@ Additionally, two different ways of calculating the agent's reward were added, n
 [^11]:[Stable-Baselines3](https://stable-baselines3.readthedocs.io/en/master/index.html)
 [^12]: Note: eventhough this decision is discrete in nature, it is being modeled as a continous action by making values less than 0 as a buy action and values greater than or equal to 0 as a sell action
 [^13]: [Create custom gym environments from scratch — A stock market example](https://towardsdatascience.com/creating-a-custom-openai-gym-environment-for-stock-trading-be532be3910e)
-[^14]: [The 37 Implementation Details of Proximal Policy Optimization](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/) 
