@@ -280,9 +280,7 @@ Similar to the first and second stock trading environment, the agent is trading 
 Additionally, three different ways of calculating the agent's reward were added, namely: 
 * [sortinoRewardRatio](https://www.investopedia.com/terms/s/sortinoratio.asp) $\frac{R_p-r_f}{\sigma_d}$ where $R_p$ is actual or expected portfolio return, $r_f$ is the risk free rate  and ${sigma_d}$ is the std of the downside
 * [omegaRewardRatio](https://www.wallstreetmojo.com/omega-ratio/) $\frac{\int_{\theta}^{inf}1-F(R_p)dx}{\int_{-inf}^{\theta}F(R_p)dx}$ where $F$ is the cumulative probability distribution of returns, and ${\theta}$ is the target return threshold defining what is considered a gain versus a loss
-* ROI
-* AAV
-* 
+* [Excess Return](https://ai.stackexchange.com/questions/10082/suitable-reward-function-for-trading-buy-and-sell-orders) This is a reward rule that was created by Franklin Allen and Risto Karjalainen in their paper [Using genetic algorithms to find technical trading rules](https://www.cs.montana.edu/courses/spring2007/536/materials/Lopez/genetic.pdf). This is the defualt reward function for the third trading environment. 
 
 ### Trading using StableBaseline3's MlpPolicy 
 
