@@ -297,14 +297,19 @@ The D4PG reinforcement algorithm is an algorithm that enhances DDPG by making th
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/enhancements_to_DDPG.png)[^14]
 
-To do this,they manapulate the traditional state-action value fuction by parameterizing the policy from $\pi$:
+**DDPG Background**
+
+The DDPG algorithm manapulates the traditional state-action value fuction by parameterizing the policy from $\pi$:
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/traditional_stateValueFunction.png)[^14]
 
-to $\pi_{\theta}$:
+to $\pi_{\theta}$ and then taking the gradient with respect to $\theta$:
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/paramartized_stateAction_DPGgradient.png)[^14]
 
+and parameterizing the value function to *w* through the [Bellman operator](https://ai.stackexchange.com/questions/11057/what-is-the-bellman-operator-in-reinforcement-learning#:~:text=The%20Bellman%20operators%20are%20%22operators,to%20a%20unique%20fixed%20point.) to form the temporal difference (TD) error:
+
+![]()[^14]
 
 ## Implementation:
 
