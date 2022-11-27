@@ -289,9 +289,16 @@ Additionally, three different ways of calculating the agent's reward were added,
 The Source Code for the Third Trading agent can be found here:[Third Spy Trading Agent](https://github.com/aCStandke/ReinforcementLearning/blob/main/modelTesting.ipynb)
 
 ------------------------------------------------------------------------------------------------------------------------------
-# Robotic Control:
+# Robotic Control Algorithms:
 
+## Continious A2C
 [![Watch the video](https://github.com/aCStandke/ReinforcementLearning/blob/main/mq1.png)](https://youtu.be/PIgWhBXI7Ks)
+
+## DDPG
+[![Watch the video]()](https://youtu.be/2SSgQbgGD_0)
+
+## D4PG
+
 
 
 ## Reference:
