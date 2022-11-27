@@ -299,6 +299,12 @@ The Source Code for the Third Trading agent can be found here:[Third Spy Trading
 
 ## D4PG
 
+The D4PG reinforcement algorithm is an algorithm that enhances DDPG by making the output of the critic distributional. Namely as the authors of [^14] detail:
+
+
+
+
+
 
 
 ## Reference:
@@ -315,3 +321,4 @@ The Source Code for the Third Trading agent can be found here:[Third Spy Trading
 [^11]:[Stable-Baselines3](https://stable-baselines3.readthedocs.io/en/master/index.html)
 [^12]: Note: eventhough this decision is discrete in nature, it is being modeled as a continous action by making values less than 0 as a buy action and values greater than or equal to 0 as a sell action
 [^13]: [Create custom gym environments from scratch — A stock market example](https://towardsdatascience.com/creating-a-custom-openai-gym-environment-for-stock-trading-be532be3910e)
+[^14]:[D4PG](https://arxiv.org/pdf/1804.08617.pdf)
