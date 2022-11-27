@@ -299,9 +299,9 @@ The Source Code for the Third Trading agent can be found here:[Third Spy Trading
 
 ## D4PG
 
-The D4PG reinforcement algorithm is an algorithm that enhances DDPG by making the output of the critic distributional. Namely as the authors of [^14] detail:
+The D4PG reinforcement algorithm is an algorithm that enhances DDPG by making the update of the critic distributional. Namely as the authors of [^14] detail:
 
-![]()
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/enhancements_to_DDPG.png)
 
 
 
