@@ -299,11 +299,11 @@ The D4PG reinforcement algorithm is an algorithm that enhances DDPG by making th
 
 To do this,they manapulate the traditional state-action value fuction by parameterizing the policy from $\pi$:
 
-![]()
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/traditional_stateValueFunction.png)
 
 to $\pi_{\theta}$:
 
-![]()
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/paramartized_stateAction_DPGgradient.png)
 
 
 **Continious A2C**
