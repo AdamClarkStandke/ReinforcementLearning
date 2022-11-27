@@ -291,6 +291,8 @@ The Source Code for the Third Trading agent can be found here:[Third Spy Trading
 ------------------------------------------------------------------------------------------------------------------------------
 # Robotic Control Algorithms:
 
+[![Watch the video](https://github.com/aCStandke/ReinforcementLearning/blob/main/mq1.png)](https://youtu.be/PIgWhBXI7Ks)[^15]
+
 ## D4PG
 
 The D4PG reinforcement algorithm is an algorithm that enhances DDPG by making the update of the critic distributional. Namely as the authors of [^14] detail:
@@ -309,23 +311,18 @@ to $\pi_{\theta}$ and then taking the gradient with respect to $\theta$:
 
 and parameterizing the value function to *w* through the [Bellman operator](https://ai.stackexchange.com/questions/11057/what-is-the-bellman-operator-in-reinforcement-learning#:~:text=The%20Bellman%20operators%20are%20%22operators,to%20a%20unique%20fixed%20point.) to form the temporal difference (TD) error:
 
-![]()[^14]
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/bellmanOperator_TemporalDifference_DDPG.png)[^14]
+
+The below video is the result of running the DDPG algorithm for 1 million timesteps on the MinitaurBulletEnv which models the [Minitaur Robot](https://www.youtube.com/watch?v=pWm6BK_SNPo). The implementation comes from chapter 17 of Maxim Lapan's book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998)  
+
+[![Watch the video](https://github.com/aCStandke/ReinforcementLearning/blob/main/mq2.png)](https://youtu.be/2SSgQbgGD_0)
+
+
 
 ## Implementation:
 
 
 
-
-
-
-
-**Continious A2C**
-
-[![Watch the video](https://github.com/aCStandke/ReinforcementLearning/blob/main/mq1.png)](https://youtu.be/PIgWhBXI7Ks)
-
-**DDPG**
-
-[![Watch the video](https://github.com/aCStandke/ReinforcementLearning/blob/main/mq2.png)](https://youtu.be/2SSgQbgGD_0)
 
 
 
@@ -344,3 +341,4 @@ and parameterizing the value function to *w* through the [Bellman operator](http
 [^12]: Note: eventhough this decision is discrete in nature, it is being modeled as a continous action by making values less than 0 as a buy action and values greater than or equal to 0 as a sell action
 [^13]: [Create custom gym environments from scratch — A stock market example](https://towardsdatascience.com/creating-a-custom-openai-gym-environment-for-stock-trading-be532be3910e)
 [^14]:[D4PG](https://arxiv.org/pdf/1804.08617.pdf)
+[^15]: Note: This video was captured after implementing A2C for continious actions with a normal distribution as detailed by Maxim Lapan in chapter 17 
