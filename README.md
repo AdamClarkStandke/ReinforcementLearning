@@ -295,7 +295,7 @@ The Source Code for the Third Trading agent can be found here:[Third Spy Trading
 [![Watch the video](https://github.com/aCStandke/ReinforcementLearning/blob/main/mq1.png)](https://youtu.be/PIgWhBXI7Ks)
 
 ## DDPG
-[![Watch the video]()](https://youtu.be/2SSgQbgGD_0)
+[![Watch the video](https://github.com/aCStandke/ReinforcementLearning/blob/main/mq2.png)](https://youtu.be/2SSgQbgGD_0)
 
 ## D4PG
 
