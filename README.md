@@ -291,20 +291,28 @@ The Source Code for the Third Trading agent can be found here:[Third Spy Trading
 ------------------------------------------------------------------------------------------------------------------------------
 # Robotic Control Algorithms:
 
-## Continious A2C
-[![Watch the video](https://github.com/aCStandke/ReinforcementLearning/blob/main/mq1.png)](https://youtu.be/PIgWhBXI7Ks)
-
-## DDPG
-[![Watch the video](https://github.com/aCStandke/ReinforcementLearning/blob/main/mq2.png)](https://youtu.be/2SSgQbgGD_0)
-
 ## D4PG
 
 The D4PG reinforcement algorithm is an algorithm that enhances DDPG by making the update of the critic distributional. Namely as the authors of [^14] detail:
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/enhancements_to_DDPG.png)
 
+To do this,they manapulate the traditional state-action value fuction by parameterizing the policy from $\pi$:
+
+![]()
+
+to $\pi_{\theta}$:
+
+![]()
 
 
+**Continious A2C**
+
+[![Watch the video](https://github.com/aCStandke/ReinforcementLearning/blob/main/mq1.png)](https://youtu.be/PIgWhBXI7Ks)
+
+**DDPG**
+
+[![Watch the video](https://github.com/aCStandke/ReinforcementLearning/blob/main/mq2.png)](https://youtu.be/2SSgQbgGD_0)
 
 
 
