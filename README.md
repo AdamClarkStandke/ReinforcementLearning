@@ -295,15 +295,23 @@ The Source Code for the Third Trading agent can be found here:[Third Spy Trading
 
 The D4PG reinforcement algorithm is an algorithm that enhances DDPG by making the update of the critic distributional. Namely as the authors of [^14] detail:
 
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/enhancements_to_DDPG.png)
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/enhancements_to_DDPG.png)[^14]
 
 To do this,they manapulate the traditional state-action value fuction by parameterizing the policy from $\pi$:
 
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/traditional_stateValueFunction.png)
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/traditional_stateValueFunction.png)[^14]
 
 to $\pi_{\theta}$:
 
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/paramartized_stateAction_DPGgradient.png)
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/paramartized_stateAction_DPGgradient.png)[^14]
+
+
+## Implementation:
+
+
+
+
+
 
 
 **Continious A2C**
