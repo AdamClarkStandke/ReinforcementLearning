@@ -317,7 +317,7 @@ The below video is the result of running the DDPG algorithm for 1 million timest
 
 [![Watch the video](https://github.com/aCStandke/ReinforcementLearning/blob/main/mq2.png)](https://youtu.be/2SSgQbgGD_0)
 
-
+**D4PG Theory**
 
 ## Implementation:
 
