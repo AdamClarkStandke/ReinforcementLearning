@@ -319,6 +319,10 @@ The below video is the result of running the DDPG algorithm for 1 million timest
 
 **D4PG Theory**
 
+With this background in mind,the authors of [^14] enhance the DDPG algorithm by first making the state-value function and the Bellman operator distributional by introducing a parameterized random variable $Z_{\pi}$:
+
+![]()[^14]
+
 ## Implementation:
 
 
