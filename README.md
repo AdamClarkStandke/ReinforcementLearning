@@ -323,7 +323,17 @@ With this background in mind,the authors of [^14] enhance the DDPG algorithm by 
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/distributionalStateActionFunction_distributionalBellmanOp.png)[^14]
 
-## Implementation:
+With this in place, the temporal difference (TD) error can then be made distributional:
+
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/paramaterizedDistributionalLoss_D4PG.png)[^14]
+
+**D4PG Algorithm**
+
+This is the pseudocode for the algorithm:
+
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/D4PG_Algo.png)[^14]
+
+## Example 6: Making a Real Life Minitaur Robot:
 
 
 
