@@ -337,7 +337,7 @@ This is the pseudocode for the algorithm:
 
 The below video illustrates the custom robot that will be built and then trained to use **all** of its legs to walk using DDPG Algorithm. 
 
-[![One leg robot](https://github.com/aCStandke/ReinforcementLearning/blob/main/CustomRobot.png)](https://youtu.be/-o9ykXHRzVY)
+[![One leg robot](https://github.com/aCStandke/ReinforcementLearning/blob/main/CustomRobot.png)](https://youtu.be/-o9ykXHRzVY)[^9]
 
 **Hardware Components:**
 
