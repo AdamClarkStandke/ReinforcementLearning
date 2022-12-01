@@ -335,13 +335,13 @@ This is the pseudocode for the algorithm:
 
 ## Example 6: Making a Real Life Robot and using the DDPG Algorithm to train it:
 
-The below video illustrates the custom robot that will be built and then trained to use *all* of its legs to walk using DDPG Algorithm. 
+The below video illustrates the custom robot that will be built and then trained to use **all** of its legs to walk using DDPG Algorithm. 
 
 [![One leg robot](https://github.com/aCStandke/ReinforcementLearning/blob/main/CustomRobot.png)](https://youtu.be/-o9ykXHRzVY)
 
-**Hardware Components**
+**Hardware Components:**
 
-**3d Printed Robot Frame**
+**3d Printed Robot Frame:**
 
 
 
