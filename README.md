@@ -333,11 +333,15 @@ This is the pseudocode for the algorithm:
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/D4PG_Algo.png)[^14]
 
-## Example 6: Making a Real Life Minitaur Robot:
+## Example 6: Making a Real Life Robot and using the DDPG Algorithm to train it:
 
-**Minitaur Robot interacting in the Pybullet Env**
+The below video illustrates the custom robot that will be built and then trained to use *all* of its legs to walk using DDPG Algorithm. 
 
-[![Watch the video](https://github.com/aCStandke/ReinforcementLearning/blob/main/mq10.png)](https://youtu.be/I-1DsSDVwz8)
+[![One leg robot](https://github.com/aCStandke/ReinforcementLearning/blob/main/CustomRobot.png)](https://youtu.be/-o9ykXHRzVY)
+
+**Hardware Components**
+
+**3d Printed Robot Frame**
 
 
 
