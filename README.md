@@ -335,8 +335,9 @@ This is the pseudocode for the algorithm:
 
 ## Example 6: Making a Real Life Minitaur Robot:
 
+**Minitaur Robot interacting in the Pybullet Env**
 
-
+[![Watch the video](https://github.com/aCStandke/ReinforcementLearning/blob/main/mq10.png)](https://youtu.be/I-1DsSDVwz8)
 
 
 
