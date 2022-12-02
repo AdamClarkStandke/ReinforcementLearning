@@ -342,8 +342,14 @@ The below video illustrates the custom robot that will be built and then trained
 ### Hardware Components:
 
 **PyBoard**
+ 
+ Front View:
+ 
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/pyboard_front.jpg)
 
-![]()
+Back View: 
+
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/pyboard_back.jpg)
 
 
 
