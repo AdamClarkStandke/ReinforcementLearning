@@ -335,9 +335,9 @@ This is the pseudocode for the algorithm:
 
 ## Example 6: Making a Real Life Robot and using the DDPG Algorithm to train it:
 
-The below video illustrates the custom robot that will be built and then trained to use **all** of its legs to walk using DDPG Algorithm. 
+The below simulation illustrates the MuJoCo based robot that will actaully be built and be contolled by the trained DDPG A2C policy to stand up and move forward in the real world, after being trained in the simulation for approx. 2 million steps and achieving a reward of 0.099.   
 
-[![One leg robot](https://github.com/aCStandke/ReinforcementLearning/blob/main/CustomRobot.png)](https://youtu.be/-o9ykXHRzVY)[^9]
+[![alive](https://github.com/aCStandke/ReinforcementLearning/blob/main/mqdefault.png)](https://youtu.be/p7SNpGTb3Ak)[^9]
 
 ### Hardware Components:
 
@@ -351,7 +351,9 @@ Back View:
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/pyboard_back.jpg)
 
+**Servo Motors**
 
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/IMG_0229.jpg)
 
 **3d Printed Robot Frame:**
 
