@@ -342,8 +342,22 @@ The below simulation illustrates the MuJoCo based robot that will actaully be bu
 ### Hardware Components:
 
 **PyBoard**
- 
- Front View:
+
+Pyboard Specs:
+* STM32F405RG 
+* 168 MHz Arm CPU with hardware floating point
+* 1024KiB and 192KiB RAM
+* Micro USB connector for power and serial communication
+* 3-axis accelerometer (MMA7660)
+* Real time clock with optional battery backup
+* 24 GPIO on left and right edges and 5 GPIO on bottom row, and switch GPIO available on bottom row
+* 3x 12-bit analog to digital converters, available on 16 pins, 4 with analog ground shielding
+* 2x 12-bit digital to analog (DAC) converters, available on pins X5 and
+* 4 LEDs (red, green, yellow and blue)
+* 1 reset and 1 user switch
+* 3.3V LDO voltage regulator, capable of supplying up to 250mA, input voltage range 3.6V to 16V
+
+Front View:
  
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/pyboard_front.jpg)
 
@@ -353,11 +367,46 @@ Back View:
 
 **Servo Motors**
 
+Mini Analog Servo GH-S37A:
+
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/IMG_0229.jpg)
 
-**3d Printed Robot Frame:**
+**IMU Sensor**
 
+BerryIMUv3-10DOF Sensor Specs:
+* i2c and SPI interface
+* IMU sensor LSM6DSL & LIS3MDL
+* Gyroscope Measurement range:±125/±250/±500/±1000/±2000 dps
+* Accelerometer Scales of: ±2g / ±4g / ±8g / ±16g
+* Magnetometer Magnetic field full scale of: ±4 / ±8 / ±12 / ±16 gauss.
+* Internal temperature sensor
+* Barometric Sensor BMP388
+* Pressure range: 300...1250 hPa @ 25°C 950...1050 hPa ±0.12 hPa, ±0.1m
+* Temperature range: -40...+85 °C
 
+Top View:
+ 
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/IMU_Sensor_top.jpg)
+
+Back View: 
+
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/IMU_Sensor_bottom.jpg)
+
+**3D Printed Frame:**
+
+This 3D Frame was designed by Maxim Lapan and the .stl file can be found [HERE](https://github.com/aCStandke/ReinforcementLearning/blob/main/minatur_frame.stl). It was printed by [xometry](https://www.xometry.com/)
+
+Top View:
+ 
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/3Dprinted_top_frame.jpg)
+
+Side View: 
+
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/3Dprinted_side_frame.jpg)
+
+**Assembled Robot**
+
+TO be continued......
 
 ## Reference:
 [^1]: [Deep Reinforcement Learning with Double Q-learning](https://arxiv.org/pdf/1509.06461.pdf)
