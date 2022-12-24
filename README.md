@@ -404,9 +404,9 @@ Side View:
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/3Dprinted_side_frame.jpg)
 
-**Assembled Robot**
+**Partially Assembled Robot**
 
-TO be continued......
+![]()
 
 ## Reference:
 [^1]: [Deep Reinforcement Learning with Double Q-learning](https://arxiv.org/pdf/1509.06461.pdf)
