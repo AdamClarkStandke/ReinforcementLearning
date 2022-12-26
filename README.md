@@ -404,9 +404,9 @@ Side View:
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/3Dprinted_side_frame.jpg)
 
-**Partially Assembled Robot (closer to world domination)**
+**Assembled Robot (closer to world domination, but have to program it first!!!)**
 
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/IMG_0248.jpg)
+![](https://github.com/aCStandke/ReinforcementLearning/blob/main/IMG_0251.jpg)
 
 ## Reference:
 [^1]: [Deep Reinforcement Learning with Double Q-learning](https://arxiv.org/pdf/1509.06461.pdf)
