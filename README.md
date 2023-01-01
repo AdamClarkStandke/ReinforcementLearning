@@ -335,7 +335,7 @@ This is the pseudocode for the algorithm:
 
 ## Example 6: Making a Real Life Robot and using the DDPG Algorithm to train it:
 
-The below simulation illustrates the MuJoCo based robot that will actaully be built and be contolled by the trained DDPG A2C policy to stand up and move forward in the real world, after being trained in the simulation for approx. 2 million steps and achieving a reward of 0.099.   
+The below simulation illustrates the MuJoCo based robot that will actaully be built and be contolled by the trained DDPG A2C policy to stand up and move forward in the real world, after being trained in the simulation for approx. 2 million steps and achieving a reward of ??. The model's weights can be found here:[weights](??)    
 
 [![alive](https://github.com/aCStandke/ReinforcementLearning/blob/main/mqdefault.png)](https://youtu.be/p7SNpGTb3Ak)[^9]
 
@@ -361,11 +361,7 @@ Front View:
  
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/pyboard_front.jpg)
 
-Back View: 
-
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/pyboard_back.jpg)
-
-**Servo Motors**
+**Servo Motor**
 
 Mini Analog Servo GH-S37A:
 
@@ -388,9 +384,6 @@ Top View:
  
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/IMU_Sensor_top.jpg)
 
-Back View: 
-
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/IMU_Sensor_bottom.jpg)
 
 **3D Printed Frame:**
 
@@ -404,10 +397,20 @@ Side View:
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/3Dprinted_side_frame.jpg)
 
-**Assembled Robot (closer to world domination, but have to program it first!!!)**
+**Assembled Robot**
+
+ Front View:
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/IMG_0251.jpg)
 
+ Side View:
+ 
+ ![](??)
+ 
+### MicroPython:
+ 
+### Results:
+-------------------------------------------------------------------------------
 ## Reference:
 [^1]: [Deep Reinforcement Learning with Double Q-learning](https://arxiv.org/pdf/1509.06461.pdf)
 [^2]: [Train a Mario-Playing Agent](https://pytorch.org/tutorials/intermediate/mario_rl_tutorial.html)
