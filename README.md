@@ -408,7 +408,16 @@ Side View:
  ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/69405178433__EA7CFBEC-BA4B-42E9-84FE-0403279D3322.jpg)
  
 ### MicroPython:
- 
+
+**Programming the Servo Motors**
+
+[![Watch the video]()](https://youtube.com/shorts/15JVr45pSuI?feature=share )
+
+
+
+
+
+
 ### Results:
 -------------------------------------------------------------------------------
 ## Reference:
