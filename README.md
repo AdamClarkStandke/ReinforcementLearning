@@ -411,7 +411,7 @@ Side View:
 
 **Programming the Servo Motors**
 
-[![Watch the video]()](https://youtube.com/shorts/15JVr45pSuI?feature=share )
+[![Watch the video](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/Screenshot%202023-01-24%208.19.25%20AM.png)](https://youtube.com/shorts/15JVr45pSuI?feature=share )
 
 
 
