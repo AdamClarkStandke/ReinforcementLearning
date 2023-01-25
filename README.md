@@ -343,19 +343,18 @@ The below simulation illustrates the MuJoCo based robot that will actaully be bu
 
 **PyBoard**
 
-Pyboard Specs:
-* STM32F405RG 
-* 168 MHz Arm CPU with hardware floating point
-* 1024KiB and 192KiB RAM
+[MicroPython pyboard lite v1.0](https://store.micropython.org/product/PYBLITEv1.0#_):
+* STM32F411RE microcontroller
+* 96 MHz Cortex M4 CPU with hardware floating point
+* 512KiB flash ROM and 128KiB RAM
 * Micro USB connector for power and serial communication
-* 3-axis accelerometer (MMA7660)
-* Real time clock with optional battery backup
-* 24 GPIO on left and right edges and 5 GPIO on bottom row, and switch GPIO available on bottom row
-* 3x 12-bit analog to digital converters, available on 16 pins, 4 with analog ground shielding
-* 2x 12-bit digital to analog (DAC) converters, available on pins X5 and
+* Micro SD card slot, supporting standard and high capacity SD cards
+* 24 GPIO on left and right edges and 5 GPIO on bottom row, plus LED and switch GPIO available on bottom row
+* 1x 12-bit analog to digital converter, available on 16 pins, 4 with analog ground shielding
 * 4 LEDs (red, green, yellow and blue)
 * 1 reset and 1 user switch
-* 3.3V LDO voltage regulator, capable of supplying up to 250mA, input voltage range 3.6V to 16V
+* On-board 3.3V LDO voltage regulator, capable of supplying up to 250mA, input voltage range 3.6V to 16V
+* DFU bootloader in ROM for easy upgrading of firmware
 
 Front View:
  
@@ -363,26 +362,23 @@ Front View:
 
 **Servo Motor**
 
-Mini Analog Servo GH-S37A:
+[Mini Analog Servo GH-S37A]():
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/IMG_0229.jpg)
 
 **IMU Sensor**
 
-BerryIMUv3-10DOF Sensor Specs:
-* i2c and SPI interface
-* IMU sensor LSM6DSL & LIS3MDL
-* Gyroscope Measurement range:±125/±250/±500/±1000/±2000 dps
-* Accelerometer Scales of: ±2g / ±4g / ±8g / ±16g
-* Magnetometer Magnetic field full scale of: ±4 / ±8 / ±12 / ±16 gauss.
-* Internal temperature sensor
-* Barometric Sensor BMP388
-* Pressure range: 300...1250 hPa @ 25°C 950...1050 hPa ±0.12 hPa, ±0.1m
-* Temperature range: -40...+85 °C
+[HiLetgo MPU9250](https://www.aliexpress.us/item/2251832657549851.html?pdp_npi=2%40dis%21USD%21US%20%241.80%21%241.42%21%21%21%21%21%402103222716746589626173036eb3c3%2112000026280862000%21btf&_t=pvid%3A767e9d83-3839-4b3d-9797-411e220215d1&afTraceInfo=32843864603__pc__pcBridgePPC__xxxxxx__1674658962&spm=a2g0o.ppclist.product.mainProduct&gatewayAdapt=glo2usa&_randl_shipto=US):
+* Mpu-9250 module (three axis gyroscope + three axis acceleration + three axis magnetic field)
+* Gyroscope range: ± 250 500 1000 2000 ° / S
+* Acceleration range: ± 2 ± 4 ± 8 ± 16g
+* Magnetic field range: ± 4800ut
+* Power supply: 3-5v (internal low voltage differential voltage stabilizing)
+* Communication mode: Standard IIC / SPI communication protocol (chip built-in 16 bit AD converter, 16 bit data output)* 
 
 Top View:
  
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/IMU_Sensor_top.jpg)
+![](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/IMG_0276.jpg)
 
 
 **3D Printed Frame:**
@@ -399,13 +395,7 @@ Side View:
 
 **Assembled Robot**
 
- Front View:
-
-![](https://github.com/aCStandke/ReinforcementLearning/blob/main/IMG_0251.jpg)
-
- Side View:
- 
- ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/69405178433__EA7CFBEC-BA4B-42E9-84FE-0403279D3322.jpg)
+![](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/Screenshot%202023-01-24%208.19.25%20AM.png)
  
 ### MicroPython:
 
@@ -413,7 +403,9 @@ Side View:
 
 [![Watch the video](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/Screenshot%202023-01-24%208.19.25%20AM.png)](https://youtube.com/shorts/15JVr45pSuI?feature=share )
 
+**Programming the Sensors**
 
+**Learning to walk from learned DDPG policy**
 
 
 
