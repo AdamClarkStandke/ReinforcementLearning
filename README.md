@@ -362,7 +362,7 @@ Front View:
 
 **Servo Motor**
 
-[Mini Analog Servo GH-S37A]():
+[Mini Analog Servo GH-S37A](https://www.amazon.com/Wishiot-Digital-Aircraft-Direction-Helicopter/dp/B0BFQLMTGW/ref=asc_df_B0BFQLMTGW/?tag=hyprod-20&linkCode=df0&hvadid=642054451101&hvpos=&hvnetw=g&hvrand=5670709336879754082&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008192&hvtargid=pla-1942510789854&psc=1&gclid=Cj0KCQiAw8OeBhCeARIsAGxWtUyQsiZRjZhGj4jy7AZfhzH86qANqeLgxMnhHIboh6_IS2gLNNDtvsYaAs_xEALw_wcB):
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/IMG_0229.jpg)
 
@@ -405,7 +405,7 @@ Side View:
 
 **Programming the Sensors**
 
-**Learning to walk from learned DDPG policy**
+**Walking using the learned DDPG policy weights**
 
 
 
