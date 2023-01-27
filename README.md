@@ -393,10 +393,6 @@ Side View:
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/3Dprinted_side_frame.jpg)
 
-**Assembled Robot**
-
-![](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/Screenshot%202023-01-24%208.19.25%20AM.png)
- 
 ### MicroPython:
 
 **Programming the Servo Motors**
@@ -405,12 +401,14 @@ Side View:
 
 **Programming the Sensors**
 
+### Results: 
+
+**Walking not using the learned DDPG policy weights**
+
+ [![Watch the video](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/Screenshot%202023-01-24%208.19.25%20AM.png)]https://youtu.be/62qSF3ZoHGE
+ 
 **Walking using the learned DDPG policy weights**
 
-
-
-
-### Results:
 -------------------------------------------------------------------------------
 ## Reference:
 [^1]: [Deep Reinforcement Learning with Double Q-learning](https://arxiv.org/pdf/1509.06461.pdf)
