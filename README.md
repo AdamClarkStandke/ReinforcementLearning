@@ -403,11 +403,13 @@ Side View:
 
 ### Results: 
 
-**Walking not using the learned DDPG policy weights**
+Here are the results, more details coming!!!! lol 
 
- [![Watch the video](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/Screenshot%202023-01-24%208.19.25%20AM.png)]https://youtu.be/62qSF3ZoHGE
+**Walking without DDPG policy weights**
+
+ [![Watch the video](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/Screenshot%202023-01-24%208.19.25%20AM.png)](https://youtu.be/62qSF3ZoHGE)
  
-**Walking using the learned DDPG policy weights**
+**Walking usingDDPG policy weights**
 
 -------------------------------------------------------------------------------
 ## Reference:
