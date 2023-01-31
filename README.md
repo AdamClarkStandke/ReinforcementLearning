@@ -398,22 +398,23 @@ Side View:
 Programming was done using [MicroPython](https://micropython.org/). Everything basically followed Maxim Lapan's implementation as found in chapter 17 of his book execpt for programming the sensor, since I used a different sensor than what Maxim used. However I was able to find its I2C driver as detailed by [Mika Tuupola](https://github.com/tuupola/micropython-mpu9250) and was able to modify his code to work with Maxim's implementation. The directory structure on the sd card is the following: 
 
 sd/
- - ak8963.py
- - mpu6500.py
- - mpu9250.py
- - obs.py
- - run.py
- - sensor_test.py
- - zero.py
+ - [ak8963.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/ak8963.py)
+ - [mpu6500.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/mpu6500.py)
+ - [mpu9250.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/mpu9250.py)
+ - [obs.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/obs.py)
+ - [run.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/run.py)
+ - [sensor_test.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/sensor_test.py)
+ - [zero.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/zero.py)
  libhw/
-      - nn.py
-      - postproc.py
-      - sensor_buffer.py
-      - sensors.py
-      - servo.py
-      - t1.py
-      - t1zyh.py
-      - t1zyho.py
+      - [nn.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/libhw/nn.py)
+      - [postproc.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/libhw/postproc.py)
+      - [sensor_buffer.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/libhw/sensor_buffer.py)
+      - [sensors.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/libhw/sensors.py)
+      - [servo.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/libhw/servo.py)
+      - [t1.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/libhw/t1.py)
+      - [t1zyh.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/libhw/t1zyh.py)
+      - [t1zyho.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/libhw/t1zyho.py)
+      - my weights for move forward to be added later!!!!!!
 
 ### Results: 
 
