@@ -335,7 +335,7 @@ This is the pseudocode for the algorithm:
 
 ## Example 6: Making a Real Life Robot and using the DDPG Algorithm to train it:
 
-The below simulation illustrates the MuJoCo based robot that will actaully be built and be contolled by the trained DDPG A2C policy to stand up and move forward in the real world, after being trained in the simulation for approx. 2 million steps and achieving a reward of ??. The model's weights can be found here:[weights](??)    
+The below simulation illustrates the MuJoCo based robot that will actaully be built and be contolled by the trained DDPG A2C policy to do the following two training objectives in the real world: 1) stand up and 2) move forward. Everything that follows, i.e. componetns, programming, etc comes from chapter 17 of Maxim Lapan's book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998)  
 
 [![alive](https://github.com/aCStandke/ReinforcementLearning/blob/main/mqdefault.png)](https://youtu.be/p7SNpGTb3Ak)[^9]
 
@@ -393,23 +393,16 @@ Side View:
 
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/3Dprinted_side_frame.jpg)
 
-### MicroPython:
+### Programming:
 
-**Programming the Servo Motors**
-
-[![Watch the video](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/Screenshot%202023-01-24%208.19.25%20AM.png)](https://youtube.com/shorts/15JVr45pSuI?feature=share )
-
-**Programming the Sensors**
 
 ### Results: 
 
-Here are the results, more details coming!!!! lol 
+**Standing using DDPG learned policy**
 
-**Walking without DDPG policy weights**
-
- [![Watch the video](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/Screenshot%202023-01-24%208.19.25%20AM.png)](https://youtu.be/62qSF3ZoHGE)
+ [![Watch the video](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/Screenshot%202023-01-24%208.19.25%20AM.png)](https://youtube.com/shorts/VmOdscO2hKE)
  
-**Walking usingDDPG policy weights**
+**Walking using DDPG learned policy**
 
 -------------------------------------------------------------------------------
 ## Reference:
