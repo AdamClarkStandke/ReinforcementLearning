@@ -395,6 +395,25 @@ Side View:
 
 ### Programming:
 
+Programming was done using [MicroPython](https://micropython.org/). Everything basically followed Maxim Lapan's implementation as found in chapter 17 of his book execpt for programming the sensor, since I used a different sensor than what Maxim used. However I was able to find its I2C driver as detailed by [Mika Tuupola](https://github.com/tuupola/micropython-mpu9250) and was able to modify his code to work with Maxim's implementation. The directory structure on the sd card is the following: 
+
+sd/
+ - ak8963.py
+ - mpu6500.py
+ - mpu9250.py
+ - obs.py
+ - run.py
+ - sensor_test.py
+ - zero.py
+ libhw/
+      - nn.py
+      - postproc.py
+      - sensor_buffer.py
+      - sensors.py
+      - servo.py
+      - t1.py
+      - t1zyh.py
+      - t1zyho.py
 
 ### Results: 
 
