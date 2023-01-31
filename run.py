@@ -4,14 +4,17 @@ Simple orientation calculation from Accelerometer
 import pyb
 import utime
 from machine import I2C
-from libhw.hw_sensors import lis331dlh as lis
+from mpu6500 import MPU6500 
 from libhw.sensor_buffer import SensorsBuffer
 from libhw.postproc import PostPitchRoll
 from libhw import servo
+import micropython
 
-SDA = 'X12'
-SCL = 'Y11'
-PINS = ["B6", "B7", "B10", "B11"]
+
+
+SDA = "Y10"
+SCL = "Y9"
+PINS = ["B6", "B7", "A2","A3"]
 INV = [True, False, True, False]
 STACK_OBS = 4
 
@@ -25,10 +28,11 @@ def do_import(module_name):
 def run(model_name):
     model = do_import(model_name)
 
-    i2c = I2C(freq=400000, scl=SCL, sda=SDA)
-    acc = lis.Lis331DLH(i2c)
+    i2c = I2C(scl=SCL, sda=SDA)
+    acc = MPU6500(i2c)
     buf = SensorsBuffer([acc], timer_index=1, freq=100,
                         batch_size=10, buffer_size=100)
+    micropython.alloc_emergency_exception_buf(100)
     post = PostPitchRoll(buf, pad_yaw=True)
     buf.start()
     ch = servo.pins_to_timer_channels(PINS)

@@ -31,6 +31,7 @@ import ustruct
 import utime
 from machine import I2C, Pin
 from micropython import const
+from libhw.sensors import Sensor
 # pylint: enable=import-error
 
 _GYRO_CONFIG = const(0x1b)
@@ -82,7 +83,7 @@ SF_M_S2 = 9.80665 # 1 g = 9.80665 m/s2 ie. standard gravity
 SF_DEG_S = 1
 SF_RAD_S = 0.017453292519943 # 1 deg/s is 0.017453292519943 rad/s
 
-class MPU6500:
+class MPU6500(Sensor):
     """Class which provides interface to MPU6500 6-axis motion tracking device."""
     def __init__(
         self, i2c, address=0x68,
@@ -90,12 +91,15 @@ class MPU6500:
         accel_sf=SF_M_S2, gyro_sf=SF_RAD_S,
         gyro_offset=(0, 0, 0)
     ):
+    
+    	super(MPU6500, self).__init__()
         self.i2c = i2c
         self.address = address
+        
 
         # 0x70 = standalone MPU6500, 0x71 = MPU6250 SIP
-         #if self.whoami not in [0x71, 0x70]:
-          #   raise RuntimeError("MPU6500 not found in I2C bus.")
+       	#if self.whoami not in [0x72]:
+       		#raise RuntimeError("MPU6500 not found in I2C bus.")
 
         self._accel_so = self._accel_fs(accel_fs)
         self._gyro_so = self._gyro_fs(gyro_fs)
@@ -104,18 +108,49 @@ class MPU6500:
         self._gyro_offset = gyro_offset
 
     @property
-    def acceleration(self):
-        """
-        Acceleration measured by the sensor. By default will return a
-        3-tuple of X, Y, Z axis acceleration values in m/s^2 as floats. Will
-        return values in g if constructor was provided `accel_sf=SF_M_S2`
-        parameter.
-        """
-        so = self._accel_so
-        sf = self._accel_sf
+    def so(self):
+    	return self._accel_so
+    
+    @property
+    def sf(self):
+    	return self._accel_sf
+    	
+    def __len__(self):
+        return 6
+        	
+    
+    def refresh(self):
+       """
+       concrete implementation to fill the buffer with data values
+       """
+       self.i2c.readfrom_mem_into(self.address, _ACCEL_XOUT_H, self._byte[0])
+       self.i2c.readfrom_mem_into(self.address, _ACCEL_XOUT_L, self._byte[1])
+       self.i2c.readfrom_mem_into(self.address, _ACCEL_YOUT_H, self._byte[2])
+       self.i2c.readfrom_mem_into(self.address, _ACCEL_YOUT_L, self._byte[3])
+       self.i2c.readfrom_mem_into(self.address, _ACCEL_ZOUT_H, self._byte[4])
+       self.i2c.readfrom_mem_into(self.address, _ACCEL_ZOUT_L, self._byte[5])
 
-        xyz = self._register_three_shorts(_ACCEL_XOUT_H)
-        return tuple([value / so * sf for value in xyz])
+    @classmethod
+    def decode(cls, b):
+    	"""
+    	Decode bytes into float values
+    	"""
+        return [Sensor.decode_s16(b[ofs:ofs + 2]) / _ACCEL_SO_2G for ofs in range(0, 6, 2)]
+
+    @classmethod
+    def preprocess(cls, vals):
+    	"""
+    	Preprocess list of float values into representation suitable for NNs
+    	"""
+        # Subtract g vector (having magnitude of 1). Not the best way of doing such normalization
+        # as error could be significant.
+        l = m.sqrt(vals[0] * vals[0] + vals[1] * vals[1] + vals[2] * vals[2])
+        if abs(l) > 1e-5:
+            c = (l - 1) / l
+            return [c * v for v in vals]
+        return vals
+        
+    
 
     @property
     def gyro(self):
@@ -172,9 +207,10 @@ class MPU6500:
         ustruct.pack_into(">h", buf, 0, value)
         return self.i2c.writeto_mem(self.address, register, buf)
 
+    
     def _register_three_shorts(self, register, buf=bytearray(6)):
         self.i2c.readfrom_mem_into(self.address, register, buf)
-        return ustruct.unpack(">hhh", buf)
+        #return ustruct.unpack(">hhh", buf)
 
     def _register_char(self, register, value=None, buf=bytearray(1)):
         if value is None:

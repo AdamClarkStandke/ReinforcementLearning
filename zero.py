@@ -6,7 +6,7 @@ from libhw import servo
 import utime
 
 
-PINS = ["B6", "B7", "B10", "B11"]
+PINS = ["B6", "B7", "A2", "A3"]
 INV = [True, False, True, False]
 
 

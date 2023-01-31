@@ -26,8 +26,10 @@ MicroPython I2C driver for MPU9250 9-axis motion tracking device
 
 # pylint: disable=import-error
 from micropython import const
-from mpu6500 import MPU6500
+from mpu6500 import MPU6500, SF_G, SF_DEG_S
 from ak8963 import AK8963
+from libhw import sensors
+import math as m
 # pylint: enable=import-error
 
 __version__ = "0.3.0"
@@ -40,9 +42,10 @@ _I2C_BYPASS_DIS = const(0b00000000)
 
 class MPU9250:
     """Class which provides interface to MPU9250 9-axis motion tracking device."""
-    def __init__(self, i2c, mpu6500 = None, ak8963 = None):
+    def __init__(self, i2c, mpu6500 = None, ak8963 = None, addr=0x68):
+    	
         if mpu6500 is None:
-            self.mpu6500 = MPU6500(i2c)
+            self.mpu6500 = MPU6500(i2c, accel_sf=SF_G, gyro_sf=SF_DEG_S)
         else:
             self.mpu6500 = mpu6500
 
@@ -52,10 +55,6 @@ class MPU9250:
         char |= _I2C_BYPASS_EN
         self.mpu6500._register_char(_INT_PIN_CFG, char)
 
-        if ak8963 is None:
-            self.ak8963 = AK8963(i2c)
-        else:
-            self.ak8963 = ak8963
 
     @property
     def acceleration(self):
@@ -65,30 +64,41 @@ class MPU9250:
         pass `accel_fs=SF_G` parameter to the MPU6500 constructor.
         """
         return self.mpu6500.acceleration
+        
+    
+    def __len__(self):
+        return 6
+     
+       
+    @classmethod
+    def decode(cls, b):
+       so = self.mpu6500.so
+       sf = self.mpu6500.sf
+       return [self.decode_s16(b[ofs:ofs+2])/so*sf for ofs in range(0, 6, 2)]
 
-    @property
-    def gyro(self):
+   
+    @classmethod
+    def preprocess(cls, vals):
         """
-        Gyro measured by the sensor. By default will return a 3-tuple of
-        X, Y, Z axis values in rad/s as floats. To get values in deg/s pass
-        `gyro_sf=SF_DEG_S` parameter to the MPU6500 constructor.
+        Preprocess list of float values into representation suitable for NNs
+        :param vals: list of floats
+        :return: list of floa
         """
-        return self.mpu6500.gyro
-
-    @property
-    def temperature(self):
-        """
-        Die temperature in celcius as a float.
-        """
-        return self.mpu6500.temperature
-
-    @property
-    def magnetic(self):
-        """
-        X, Y, Z axis micro-Tesla (uT) as floats.
-        """
-        return self.ak8963.magnetic
-
+        l = m.sqrt(vals[0]*vals[0]+vals[1]*vals[1]+vals[2]*vals[2])
+        if abs(l) > 1e-5:
+           c = (l-1)/l
+           return [c*v for v in vals] 
+        return vals
+        
+    def twosComp(x):
+    	if 0x8000 & x:
+    		x = -(0x010000-x)
+    	return x
+    	
+    def decode_s16(buf):
+    	v=(buf[1] << 8) + buf[0] 
+    	return twosComp(v)
+    	
     @property
     def whoami(self):
         return self.mpu6500.whoami
