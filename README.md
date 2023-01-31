@@ -335,7 +335,7 @@ This is the pseudocode for the algorithm:
 
 ## Example 6: Making a Real Life Robot and using the DDPG Algorithm to train it:
 
-The below simulation illustrates the MuJoCo based robot that will actaully be built and be contolled by the trained DDPG A2C policy to do the following two training objectives in the real world: 1) stand up and 2) move forward. Everything that follows, i.e. componetns, programming, etc comes from chapter 17 of Maxim Lapan's book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998)  
+The below simulation illustrates the MuJoCo based robot that will actaully be built and be contolled by the trained DDPG A2C policy to do the following two training objectives in the real world: 1) stand up and 2) move forward. Everything that follows, i.e. components, programming, etc comes from chapter 17 of Maxim Lapan's book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998)  
 
 [![alive](https://github.com/aCStandke/ReinforcementLearning/blob/main/mqdefault.png)](https://youtu.be/p7SNpGTb3Ak)[^9]
 
@@ -360,7 +360,7 @@ Front View:
  
 ![](https://github.com/aCStandke/ReinforcementLearning/blob/main/pyboard_front.jpg)
 
-**Servo Motor**
+**Servo Motors**
 
 [Mini Analog Servo GH-S37A](https://www.amazon.com/Wishiot-Digital-Aircraft-Direction-Helicopter/dp/B0BFQLMTGW/ref=asc_df_B0BFQLMTGW/?tag=hyprod-20&linkCode=df0&hvadid=642054451101&hvpos=&hvnetw=g&hvrand=5670709336879754082&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008192&hvtargid=pla-1942510789854&psc=1&gclid=Cj0KCQiAw8OeBhCeARIsAGxWtUyQsiZRjZhGj4jy7AZfhzH86qANqeLgxMnhHIboh6_IS2gLNNDtvsYaAs_xEALw_wcB):
 
