@@ -414,7 +414,7 @@ sd/
       - [t1.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/libhw/t1.py)
       - [t1zyh.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/libhw/t1zyh.py)
       - [t1zyho.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/libhw/t1zyho.py)
-      - my weights for move forward to be added later!!!!!!
+      - [moveforward-90kepisodes-.087reward](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/forward_weights_90000.ipynb) as found in the [file](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/best_%2B0.087_90000.dat)
 
 ### Results: 
 
