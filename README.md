@@ -335,7 +335,7 @@ This is the pseudocode for the algorithm:
 
 ## Example 6: Making a Real Life Robot and using the DDPG Algorithm to train it:
 
-The below simulation illustrates the MuJoCo based robot that will actaully be built and be contolled by the trained DDPG A2C policy to do the following two training objectives in the real world: 1) stand up and 2) move forward. Everything that follows, i.e. components, programming, etc comes from chapter 17 of Maxim Lapan's book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998)  
+The below simulation illustrates the MuJoCo based robot that will actaully be built and be contolled by the trained DDPG A2C policy to do the following two training objectives in the real world: 1) stand up and 2) move forward. Everything that follows, i.e. components, programming, etc comes from chapter 18 of Maxim Lapan's book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998)  
 
 [![alive](https://github.com/aCStandke/ReinforcementLearning/blob/main/mqdefault.png)](https://youtu.be/p7SNpGTb3Ak)[^9]
 
@@ -395,7 +395,7 @@ Side View:
 
 ### Programming:
 
-Programming was done using [MicroPython](https://micropython.org/). Everything basically followed Maxim Lapan's implementation as found in chapter 17 of his book execpt for programming the sensor, since I used a different sensor than what Maxim used. However I was able to find its I2C driver as detailed by [Mika Tuupola](https://github.com/tuupola/micropython-mpu9250) and was able to modify his code to work with Maxim's implementation. The directory structure on the sd card is the following: 
+Programming was done using [MicroPython](https://micropython.org/). Everything basically followed Maxim Lapan's implementation as found in chapter 18 of his book execpt for programming the sensor, since I used a different sensor than what Max used. However I was able to find its I2C driver as detailed by [Mika Tuupola](https://github.com/tuupola/micropython-mpu9250) and was able to modify his code to work with Max's implementation. The directory structure on the sd card for the pyboard is the following: 
 
 sd/
  - [ak8963.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/ak8963.py)
@@ -414,7 +414,7 @@ sd/
       - [t1.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/libhw/t1.py)
       - [t1zyh.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/libhw/t1zyh.py)
       - [t1zyho.py](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/libhw/t1zyho.py)
-      - [moveforward-90kepisodes-.087reward](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/forward_weights_90000.ipynb) as found in the [file](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/best_%2B0.087_90000.dat)
+      - [moveforward-90kepisodes-.087reward](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/move_weights.py)
 
 ### Results: 
 
@@ -422,7 +422,9 @@ sd/
 
  [![Watch the video](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/Screenshot%202023-01-24%208.19.25%20AM.png)](https://youtube.com/shorts/VmOdscO2hKE)
  
-**Walking using DDPG learned policy**
+**Moving Forward using DDPG learned policy**
+
+[![Watch the video](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/Screenshot%202023-01-24%208.19.25%20AM.png)](https://youtu.be/GPrtBlTd_Oo)
 
 -------------------------------------------------------------------------------
 ## Reference:
