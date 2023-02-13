@@ -337,7 +337,9 @@ This is the pseudocode for the algorithm:
 
 The below simulation illustrates the MuJoCo based robot that will actaully be built and be contolled by the trained DDPG A2C policy to do the following two training objectives in the real world: 1) stand up and 2) move forward. Everything that follows, i.e. components, programming, etc comes from chapter 18 of Maxim Lapan's book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998)  
 
-[![alive](https://github.com/aCStandke/ReinforcementLearning/blob/main/mqdefault.png)](https://youtu.be/p7SNpGTb3Ak)[^9]
+[![four_short_legs](https://github.com/aCStandke/ReinforcementLearning/blob/main/mqdefault.png)](https://youtu.be/p7SNpGTb3Ak)[^9]
+
+[![v0](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/screenshot.png)](https://youtu.be/PtSpBILK0D0)[^9]
 
 ### Hardware Components:
 
