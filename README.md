@@ -335,11 +335,15 @@ This is the pseudocode for the algorithm:
 
 ## Example 6: Making a Real Life Robot and using the DDPG Algorithm to train it:
 
-The below simulation illustrates the MuJoCo based robot that will actaully be built and be contolled by the trained DDPG A2C policy to do the following two training objectives in the real world: 1) stand up and 2) move forward. Everything that follows, i.e. components, programming, etc comes from chapter 18 of Maxim Lapan's book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998)  
+Everything that follows, i.e. components, programming, etc comes from chapter 18 of Maxim Lapan's book [Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots, robotics, discrete optimization, web automation, and more, 2nd Edition](https://www.amazon.com/Deep-Reinforcement-Learning-Hands-optimization/dp/1838826998) in which a trained DDPG A2C policy is used to control a real life robot to stand up and move forward. Similar to what was done in [Sim-to-Real](https://www.youtube.com/watch?v=lUZUr7jxoqM) but on a much smaller scale and budget.
 
-[![four_short_legs](https://github.com/aCStandke/ReinforcementLearning/blob/main/mqdefault.png)](https://youtu.be/p7SNpGTb3Ak)[^9]
+### MuJoCo File and PyBullet Simulation of Model:
 
-[![v0](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/screenshot.png)](https://youtu.be/PtSpBILK0D0)[^9]
+**Orginial Model**
+
+**Modified Model (Version Zero)**
+
+[![v0](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/v0.png)](https://youtu.be/PtSpBILK0D0)[^9]
 
 ### Hardware Components:
 
