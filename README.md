@@ -345,7 +345,7 @@ Everything that follows, i.e. components, programming, etc comes from chapter 18
 
 [![v0](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/v0.png)](https://youtu.be/PtSpBILK0D0)[^9]
 
-* The xml file for this model can be found here: ![](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/testing_model/models/v0.xml) and is tested in Maxim Lapan's show model code/simulation env as found here: ![](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/testing_model/show_model.py)
+* The xml file for this model can be found here: [version zero model](https://github.com/AdamClarkStandke/ReinforcementLearning/blob/main/testing_model/models/v0.xml) and is tested in Maxim Lapan's show model code/simulation env.
 
 ### Hardware Components:
 
